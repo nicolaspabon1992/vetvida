@@ -1,819 +1,2673 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VetVida — Clínica Veterinaria</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --cream: #FAF6F0;
-    --warm-white: #FFFDF9;
-    --forest: #2D5016;
-    --sage: #6B8F52;
-    --moss: #4A7033;
-    --amber: #E8A547;
-    --clay: #C4704A;
-    --charcoal: #1E1E1E;
-    --mid-gray: #666;
-    --light-gray: #E8E2D9;
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body: 'DM Sans', sans-serif;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: var(--font-body); background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VetVida — Clínica Veterinaria</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #faf6f0;
+        --warm-white: #fffdf9;
+        --forest: #2d5016;
+        --sage: #6b8f52;
+        --moss: #4a7033;
+        --amber: #e8a547;
+        --clay: #c4704a;
+        --charcoal: #1e1e1e;
+        --mid-gray: #666;
+        --light-gray: #e8e2d9;
+        --font-display: "Playfair Display", Georgia, serif;
+        --font-body: "DM Sans", sans-serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-body);
+        background: var(--cream);
+        color: var(--charcoal);
+        overflow-x: hidden;
+      }
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: rgba(250,246,240,0.95); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--light-gray);
-    padding: 0 5%; height: 72px;
-    display: flex; align-items: center; justify-content: space-between;
-    transition: box-shadow 0.3s;
-  }
-  nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
-  .nav-logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; color: var(--forest); cursor: pointer; }
-  .nav-logo span { color: var(--amber); }
-  .nav-links { display: flex; gap: 0; list-style: none; }
-  .nav-links li a { display: block; padding: 8px 14px; font-size: 0.875rem; font-weight: 500; color: var(--mid-gray); text-decoration: none; border-radius: 24px; transition: all 0.2s; cursor: pointer; }
-  .nav-links li a:hover, .nav-links li a.active { color: var(--forest); background: rgba(45,80,22,0.08); }
-  .nav-cta { background: var(--forest) !important; color: var(--cream) !important; padding: 10px 20px !important; }
-  .nav-cta:hover { background: var(--moss) !important; }
+      :focus-visible {
+        outline: 3px solid var(--amber);
+        outline-offset: 2px;
+      }
 
-  .page { display: none; min-height: 100vh; padding-top: 72px; }
-  .page.active { display: block; animation: fadeIn 0.4s ease; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(250, 246, 240, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--light-gray);
+        padding: 0 5%;
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: box-shadow 0.3s;
+      }
+      nav.scrolled {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+      }
+      .nav-logo {
+        font-family: var(--font-display);
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: var(--forest);
+        cursor: pointer;
+      }
+      .nav-logo span {
+        color: var(--amber);
+      }
+      .nav-links {
+        display: flex;
+        gap: 0;
+        list-style: none;
+      }
+      .nav-links li a {
+        display: block;
+        padding: 8px 14px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--mid-gray);
+        text-decoration: none;
+        border-radius: 24px;
+        transition: all 0.2s;
+        cursor: pointer;
+      }
+      .nav-links li a:hover,
+      .nav-links li a.active {
+        color: var(--forest);
+        background: rgba(45, 80, 22, 0.08);
+      }
+      .nav-cta {
+        background: var(--forest) !important;
+        color: var(--cream) !important;
+        padding: 10px 20px !important;
+      }
+      .nav-cta:hover {
+        background: var(--moss) !important;
+      }
 
-  /* HERO */
-  .hero { min-height: calc(100vh - 72px); display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 6% 5% 4%; gap: 80px; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; right: -10%; top: -20%; width: 70%; height: 120%; background: radial-gradient(ellipse, rgba(107,143,82,0.1) 0%, transparent 70%); pointer-events: none; }
-  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,165,71,0.15); border: 1px solid rgba(232,165,71,0.4); padding: 6px 16px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; color: var(--clay); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 24px; }
-  .hero-title { font-family: var(--font-display); font-size: clamp(2.6rem, 4.5vw, 4rem); font-weight: 900; line-height: 1.05; margin-bottom: 24px; }
-  .hero-title em { font-style: italic; color: var(--forest); }
-  .hero-desc { font-size: 1rem; line-height: 1.75; color: var(--mid-gray); max-width: 480px; margin-bottom: 40px; }
-  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+      .page {
+        display: none;
+        min-height: 100vh;
+        padding-top: 72px;
+      }
+      .page.active {
+        display: block;
+        animation: fadeIn 0.4s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-  .btn-primary { background: var(--forest); color: var(--cream); padding: 14px 30px; border: none; border-radius: 50px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.25s; box-shadow: 0 4px 20px rgba(45,80,22,0.3); }
-  .btn-primary:hover { background: var(--moss); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(45,80,22,0.35); }
-  .btn-secondary { background: transparent; color: var(--forest); padding: 14px 30px; border: 2px solid var(--forest); border-radius: 50px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.25s; }
-  .btn-secondary:hover { background: var(--forest); color: var(--cream); transform: translateY(-2px); }
+      /* HERO */
+      .hero {
+        min-height: calc(100vh - 72px);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        padding: 6% 5% 4%;
+        gap: 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        right: -10%;
+        top: -20%;
+        width: 70%;
+        height: 120%;
+        background: radial-gradient(
+          ellipse,
+          rgba(107, 143, 82, 0.1) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(232, 165, 71, 0.15);
+        border: 1px solid rgba(232, 165, 71, 0.4);
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--clay);
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+      }
+      .hero-title {
+        font-family: var(--font-display);
+        font-size: clamp(2.6rem, 4.5vw, 4rem);
+        font-weight: 900;
+        line-height: 1.05;
+        margin-bottom: 24px;
+      }
+      .hero-title em {
+        font-style: italic;
+        color: var(--forest);
+      }
+      .hero-desc {
+        font-size: 1rem;
+        line-height: 1.75;
+        color: var(--mid-gray);
+        max-width: 480px;
+        margin-bottom: 40px;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
 
-  .hero-visual { position: relative; }
-  .hero-img-wrap { width: 100%; aspect-ratio: 4/5; border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%; background: linear-gradient(135deg, #c8ddb5 0%, #8fba6a 40%, #4A7033 100%); display: flex; align-items: center; justify-content: center; font-size: 8rem; animation: morph 8s ease-in-out infinite; }
-  @keyframes morph { 0%,100% { border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%; } 50% { border-radius: 60% 40% 45% 55% / 40% 60% 55% 45%; } }
-  .floating-cards { position: absolute; bottom: -20px; left: -30px; display: flex; flex-direction: column; gap: 12px; }
-  .fcard { background: white; border-radius: 16px; padding: 14px 18px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 12px; animation: float 4s ease-in-out infinite; min-width: 170px; }
-  .fcard:nth-child(2) { animation-delay: 1.2s; margin-left: 16px; }
-  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-  .fcard-icon { font-size: 1.4rem; }
-  .fcard-text { font-size: 0.8rem; font-weight: 600; }
-  .fcard-sub { font-size: 0.71rem; color: var(--mid-gray); }
+      .btn-primary {
+        background: var(--forest);
+        color: var(--cream);
+        padding: 14px 30px;
+        border: none;
+        border-radius: 50px;
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.25s;
+        box-shadow: 0 4px 20px rgba(45, 80, 22, 0.3);
+      }
+      .btn-primary:hover {
+        background: var(--moss);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(45, 80, 22, 0.35);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--forest);
+        padding: 14px 30px;
+        border: 2px solid var(--forest);
+        border-radius: 50px;
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.25s;
+      }
+      .btn-secondary:hover {
+        background: var(--forest);
+        color: var(--cream);
+        transform: translateY(-2px);
+      }
 
-  .stats-strip { background: var(--forest); color: white; padding: 40px 5%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center; }
-  .stat-num { font-family: var(--font-display); font-size: 2.8rem; font-weight: 900; color: var(--amber); line-height: 1; }
-  .stat-label { font-size: 0.82rem; opacity: 0.72; margin-top: 6px; }
+      .hero-visual {
+        position: relative;
+      }
+      .hero-img-wrap {
+        width: 100%;
+        aspect-ratio: 4/5;
+        border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%;
+        background: linear-gradient(
+          135deg,
+          #c8ddb5 0%,
+          #8fba6a 40%,
+          #4a7033 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 8rem;
+        animation: morph 8s ease-in-out infinite;
+      }
+      @keyframes morph {
+        0%,
+        100% {
+          border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%;
+        }
+        50% {
+          border-radius: 60% 40% 45% 55% / 40% 60% 55% 45%;
+        }
+      }
+      .floating-cards {
+        position: absolute;
+        bottom: -20px;
+        left: -30px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .fcard {
+        background: white;
+        border-radius: 16px;
+        padding: 14px 18px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        animation: float 4s ease-in-out infinite;
+        min-width: 170px;
+      }
+      .fcard:nth-child(2) {
+        animation-delay: 1.2s;
+        margin-left: 16px;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+      .fcard-icon {
+        font-size: 1.4rem;
+      }
+      .fcard-text {
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      .fcard-sub {
+        font-size: 0.71rem;
+        color: var(--mid-gray);
+      }
 
-  .section { padding: 80px 5%; }
-  .section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--sage); margin-bottom: 12px; }
-  .section-title { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900; line-height: 1.15; margin-bottom: 16px; }
-  .section-title em { font-style: italic; color: var(--forest); }
-  .section-sub { font-size: 1rem; color: var(--mid-gray); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+      .stats-strip {
+        background: var(--forest);
+        color: white;
+        padding: 40px 5%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        text-align: center;
+      }
+      .stat-num {
+        font-family: var(--font-display);
+        font-size: 2.8rem;
+        font-weight: 900;
+        color: var(--amber);
+        line-height: 1;
+      }
+      .stat-label {
+        font-size: 0.82rem;
+        opacity: 0.72;
+        margin-top: 6px;
+      }
 
-  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .svc-card { background: white; border-radius: 24px; padding: 34px 26px; cursor: pointer; transition: all 0.3s; border: 2px solid transparent; position: relative; overflow: hidden; }
-  .svc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--sage), var(--amber)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
-  .svc-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); border-color: var(--light-gray); }
-  .svc-card:hover::before { transform: scaleX(1); }
-  .svc-icon { font-size: 2.4rem; margin-bottom: 18px; display: block; }
-  .svc-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
-  .svc-desc { font-size: 0.88rem; color: var(--mid-gray); line-height: 1.65; margin-bottom: 18px; }
-  .svc-link { font-size: 0.85rem; font-weight: 600; color: var(--forest); display: flex; align-items: center; gap: 6px; background: none; border: none; cursor: pointer; font-family: var(--font-body); padding: 0; transition: gap 0.2s; }
-  .svc-link:hover { gap: 10px; }
+      .section {
+        padding: 80px 5%;
+      }
+      .section-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--sage);
+        margin-bottom: 12px;
+      }
+      .section-title {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 3.5vw, 2.8rem);
+        font-weight: 900;
+        line-height: 1.15;
+        margin-bottom: 16px;
+      }
+      .section-title em {
+        font-style: italic;
+        color: var(--forest);
+      }
+      .section-sub {
+        font-size: 1rem;
+        color: var(--mid-gray);
+        max-width: 540px;
+        line-height: 1.7;
+        margin-bottom: 48px;
+      }
 
-  .testimonials-bg { background: linear-gradient(135deg, #f0f5ea, #e8f0df); padding: 80px 5%; }
-  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
-  .testi { background: white; border-radius: 20px; padding: 28px; position: relative; }
-  .testi::before { content: '"'; font-family: var(--font-display); font-size: 5rem; color: var(--sage); opacity: 0.15; position: absolute; top: -10px; left: 20px; line-height: 1; }
-  .testi-text { font-size: 0.9rem; line-height: 1.7; margin-bottom: 20px; }
-  .testi-author { display: flex; align-items: center; gap: 12px; }
-  .testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--sage), var(--forest)); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-  .testi-name { font-weight: 600; font-size: 0.9rem; }
-  .testi-pet { font-size: 0.78rem; color: var(--mid-gray); }
-  .stars { color: var(--amber); font-size: 0.85rem; margin-bottom: 12px; }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .svc-card {
+        background: white;
+        border-radius: 24px;
+        padding: 34px 26px;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+      .svc-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--sage), var(--amber));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s;
+      }
+      .svc-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        border-color: var(--light-gray);
+      }
+      .svc-card:hover::before {
+        transform: scaleX(1);
+      }
+      .svc-icon {
+        font-size: 2.4rem;
+        margin-bottom: 18px;
+        display: block;
+      }
+      .svc-name {
+        font-family: var(--font-display);
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .svc-desc {
+        font-size: 0.88rem;
+        color: var(--mid-gray);
+        line-height: 1.65;
+        margin-bottom: 18px;
+      }
+      .svc-link {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--forest);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font-body);
+        padding: 0;
+        transition: gap 0.2s;
+      }
+      .svc-link:hover {
+        gap: 10px;
+      }
 
-  .page-hero { background: var(--forest); color: white; padding: 60px 5% 80px; position: relative; overflow: hidden; }
-  .page-hero-breadcrumb { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 16px; cursor: pointer; }
-  .page-hero-breadcrumb span { color: rgba(255,255,255,0.85); }
-  .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
-  .page-hero p { font-size: 1rem; opacity: 0.75; max-width: 560px; line-height: 1.7; }
-  .page-hero-icon { position: absolute; right: 8%; top: 50%; transform: translateY(-50%); font-size: 9rem; opacity: 0.12; }
+      .testimonials-bg {
+        background: linear-gradient(135deg, #f0f5ea, #e8f0df);
+        padding: 80px 5%;
+      }
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 48px;
+      }
+      .testi {
+        background: white;
+        border-radius: 20px;
+        padding: 28px;
+        position: relative;
+      }
+      .testi::before {
+        content: '"';
+        font-family: var(--font-display);
+        font-size: 5rem;
+        color: var(--sage);
+        opacity: 0.15;
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        line-height: 1;
+      }
+      .testi-text {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+      .testi-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .testi-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--sage), var(--forest));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+      }
+      .testi-name {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .testi-pet {
+        font-size: 0.78rem;
+        color: var(--mid-gray);
+      }
+      .stars {
+        color: var(--amber);
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+      }
 
-  .content-section { padding: 70px 5%; }
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-  .content-block h2 { font-family: var(--font-display); font-size: 1.9rem; font-weight: 700; margin-bottom: 16px; line-height: 1.2; }
-  .content-block h2 em { font-style: italic; color: var(--forest); }
-  .content-block p { font-size: 0.95rem; line-height: 1.8; color: var(--mid-gray); margin-bottom: 16px; }
+      .page-hero {
+        background: var(--forest);
+        color: white;
+        padding: 60px 5% 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      .page-hero-breadcrumb {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 16px;
+        cursor: pointer;
+      }
+      .page-hero-breadcrumb span {
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .page-hero h1 {
+        font-family: var(--font-display);
+        font-size: clamp(2.2rem, 4vw, 3.4rem);
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 16px;
+      }
+      .page-hero p {
+        font-size: 1rem;
+        opacity: 0.75;
+        max-width: 560px;
+        line-height: 1.7;
+      }
+      .page-hero-icon {
+        position: absolute;
+        right: 8%;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 9rem;
+        opacity: 0.12;
+      }
 
-  .feature-list { list-style: none; margin-top: 20px; }
-  .feature-list li { display: flex; gap: 14px; align-items: flex-start; padding: 13px 0; border-bottom: 1px solid var(--light-gray); font-size: 0.9rem; line-height: 1.6; }
-  .feature-list li:last-child { border-bottom: none; }
-  .feature-list li::before { content: '✓'; flex-shrink: 0; width: 22px; height: 22px; background: var(--forest); color: white; border-radius: 50%; font-size: 0.7rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+      .content-section {
+        padding: 70px 5%;
+      }
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+      .content-block h2 {
+        font-family: var(--font-display);
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        line-height: 1.2;
+      }
+      .content-block h2 em {
+        font-style: italic;
+        color: var(--forest);
+      }
+      .content-block p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+        color: var(--mid-gray);
+        margin-bottom: 16px;
+      }
 
-  .info-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .info-card { background: var(--cream); border-radius: 20px; padding: 22px; border: 1px solid var(--light-gray); }
-  .info-card-icon { font-size: 1.9rem; margin-bottom: 10px; }
-  .info-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
-  .info-card p { font-size: 0.84rem; color: var(--mid-gray); line-height: 1.6; }
+      .feature-list {
+        list-style: none;
+        margin-top: 20px;
+      }
+      .feature-list li {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        padding: 13px 0;
+        border-bottom: 1px solid var(--light-gray);
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+      .feature-list li:last-child {
+        border-bottom: none;
+      }
+      .feature-list li::before {
+        content: "✓";
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        background: var(--forest);
+        color: white;
+        border-radius: 50%;
+        font-size: 0.7rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2px;
+      }
 
-  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
-  .price-card { background: white; border-radius: 24px; padding: 34px 26px; text-align: center; border: 2px solid var(--light-gray); transition: all 0.3s; position: relative; overflow: hidden; }
-  .price-card.featured { background: var(--forest); color: white; border-color: var(--forest); transform: scale(1.04); box-shadow: 0 20px 60px rgba(45,80,22,0.3); }
-  .price-card.featured .price-name, .price-card.featured .price-amount, .price-card.featured .price-period, .price-card.featured .price-feature { color: white !important; }
-  .price-badge { position: absolute; top: 14px; right: 14px; background: var(--amber); color: var(--charcoal); font-size: 0.68rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .price-name { font-size: 0.82rem; font-weight: 600; color: var(--mid-gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
-  .price-amount { font-family: var(--font-display); font-size: 2.8rem; font-weight: 900; color: var(--charcoal); line-height: 1; }
-  .price-period { font-size: 0.82rem; color: var(--mid-gray); margin-bottom: 26px; }
-  .price-features { list-style: none; text-align: left; margin-bottom: 26px; }
-  .price-feature { font-size: 0.86rem; color: var(--mid-gray); padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; align-items: center; gap: 8px; }
-  .price-feature::before { content: '•'; color: var(--sage); font-size: 1.2rem; }
+      .info-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      .info-card {
+        background: var(--cream);
+        border-radius: 20px;
+        padding: 22px;
+        border: 1px solid var(--light-gray);
+      }
+      .info-card-icon {
+        font-size: 1.9rem;
+        margin-bottom: 10px;
+      }
+      .info-card h3 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .info-card p {
+        font-size: 0.84rem;
+        color: var(--mid-gray);
+        line-height: 1.6;
+      }
 
-  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; margin-top: 48px; }
-  .team-card { text-align: center; }
-  .team-avatar { width: 100%; aspect-ratio: 1; border-radius: 22px; background: linear-gradient(135deg, #c8ddb5, #4A7033); display: flex; align-items: center; justify-content: center; font-size: 4rem; margin-bottom: 14px; transition: transform 0.3s; }
-  .team-card:hover .team-avatar { transform: scale(1.05); }
-  .team-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
-  .team-role { font-size: 0.78rem; color: var(--sage); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
-  .team-desc { font-size: 0.82rem; color: var(--mid-gray); line-height: 1.6; }
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-top: 48px;
+      }
+      .price-card {
+        background: white;
+        border-radius: 24px;
+        padding: 34px 26px;
+        text-align: center;
+        border: 2px solid var(--light-gray);
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      .price-card.featured {
+        background: var(--forest);
+        color: white;
+        border-color: var(--forest);
+        transform: scale(1.04);
+        box-shadow: 0 20px 60px rgba(45, 80, 22, 0.3);
+      }
+      .price-card.featured .price-name,
+      .price-card.featured .price-amount,
+      .price-card.featured .price-period,
+      .price-card.featured .price-feature {
+        color: white !important;
+      }
+      .price-badge {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        background: var(--amber);
+        color: var(--charcoal);
+        font-size: 0.68rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .price-name {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--mid-gray);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 14px;
+      }
+      .price-amount {
+        font-family: var(--font-display);
+        font-size: 2.8rem;
+        font-weight: 900;
+        color: var(--charcoal);
+        line-height: 1;
+      }
+      .price-period {
+        font-size: 0.82rem;
+        color: var(--mid-gray);
+        margin-bottom: 26px;
+      }
+      .price-features {
+        list-style: none;
+        text-align: left;
+        margin-bottom: 26px;
+      }
+      .price-feature {
+        font-size: 0.86rem;
+        color: var(--mid-gray);
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .price-feature::before {
+        content: "•";
+        color: var(--sage);
+        font-size: 1.2rem;
+      }
 
-  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; padding: 70px 5%; align-items: start; }
-  .contact-info h2 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
-  .contact-info h2 em { font-style: italic; color: var(--forest); }
-  .contact-info > p { color: var(--mid-gray); line-height: 1.7; margin-bottom: 36px; }
-  .contact-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 22px; }
-  .contact-icon { width: 42px; height: 42px; flex-shrink: 0; background: var(--forest); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
-  .contact-item-label { font-size: 0.73rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--sage); margin-bottom: 4px; }
-  .contact-item-val { font-size: 0.93rem; font-weight: 500; }
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 26px;
+        margin-top: 48px;
+      }
+      .team-card {
+        text-align: center;
+      }
+      .team-avatar {
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 22px;
+        background: linear-gradient(135deg, #c8ddb5, #4a7033);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        margin-bottom: 14px;
+        transition: transform 0.3s;
+      }
+      .team-card:hover .team-avatar {
+        transform: scale(1.05);
+      }
+      .team-name {
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .team-role {
+        font-size: 0.78rem;
+        color: var(--sage);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px;
+      }
+      .team-desc {
+        font-size: 0.82rem;
+        color: var(--mid-gray);
+        line-height: 1.6;
+      }
 
-  .contact-form { background: white; border-radius: 28px; padding: 38px; box-shadow: 0 8px 40px rgba(0,0,0,0.06); }
-  .contact-form h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 28px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .form-group { margin-bottom: 18px; }
-  .form-group label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 16px; border: 2px solid var(--light-gray); border-radius: 12px; font-family: var(--font-body); font-size: 0.92rem; background: var(--cream); color: var(--charcoal); outline: none; transition: border-color 0.2s; }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--forest); }
-  .form-group textarea { resize: vertical; min-height: 90px; }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 60px;
+        padding: 70px 5%;
+        align-items: start;
+      }
+      .contact-info h2 {
+        font-family: var(--font-display);
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin-bottom: 16px;
+        line-height: 1.2;
+      }
+      .contact-info h2 em {
+        font-style: italic;
+        color: var(--forest);
+      }
+      .contact-info > p {
+        color: var(--mid-gray);
+        line-height: 1.7;
+        margin-bottom: 36px;
+      }
+      .contact-item {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        margin-bottom: 22px;
+      }
+      .contact-icon {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+        background: var(--forest);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+      }
+      .contact-item-label {
+        font-size: 0.73rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--sage);
+        margin-bottom: 4px;
+      }
+      .contact-item-val {
+        font-size: 0.93rem;
+        font-weight: 500;
+      }
 
-  footer { background: var(--charcoal); color: white; padding: 60px 5% 30px; }
-  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 44px; }
-  .footer-brand p { font-size: 0.84rem; opacity: 0.5; line-height: 1.7; margin-top: 12px; }
-  .footer-col h4 { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.38; margin-bottom: 16px; }
-  .footer-links { list-style: none; }
-  .footer-links li { margin-bottom: 10px; }
-  .footer-links li a { font-size: 0.86rem; opacity: 0.65; text-decoration: none; color: white; cursor: pointer; transition: opacity 0.2s; }
-  .footer-links li a:hover { opacity: 1; }
-  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; opacity: 0.38; }
+      .contact-form {
+        background: white;
+        border-radius: 28px;
+        padding: 38px;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+      }
+      .contact-form h3 {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 28px;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .form-group {
+        margin-bottom: 18px;
+      }
+      .form-group label {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 7px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid var(--light-gray);
+        border-radius: 12px;
+        font-family: var(--font-body);
+        font-size: 0.92rem;
+        background: var(--cream);
+        color: var(--charcoal);
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--forest);
+      }
+      .form-group textarea {
+        resize: vertical;
+        min-height: 90px;
+      }
 
-  .emergency-banner { background: linear-gradient(135deg, #c0392b, #e74c3c); color: white; padding: 18px 5%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-  .emergency-banner p { font-size: 0.93rem; font-weight: 500; }
-  .btn-emergency { background: white; color: #c0392b; padding: 10px 22px; border: none; border-radius: 50px; font-weight: 700; font-size: 0.86rem; cursor: pointer; white-space: nowrap; font-family: var(--font-body); transition: transform 0.2s; }
-  .btn-emergency:hover { transform: scale(1.05); }
+      footer {
+        background: var(--charcoal);
+        color: white;
+        padding: 60px 5% 30px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 48px;
+        margin-bottom: 44px;
+      }
+      .footer-brand p {
+        font-size: 0.84rem;
+        opacity: 0.5;
+        line-height: 1.7;
+        margin-top: 12px;
+      }
+      .footer-col h4 {
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        opacity: 0.38;
+        margin-bottom: 16px;
+      }
+      .footer-links {
+        list-style: none;
+      }
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+      .footer-links li a {
+        font-size: 0.86rem;
+        opacity: 0.65;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+      .footer-links li a:hover {
+        opacity: 1;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 22px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.78rem;
+        opacity: 0.38;
+      }
 
-  .highlight-box { background: linear-gradient(135deg, #f0f5ea, #e8f0df); border-left: 4px solid var(--sage); border-radius: 0 16px 16px 0; padding: 22px 26px; margin: 22px 0; }
-  .highlight-box p { font-size: 0.9rem; line-height: 1.7; }
+      .emergency-banner {
+        background: linear-gradient(135deg, #c0392b, #e74c3c);
+        color: white;
+        padding: 18px 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .emergency-banner p {
+        font-size: 0.93rem;
+        font-weight: 500;
+      }
+      .btn-emergency {
+        background: white;
+        color: #c0392b;
+        padding: 10px 22px;
+        border: none;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.86rem;
+        cursor: pointer;
+        white-space: nowrap;
+        font-family: var(--font-body);
+        transition: transform 0.2s;
+      }
+      .btn-emergency:hover {
+        transform: scale(1.05);
+      }
 
-  .faq-item { border-bottom: 1px solid var(--light-gray); padding: 18px 0; }
-  .faq-question { font-weight: 600; font-size: 0.93rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-  .faq-question::after { content: '+'; font-size: 1.3rem; color: var(--sage); flex-shrink: 0; }
-  .faq-item.open .faq-question::after { content: '−'; }
-  .faq-answer { display: none; font-size: 0.88rem; color: var(--mid-gray); line-height: 1.7; padding-top: 12px; }
-  .faq-item.open .faq-answer { display: block; }
+      .highlight-box {
+        background: linear-gradient(135deg, #f0f5ea, #e8f0df);
+        border-left: 4px solid var(--sage);
+        border-radius: 0 16px 16px 0;
+        padding: 22px 26px;
+        margin: 22px 0;
+      }
+      .highlight-box p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
 
-  .chip { display: inline-flex; align-items: center; gap: 6px; background: rgba(107,143,82,0.12); color: var(--forest); border: 1px solid rgba(107,143,82,0.3); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin: 4px; cursor: pointer; transition: all 0.2s; }
-  .chip:hover { background: var(--forest); color: white; }
+      .faq-item {
+        border-bottom: 1px solid var(--light-gray);
+        padding: 18px 0;
+      }
+      .faq-question {
+        font-weight: 600;
+        font-size: 0.93rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+      .faq-question::after {
+        content: "+";
+        font-size: 1.3rem;
+        color: var(--sage);
+        flex-shrink: 0;
+      }
+      .faq-item.open .faq-question::after {
+        content: "−";
+      }
+      .faq-answer {
+        display: none;
+        font-size: 0.88rem;
+        color: var(--mid-gray);
+        line-height: 1.7;
+        padding-top: 12px;
+      }
+      .faq-item.open .faq-answer {
+        display: block;
+      }
 
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; gap: 40px; padding: 40px 5%; }
-    .hero-visual { order: -1; max-width: 340px; margin: 0 auto; }
-    .services-grid { grid-template-columns: 1fr 1fr; }
-    .stats-strip { grid-template-columns: 1fr 1fr; gap: 24px; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr 1fr; }
-    .pricing-grid { grid-template-columns: 1fr; }
-    .two-col { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .nav-links { display: none; }
-  }
-  @media (max-width: 600px) {
-    .services-grid { grid-template-columns: 1fr; }
-    .info-cards { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .price-card.featured { transform: none; }
-  }
-</style>
-</head>
-<body>
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(107, 143, 82, 0.12);
+        color: var(--forest);
+        border: 1px solid rgba(107, 143, 82, 0.3);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin: 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .chip:hover {
+        background: var(--forest);
+        color: white;
+      }
 
-<nav id="navbar">
-  <div class="nav-logo" onclick="showPage('home')">Vet<span>Vida</span></div>
-  <ul class="nav-links">
-    <li><a onclick="showPage('home')" id="nav-home">Inicio</a></li>
-    <li><a onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
-    <li><a onclick="showPage('nosotros')" id="nav-nosotros">Nosotros</a></li>
-    <li><a onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;">🚨 Emergencias</a></li>
-    <li><a onclick="showPage('contacto')" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
-  </ul>
-</nav>
-
-<!-- HOME -->
-<div id="page-home" class="page active">
-  <section class="hero">
-    <div>
-      <div class="hero-tag">🐾 Clínica veterinaria de confianza</div>
-      <h1 class="hero-title">Cuidamos a tu<br><em>mejor amigo</em><br>con amor y ciencia</h1>
-      <p class="hero-desc">En VetVida combinamos tecnología de punta con atención personalizada para garantizar la salud, bienestar y felicidad de tu mascota. Más de 15 años cuidando vidas.</p>
-      <div class="hero-btns">
-        <button class="btn-primary" onclick="showPage('contacto')">Reservar Cita →</button>
-        <button class="btn-secondary" onclick="showPage('servicios')">Ver Servicios</button>
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          padding: 40px 5%;
+        }
+        .hero-visual {
+          order: -1;
+          max-width: 340px;
+          margin: 0 auto;
+        }
+        .services-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stats-strip {
+          grid-template-columns: 1fr 1fr;
+          gap: 24px;
+        }
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+        .team-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .pricing-grid {
+          grid-template-columns: 1fr;
+        }
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .nav-links {
+          display: none;
+        }
+      }
+      @media (max-width: 600px) {
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        .info-cards {
+          grid-template-columns: 1fr;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .price-card.featured {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="navbar">
+      <div
+        class="nav-logo"
+        id="main-logo"
+        tabindex="0"
+        role="link"
+        aria-label="VetVida Home"
+        onclick="showPage('home')"
+      >
+        Vet<span>Vida</span>
       </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-img-wrap">🐾</div>
-      <div class="floating-cards">
-        <div class="fcard"><div class="fcard-icon">⭐</div><div><div class="fcard-text">4.9 / 5 estrellas</div><div class="fcard-sub">+1,200 reseñas</div></div></div>
-        <div class="fcard"><div class="fcard-icon">🏥</div><div><div class="fcard-text">Urgencias 24h</div><div class="fcard-sub">Siempre disponibles</div></div></div>
-      </div>
-    </div>
-  </section>
+      <ul class="nav-links">
+        <li>
+          <a href="javascript:void(0)" onclick="showPage('home')" id="nav-home"
+            >Inicio</a
+          >
+        </li>
+        <li>
+          <a
+            href="javascript:void(0)"
+            onclick="showPage('servicios')"
+            id="nav-servicios"
+            >Servicios</a
+          >
+        </li>
+        <li>
+          <a
+            href="javascript:void(0)"
+            onclick="showPage('nosotros')"
+            id="nav-nosotros"
+            >Nosotros</a
+          >
+        </li>
+        <li>
+          <a
+            href="javascript:void(0)"
+            onclick="showPage('emergencias')"
+            id="nav-emergencias"
+            style="color: #c0392b; font-weight: 700"
+            >🚨 Emergencias</a
+          >
+        </li>
+        <li>
+          <a
+            href="javascript:void(0)"
+            onclick="showPage('contacto')"
+            id="nav-contacto"
+            class="nav-cta"
+            >Reservar Cita</a
+          >
+        </li>
+      </ul>
+    </nav>
 
-  <div class="stats-strip">
-    <div><div class="stat-num">15+</div><div class="stat-label">Años de experiencia</div></div>
-    <div><div class="stat-num">8,400+</div><div class="stat-label">Mascotas atendidas</div></div>
-    <div><div class="stat-num">12</div><div class="stat-label">Especialistas</div></div>
-    <div><div class="stat-num">24/7</div><div class="stat-label">Atención de emergencias</div></div>
-  </div>
-
-  <section class="section">
-    <div class="section-label">Nuestros Servicios</div>
-    <h2 class="section-title">Todo lo que tu mascota<br><em>necesita</em>, en un solo lugar</h2>
-    <p class="section-sub">Ofrecemos servicios veterinarios integrales para perros, gatos, aves, conejos, reptiles y más mascotas.</p>
-    <div class="services-grid">
-      <div class="svc-card" onclick="showPage('consulta')"><span class="svc-icon">🩺</span><div class="svc-name">Consulta General</div><div class="svc-desc">Revisiones completas con diagnóstico integral y seguimiento personalizado para cada especie.</div><button class="svc-link">Conocer más →</button></div>
-      <div class="svc-card" onclick="showPage('vacunas')"><span class="svc-icon">💉</span><div class="svc-name">Vacunación</div><div class="svc-desc">Planes vacunales completos adaptados a la especie, raza, edad y estilo de vida de tu mascota.</div><button class="svc-link">Conocer más →</button></div>
-      <div class="svc-card" onclick="showPage('cirugia')"><span class="svc-icon">🔬</span><div class="svc-name">Cirugía</div><div class="svc-desc">Quirófano equipado con tecnología de última generación para cirugías programadas y urgentes.</div><button class="svc-link">Conocer más →</button></div>
-      <div class="svc-card" onclick="showPage('estetica')"><span class="svc-icon">✂️</span><div class="svc-name">Estética y Peluquería</div><div class="svc-desc">Baño, corte, cepillado y tratamientos especiales con productos hipoalergénicos certificados.</div><button class="svc-link">Conocer más →</button></div>
-      <div class="svc-card" onclick="showPage('nutricion')"><span class="svc-icon">🥗</span><div class="svc-name">Nutrición Clínica</div><div class="svc-desc">Planes alimenticios personalizados y dietas terapéuticas basadas en ciencia veterinaria.</div><button class="svc-link">Conocer más →</button></div>
-      <div class="svc-card" onclick="showPage('dental')"><span class="svc-icon">🦷</span><div class="svc-name">Odontología</div><div class="svc-desc">Limpieza dental profesional, extracciones y tratamientos para la salud bucal completa.</div><button class="svc-link">Conocer más →</button></div>
-    </div>
-    <div style="text-align:center;margin-top:40px"><button class="btn-secondary" onclick="showPage('servicios')">Ver todos los servicios</button></div>
-  </section>
-
-  <div class="testimonials-bg">
-    <div style="padding:0 5%"><div class="section-label">Testimonios</div><h2 class="section-title">Lo que dicen nuestros <em>clientes</em></h2></div>
-    <div class="testimonials-grid" style="padding:0 5%">
-      <div class="testi"><div class="stars">★★★★★</div><p class="testi-text">El equipo de VetVida salvó a mi perra Luna cuando tuvo una crisis nocturna. La atención de emergencias fue excepcional y el seguimiento posterior muy profesional.</p><div class="testi-author"><div class="testi-avatar">👩</div><div><div class="testi-name">María González</div><div class="testi-pet">🐕 Mamá de Luna</div></div></div></div>
-      <div class="testi"><div class="stars">★★★★★</div><p class="testi-text">Llevé a Mochi para su primera consulta y quedé impresionado con la dedicación del Dr. Ramírez. Explicó todo con claridad y el gato estuvo muy tranquilo durante toda la visita.</p><div class="testi-author"><div class="testi-avatar">👨</div><div><div class="testi-name">Carlos Mendoza</div><div class="testi-pet">🐈 Papá de Mochi</div></div></div></div>
-      <div class="testi"><div class="stars">★★★★★</div><p class="testi-text">El servicio de nutrición cambió por completo la salud de mis bulldogs. En tres meses desaparecieron los problemas digestivos que los aquejaban. ¡100% recomendado!</p><div class="testi-author"><div class="testi-avatar">👩</div><div><div class="testi-name">Daniela Ruiz</div><div class="testi-pet">🐕🐕 Rocky y Bruno</div></div></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- TODOS LOS SERVICIOS -->
-<div id="page-servicios" class="page">
-  <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Servicios</span></div>
-    <h1>Nuestros Servicios</h1>
-    <p>Atención integral para perros, gatos, aves, conejos, reptiles y más. Tecnología y amor en cada visita.</p>
-    <span class="page-hero-icon">🐾</span>
-  </div>
-  <section class="content-section">
-    <div class="services-grid">
-      <div class="svc-card" onclick="showPage('consulta')"><span class="svc-icon">🩺</span><div class="svc-name">Consulta General</div><div class="svc-desc">Revisión completa con historia clínica y exploración física detallada.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card" onclick="showPage('vacunas')"><span class="svc-icon">💉</span><div class="svc-name">Vacunación y Desparasitación</div><div class="svc-desc">Protege a tu mascota con planes vacunales completos y antiparasitarios.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card" onclick="showPage('cirugia')"><span class="svc-icon">🔬</span><div class="svc-name">Cirugía y Anestesia</div><div class="svc-desc">Quirófano de última generación para cirugías programadas y urgentes.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card" onclick="showPage('estetica')"><span class="svc-icon">✂️</span><div class="svc-name">Estética y Peluquería</div><div class="svc-desc">Grooming completo con productos hipoalergénicos y técnicas por raza.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card" onclick="showPage('nutricion')"><span class="svc-icon">🥗</span><div class="svc-name">Nutrición Clínica</div><div class="svc-desc">Planes nutricionales personalizados con cálculo calórico preciso.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card" onclick="showPage('dental')"><span class="svc-icon">🦷</span><div class="svc-name">Odontología Veterinaria</div><div class="svc-desc">Limpieza, prevención y tratamiento de enfermedades orales.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card" onclick="showPage('emergencias')"><span class="svc-icon">🚨</span><div class="svc-name">Emergencias 24h</div><div class="svc-desc">Atención inmediata las 24 horas, los 7 días de la semana.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card" onclick="showPage('laboratorio')"><span class="svc-icon">🧪</span><div class="svc-name">Laboratorio y Diagnóstico</div><div class="svc-desc">Análisis clínicos, radiografías digitales, ecografías y más.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card"><span class="svc-icon">🏠</span><div class="svc-name">Guardería y Hotel</div><div class="svc-desc">Alojamiento seguro y supervisado médicamente para tu mascota.</div><button class="svc-link">Próximamente →</button></div>
-    </div>
-  </section>
-</div>
-
-<!-- CONSULTA GENERAL -->
-<div id="page-consulta" class="page">
-  <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Consulta General</span></div>
-    <h1>Consulta General</h1>
-    <p>Diagnóstico integral y seguimiento personalizado para cada etapa de la vida de tu mascota.</p>
-    <span class="page-hero-icon">🩺</span>
-  </div>
-  <section class="content-section">
-    <div class="two-col">
-      <div class="content-block">
-        <h2>Una revisión <em>completa</em> que marca la diferencia</h2>
-        <p>Cada consulta en VetVida es una oportunidad para conocer a fondo el estado de salud de tu mascota. Nuestros veterinarios dedican el tiempo necesario para una exploración exhaustiva y escuchar todas tus inquietudes.</p>
-        <p>Atendemos perros, gatos, conejos, aves, reptiles, hámsteres y otras mascotas exóticas con atención especializada por especie.</p>
-        <div class="highlight-box"><p>💡 <strong>¿Sabías que?</strong> Una revisión anual puede detectar hasta el 80% de las enfermedades comunes antes de que presenten síntomas visibles.</p></div>
-        <ul class="feature-list">
-          <li>Historia clínica completa y actualizada en cada visita</li>
-          <li>Exploración física sistemática de cabeza a cola</li>
-          <li>Evaluación de peso, condición corporal y estado nutricional</li>
-          <li>Medición de parámetros vitales: temperatura, pulso y respiración</li>
-          <li>Asesoría en prevención y mantenimiento de la salud</li>
-          <li>Emisión de certificados de salud para viajes y adopciones</li>
-        </ul>
-      </div>
-      <div>
-        <div class="info-cards">
-          <div class="info-card"><div class="info-card-icon">⏱️</div><h3>Duración</h3><p>30–45 minutos por consulta. Tiempo suficiente para una revisión completa sin apresurarse.</p></div>
-          <div class="info-card"><div class="info-card-icon">📋</div><h3>Qué traer</h3><p>Cartilla de vacunación, historial médico previo y apuntes de síntomas o cambios de comportamiento.</p></div>
-          <div class="info-card"><div class="info-card-icon">🐾</div><h3>Especies</h3><p>Perros, gatos, aves, reptiles, conejos, roedores y otras mascotas exóticas.</p></div>
-          <div class="info-card"><div class="info-card-icon">💰</div><h3>Precio</h3><p>Desde $35.000 COP. Consulta de especialidad con precio diferenciado según servicio.</p></div>
-        </div>
-        <div style="margin-top:26px">
-          <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:18px">Preguntas Frecuentes</h3>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Con qué frecuencia debo traer a mi mascota?</div><div class="faq-answer">Para mascotas adultas sanas recomendamos al menos una consulta anual. En cachorros, geriátricos o con condiciones crónicas, las revisiones deben ser más frecuentes (cada 6 meses o según indicación médica).</div></div>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Necesito cita previa?</div><div class="faq-answer">Para consultas de rutina recomendamos cita previa. Sin embargo, atendemos sin cita cuando hay disponibilidad. Las emergencias siempre tienen prioridad y no requieren cita.</div></div>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Puedo quedarme con mi mascota durante la consulta?</div><div class="faq-answer">¡Por supuesto! Tu presencia tranquiliza a tu mascota. En procedimientos específicos te indicaremos si es necesario permanecer en sala de espera.</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div style="text-align:center;padding:0 5% 60px"><button class="btn-primary" onclick="showPage('contacto')">Reservar Consulta →</button></div>
-</div>
-
-<!-- VACUNACIÓN -->
-<div id="page-vacunas" class="page">
-  <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Vacunación</span></div>
-    <h1>Vacunación y Desparasitación</h1>
-    <p>La prevención es la mejor medicina. Protege a tu mascota con planes vacunales completos y personalizados.</p>
-    <span class="page-hero-icon">💉</span>
-  </div>
-  <section class="content-section">
-    <div class="two-col">
-      <div class="content-block">
-        <h2>Prevención inteligente, <em>vida larga</em></h2>
-        <p>Las vacunas y los tratamientos antiparasitarios son pilares fundamentales en la salud de cualquier mascota. En VetVida diseñamos un plan personalizado según la especie, raza, edad, peso y el entorno donde vive tu animal.</p>
-        <p>Contamos con las vacunas más actualizadas del mercado, almacenadas en condiciones óptimas de cadena de frío para garantizar su máxima efectividad.</p>
-        <div class="highlight-box"><p>📅 <strong>Plan Cachorro:</strong> Séxtuple a las 8 sem → Refuerzo a las 12 sem → Rabia a las 16 sem → Refuerzo anual. ¡Tu veterinario te guiará en cada paso!</p></div>
-        <ul class="feature-list">
-          <li>Plan vacunal para cachorros desde las 6–8 semanas de edad</li>
-          <li>Refuerzos anuales para adultos con recordatorio automático</li>
-          <li>Vacuna antirrábica con certificado oficial</li>
-          <li>Vacunas opcionales según estilo de vida (bordetella, leishmania, etc.)</li>
-          <li>Desparasitación interna y externa integrada al plan</li>
-          <li>Registro digital en historial clínico y cartilla actualizada</li>
-        </ul>
-      </div>
-      <div>
-        <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:16px">Vacunas disponibles</h3>
-        <div style="margin-bottom:28px">
-          <span class="chip">💉 Séxtuple canina</span><span class="chip">💉 Antirrábica</span><span class="chip">💉 Triple felina</span><span class="chip">💉 Leucemia felina</span><span class="chip">💉 Bordetella</span><span class="chip">💉 Leptospirosis</span><span class="chip">💉 Leishmania</span><span class="chip">💉 Influenza canina</span>
-        </div>
-        <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:18px">Preguntas Frecuentes</h3>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Mi mascota puede tener reacciones a las vacunas?</div><div class="faq-answer">Las reacciones son muy poco frecuentes. Pueden presentarse leve somnolencia o sensibilidad en el punto de inyección durante 24h. Reacciones graves son extremadamente raras y siempre supervisamos a tu mascota tras la vacunación.</div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Puedo vacunar a mi mascota si está enferma?</div><div class="faq-answer">No. Las vacunas solo se aplican a mascotas clínicamente sanas. Si presenta síntomas, primero tratamos la enfermedad y luego programamos la vacunación.</div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Cada cuánto debo desparasitar a mi mascota?</div><div class="faq-answer">Cachorros: cada 15 días hasta los 3 meses, luego mensual hasta el año. Adultos: cada 3–6 meses según exposición y estilo de vida. Tu veterinario te dará el plan exacto.</div></div>
-      </div>
-    </div>
-  </section>
-  <div style="text-align:center;padding:0 5% 60px"><button class="btn-primary" onclick="showPage('contacto')">Agendar Vacunación →</button></div>
-</div>
-
-<!-- CIRUGÍA -->
-<div id="page-cirugia" class="page">
-  <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Cirugía</span></div>
-    <h1>Cirugía Veterinaria</h1>
-    <p>Quirófano de última generación con monitoreo anestésico avanzado y cirujanos altamente calificados.</p>
-    <span class="page-hero-icon">🔬</span>
-  </div>
-  <section class="content-section">
-    <div class="two-col">
-      <div class="content-block">
-        <h2>Cirugías con la más alta <em>precisión y seguridad</em></h2>
-        <p>Nuestro bloque quirúrgico cumple con todos los estándares internacionales de asepsia y equipamiento. Cada procedimiento es planificado meticulosamente por nuestro equipo de cirujanos especializados.</p>
-        <p>Contamos con monitoreo multiparamétrico continuo durante toda la anestesia: ECG, oximetría de pulso, capnografía, temperatura y presión arterial no invasiva.</p>
-        <ul class="feature-list">
-          <li>Esterilización (OVH y orquiectomía) en todas las especies</li>
-          <li>Cirugías ortopédicas: fracturas, luxaciones y ligamentos</li>
-          <li>Cirugías de tejidos blandos: digestivo, urinario y reproductivo</li>
-          <li>Extirpación de tumores y biopsias diagnósticas</li>
-          <li>Cirugías oftalmológicas y de conducto auditivo</li>
-          <li>Evaluación preoperatoria completa incluida en el costo</li>
-          <li>Seguimiento postoperatorio y hospitalización si se requiere</li>
-        </ul>
-      </div>
-      <div>
-        <div class="info-cards">
-          <div class="info-card"><div class="info-card-icon">🏥</div><h3>Hospitalización</h3><p>Área de recuperación supervisada con monitoreo post-cirugía las 24h para máxima seguridad.</p></div>
-          <div class="info-card"><div class="info-card-icon">📊</div><h3>Pre-quirúrgico</h3><p>Exámenes de sangre, radiografías y evaluación cardíaca obligatorios antes de cualquier procedimiento.</p></div>
-          <div class="info-card"><div class="info-card-icon">💊</div><h3>Manejo del dolor</h3><p>Protocolo de analgesia multimodal antes, durante y después de la cirugía para máximo confort.</p></div>
-          <div class="info-card"><div class="info-card-icon">📞</div><h3>Comunicación</h3><p>Te informamos en tiempo real durante el procedimiento y al finalizar con un reporte completo.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div style="text-align:center;padding:0 5% 60px"><button class="btn-primary" onclick="showPage('contacto')">Solicitar Consulta Quirúrgica →</button></div>
-</div>
-
-<!-- ESTÉTICA -->
-<div id="page-estetica" class="page">
-  <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Estética</span></div>
-    <h1>Estética y Peluquería</h1>
-    <p>Que tu mascota siempre luzca y se sienta increíble con nuestro servicio de grooming profesional.</p>
-    <span class="page-hero-icon">✂️</span>
-  </div>
-  <section class="content-section">
-    <div class="two-col">
-      <div class="content-block">
-        <h2>Más que un baño: <em>bienestar total</em></h2>
-        <p>Nuestro equipo de estilistas veterinarios está capacitado para trabajar con mascotas de todo tipo de temperamento, incluyendo animales ansiosos o con necesidades especiales. Utilizamos productos dermatológicamente aprobados e hipoalergénicos.</p>
-        <ul class="feature-list">
-          <li>Baño con secado y perfume hipoalergénico certificado</li>
-          <li>Corte de pelo según estándar de raza o a gusto del dueño</li>
-          <li>Limpieza de oídos y revisión del conducto auditivo</li>
-          <li>Corte de uñas con lima de acabado profesional</li>
-          <li>Limpieza de glándulas anales en perros</li>
-          <li>Tratamientos antipulgas y antigarrapatas</li>
-          <li>Tratamiento de hidratación de pelo y piel</li>
-          <li>Servicio spa con aromaterapia canina felina</li>
-        </ul>
-      </div>
-      <div>
-        <div class="pricing-grid" style="grid-template-columns:1fr 1fr;margin-top:0">
-          <div class="price-card">
-            <div class="price-name">Básico</div>
-            <div class="price-amount">$35k</div>
-            <div class="price-period">COP por sesión</div>
-            <ul class="price-features">
-              <li class="price-feature">Baño y secado</li>
-              <li class="price-feature">Cepillado completo</li>
-              <li class="price-feature">Perfumado</li>
-            </ul>
-            <button class="btn-secondary" style="width:100%;padding:12px" onclick="showPage('contacto')">Agendar</button>
+    <!-- HOME -->
+    <div id="page-home" class="page active">
+      <section class="hero">
+        <div>
+          <div class="hero-tag">🐾 Clínica veterinaria de confianza</div>
+          <h1 class="hero-title">
+            Cuidamos a tu<br /><em>mejor amigo</em><br />con amor y ciencia
+          </h1>
+          <p class="hero-desc">
+            En VetVida combinamos tecnología de punta con atención personalizada
+            para garantizar la salud, bienestar y felicidad de tu mascota. Más
+            de 15 años cuidando vidas.
+          </p>
+          <div class="hero-btns">
+            <button class="btn-primary" onclick="showPage('contacto')">
+              Reservar Cita →
+            </button>
+            <button class="btn-secondary" onclick="showPage('servicios')">
+              Ver Servicios
+            </button>
           </div>
-          <div class="price-card featured">
-            <div class="price-badge">Popular</div>
-            <div class="price-name">Completo</div>
-            <div class="price-amount">$65k</div>
-            <div class="price-period">COP por sesión</div>
-            <ul class="price-features">
-              <li class="price-feature">Todo lo básico</li>
-              <li class="price-feature">Corte de pelo</li>
-              <li class="price-feature">Limpieza oídos</li>
-              <li class="price-feature">Corte de uñas</li>
-            </ul>
-            <button class="btn-primary" style="width:100%;padding:12px" onclick="showPage('contacto')">Agendar</button>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-img-wrap">🐾</div>
+          <div class="floating-cards">
+            <div class="fcard">
+              <div class="fcard-icon">⭐</div>
+              <div>
+                <div class="fcard-text">4.9 / 5 estrellas</div>
+                <div class="fcard-sub">+1,200 reseñas</div>
+              </div>
+            </div>
+            <div class="fcard">
+              <div class="fcard-icon">🏥</div>
+              <div>
+                <div class="fcard-text">Urgencias 24h</div>
+                <div class="fcard-sub">Siempre disponibles</div>
+              </div>
+            </div>
           </div>
         </div>
-        <p style="font-size:0.78rem;color:var(--mid-gray);margin-top:12px;text-align:center">*Precios pueden variar según tamaño y raza de la mascota</p>
-        <div class="highlight-box" style="margin-top:20px"><p>✨ <strong>Tip:</strong> Acostumbra a tu mascota al baño desde cachorro para hacer de la sesión de peluquería una experiencia agradable y sin estrés.</p></div>
-      </div>
-    </div>
-  </section>
-</div>
+      </section>
 
-<!-- NUTRICIÓN -->
-<div id="page-nutricion" class="page">
-  <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Nutrición</span></div>
-    <h1>Nutrición Clínica</h1>
-    <p>La alimentación correcta es medicina preventiva. Diseñamos planes nutricionales basados en ciencia veterinaria.</p>
-    <span class="page-hero-icon">🥗</span>
-  </div>
-  <section class="content-section">
-    <div class="two-col">
-      <div class="content-block">
-        <h2>Alimenta con <em>ciencia y amor</em></h2>
-        <p>Una nutrición inadecuada es causa directa o predisponente de muchas enfermedades en mascotas. Nuestra especialista evalúa a tu mascota de forma integral para diseñar el plan alimenticio ideal.</p>
-        <p>Trabajamos tanto con dietas comerciales premium como con dietas caseras balanceadas (BARF, cocidas o mixtas), siempre garantizando el aporte correcto de nutrientes esenciales.</p>
-        <ul class="feature-list">
-          <li>Evaluación de condición corporal y composición</li>
-          <li>Plan nutricional con cálculo de energía metabólica exacta</li>
-          <li>Dietas terapéuticas para diabetes, insuficiencia renal, alergias alimentarias</li>
-          <li>Asesoría especializada en alimentación BARF y dietas caseras</li>
-          <li>Control de peso con seguimiento y ajuste mensual</li>
-          <li>Recomendación de suplementos específicos según necesidad</li>
-        </ul>
+      <div class="stats-strip">
+        <div>
+          <div class="stat-num">15+</div>
+          <div class="stat-label">Años de experiencia</div>
+        </div>
+        <div>
+          <div class="stat-num">8,400+</div>
+          <div class="stat-label">Mascotas atendidas</div>
+        </div>
+        <div>
+          <div class="stat-num">12</div>
+          <div class="stat-label">Especialistas</div>
+        </div>
+        <div>
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Atención de emergencias</div>
+        </div>
       </div>
-      <div>
-        <div class="info-cards">
-          <div class="info-card"><div class="info-card-icon">🐕</div><h3>Para cada etapa</h3><p>Cachorros, adultos, gestantes, seniors y pacientes con enfermedades crónicas tienen necesidades nutricionales distintas.</p></div>
-          <div class="info-card"><div class="info-card-icon">📐</div><h3>Cálculo preciso</h3><p>Usamos herramientas validadas para calcular energía metabólica y proporciones óptimas de macronutrientes.</p></div>
-          <div class="info-card"><div class="info-card-icon">🔄</div><h3>Seguimiento</h3><p>Revisiones mensuales para ajustar el plan según la respuesta de tu mascota y sus cambios fisiológicos.</p></div>
-          <div class="info-card"><div class="info-card-icon">🛒</div><h3>Tienda</h3><p>Amplia gama de alimentos terapéuticos y suplementos disponibles directamente en nuestra clínica.</p></div>
+
+      <section class="section">
+        <div class="section-label">Nuestros Servicios</div>
+        <h2 class="section-title">
+          Todo lo que tu mascota<br /><em>necesita</em>, en un solo lugar
+        </h2>
+        <p class="section-sub">
+          Ofrecemos servicios veterinarios integrales para perros, gatos, aves,
+          conejos, reptiles y más mascotas.
+        </p>
+        <div class="services-grid">
+          <div class="svc-card" onclick="showPage('consulta')">
+            <span class="svc-icon">🩺</span>
+            <div class="svc-name">Consulta General</div>
+            <div class="svc-desc">
+              Revisiones completas con diagnóstico integral y seguimiento
+              personalizado para cada especie.
+            </div>
+            <button class="svc-link">Conocer más →</button>
+          </div>
+          <div class="svc-card" onclick="showPage('vacunas')">
+            <span class="svc-icon">💉</span>
+            <div class="svc-name">Vacunación</div>
+            <div class="svc-desc">
+              Planes vacunales completos adaptados a la especie, raza, edad y
+              estilo de vida de tu mascota.
+            </div>
+            <button class="svc-link">Conocer más →</button>
+          </div>
+          <div class="svc-card" onclick="showPage('cirugia')">
+            <span class="svc-icon">🔬</span>
+            <div class="svc-name">Cirugía</div>
+            <div class="svc-desc">
+              Quirófano equipado con tecnología de última generación para
+              cirugías programadas y urgentes.
+            </div>
+            <button class="svc-link">Conocer más →</button>
+          </div>
+          <div class="svc-card" onclick="showPage('estetica')">
+            <span class="svc-icon">✂️</span>
+            <div class="svc-name">Estética y Peluquería</div>
+            <div class="svc-desc">
+              Baño, corte, cepillado y tratamientos especiales con productos
+              hipoalergénicos certificados.
+            </div>
+            <button class="svc-link">Conocer más →</button>
+          </div>
+          <div class="svc-card" onclick="showPage('nutricion')">
+            <span class="svc-icon">🥗</span>
+            <div class="svc-name">Nutrición Clínica</div>
+            <div class="svc-desc">
+              Planes alimenticios personalizados y dietas terapéuticas basadas
+              en ciencia veterinaria.
+            </div>
+            <button class="svc-link">Conocer más →</button>
+          </div>
+          <div class="svc-card" onclick="showPage('dental')">
+            <span class="svc-icon">🦷</span>
+            <div class="svc-name">Odontología</div>
+            <div class="svc-desc">
+              Limpieza dental profesional, extracciones y tratamientos para la
+              salud bucal completa.
+            </div>
+            <button class="svc-link">Conocer más →</button>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px">
+          <button class="btn-secondary" onclick="showPage('servicios')">
+            Ver todos los servicios
+          </button>
+        </div>
+      </section>
+
+      <div class="testimonials-bg">
+        <div style="padding: 0 5%">
+          <div class="section-label">Testimonios</div>
+          <h2 class="section-title">Lo que dicen nuestros <em>clientes</em></h2>
+        </div>
+        <div class="testimonials-grid" style="padding: 0 5%">
+          <div class="testi">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">
+              El equipo de VetVida salvó a mi perra Luna cuando tuvo una crisis
+              nocturna. La atención de emergencias fue excepcional y el
+              seguimiento posterior muy profesional.
+            </p>
+            <div class="testi-author">
+              <div class="testi-avatar">👩</div>
+              <div>
+                <div class="testi-name">María González</div>
+                <div class="testi-pet">🐕 Mamá de Luna</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">
+              Llevé a Mochi para su primera consulta y quedé impresionado con la
+              dedicación del Dr. Ramírez. Explicó todo con claridad y el gato
+              estuvo muy tranquilo durante toda la visita.
+            </p>
+            <div class="testi-author">
+              <div class="testi-avatar">👨</div>
+              <div>
+                <div class="testi-name">Carlos Mendoza</div>
+                <div class="testi-pet">🐈 Papá de Mochi</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">
+              El servicio de nutrición cambió por completo la salud de mis
+              bulldogs. En tres meses desaparecieron los problemas digestivos
+              que los aquejaban. ¡100% recomendado!
+            </p>
+            <div class="testi-author">
+              <div class="testi-avatar">👩</div>
+              <div>
+                <div class="testi-name">Daniela Ruiz</div>
+                <div class="testi-pet">🐕🐕 Rocky y Bruno</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
-  <div style="text-align:center;padding:0 5% 60px"><button class="btn-primary" onclick="showPage('contacto')">Consulta Nutricional →</button></div>
-</div>
 
-<!-- DENTAL -->
-<div id="page-dental" class="page">
-  <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Odontología</span></div>
-    <h1>Odontología Veterinaria</h1>
-    <p>La salud bucal impacta directamente la salud general. Cuida los dientes de tu mascota con nuestros expertos.</p>
-    <span class="page-hero-icon">🦷</span>
-  </div>
-  <section class="content-section">
-    <div class="two-col">
-      <div class="content-block">
-        <h2>Sonrisas <em>saludables</em> y felices</h2>
-        <p>El 80% de los perros y gatos mayores de 3 años presentan algún grado de enfermedad periodontal. Esta condición, si no se trata, puede afectar el corazón, riñones e hígado de tu mascota.</p>
-        <p>Realizamos limpiezas dentales profesionales bajo sedación anestésica para garantizar una revisión completa y cómoda. Utilizamos ultrasonido y pulido para eliminar sarro y placa bacteriana en profundidad.</p>
-        <ul class="feature-list">
-          <li>Limpieza dental ultrasónica subgingival con pulido final</li>
-          <li>Extracción de piezas comprometidas o rotas</li>
-          <li>Tratamiento integral de enfermedad periodontal</li>
-          <li>Endodoncia veterinaria (tratamiento de conductos)</li>
-          <li>Radiografías dentales digitales intraorales</li>
-          <li>Asesoría completa en higiene dental domiciliaria</li>
-        </ul>
-      </div>
-      <div>
-        <div class="highlight-box"><p>🦷 <strong>Consejo VetVida:</strong> Acostumbra a tu mascota al cepillado dental desde cachorro. Una revisión oral en cada consulta anual puede prevenir problemas graves y costosos en el futuro.</p></div>
-        <div style="margin-top:26px">
-          <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:18px">Señales de alerta</h3>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Cuándo debo preocuparme por la boca de mi mascota?</div><div class="faq-answer">Señales de alerta: mal aliento intenso, encías rojas o inflamadas, dificultad para comer, babeo excesivo, frotarse la cara con las patas, o dientes visiblemente rotos con sarro abundante.</div></div>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Es segura la anestesia para la limpieza dental?</div><div class="faq-answer">Sí. Realizamos una evaluación preoperatoria completa para minimizar riesgos. La anestesia es necesaria para hacer una limpieza completa y segura sin causar estrés al animal.</div></div>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Con qué frecuencia debo hacer la limpieza dental?</div><div class="faq-answer">Generalmente una vez al año. Mascotas con alta predisposición a sarro (razas braquicéfalas, dieta húmeda) pueden necesitarla cada 6 meses. Tu veterinario lo indicará según el caso.</div></div>
+    <!-- TODOS LOS SERVICIOS -->
+    <div id="page-servicios" class="page">
+      <div class="page-hero">
+        <div class="page-hero-breadcrumb" onclick="showPage('home')">
+          ← Inicio / <span>Servicios</span>
         </div>
+        <h1>Nuestros Servicios</h1>
+        <p>
+          Atención integral para perros, gatos, aves, conejos, reptiles y más.
+          Tecnología y amor en cada visita.
+        </p>
+        <span class="page-hero-icon">🐾</span>
+      </div>
+      <section class="content-section">
+        <div class="services-grid">
+          <div class="svc-card" onclick="showPage('consulta')">
+            <span class="svc-icon">🩺</span>
+            <div class="svc-name">Consulta General</div>
+            <div class="svc-desc">
+              Revisión completa con historia clínica y exploración física
+              detallada.
+            </div>
+            <button class="svc-link">Ver detalles →</button>
+          </div>
+          <div class="svc-card" onclick="showPage('vacunas')">
+            <span class="svc-icon">💉</span>
+            <div class="svc-name">Vacunación y Desparasitación</div>
+            <div class="svc-desc">
+              Protege a tu mascota con planes vacunales completos y
+              antiparasitarios.
+            </div>
+            <button class="svc-link">Ver detalles →</button>
+          </div>
+          <div class="svc-card" onclick="showPage('cirugia')">
+            <span class="svc-icon">🔬</span>
+            <div class="svc-name">Cirugía y Anestesia</div>
+            <div class="svc-desc">
+              Quirófano de última generación para cirugías programadas y
+              urgentes.
+            </div>
+            <button class="svc-link">Ver detalles →</button>
+          </div>
+          <div class="svc-card" onclick="showPage('estetica')">
+            <span class="svc-icon">✂️</span>
+            <div class="svc-name">Estética y Peluquería</div>
+            <div class="svc-desc">
+              Grooming completo con productos hipoalergénicos y técnicas por
+              raza.
+            </div>
+            <button class="svc-link">Ver detalles →</button>
+          </div>
+          <div class="svc-card" onclick="showPage('nutricion')">
+            <span class="svc-icon">🥗</span>
+            <div class="svc-name">Nutrición Clínica</div>
+            <div class="svc-desc">
+              Planes nutricionales personalizados con cálculo calórico preciso.
+            </div>
+            <button class="svc-link">Ver detalles →</button>
+          </div>
+          <div class="svc-card" onclick="showPage('dental')">
+            <span class="svc-icon">🦷</span>
+            <div class="svc-name">Odontología Veterinaria</div>
+            <div class="svc-desc">
+              Limpieza, prevención y tratamiento de enfermedades orales.
+            </div>
+            <button class="svc-link">Ver detalles →</button>
+          </div>
+          <div class="svc-card" onclick="showPage('emergencias')">
+            <span class="svc-icon">🚨</span>
+            <div class="svc-name">Emergencias 24h</div>
+            <div class="svc-desc">
+              Atención inmediata las 24 horas, los 7 días de la semana.
+            </div>
+            <button class="svc-link">Ver detalles →</button>
+          </div>
+          <div class="svc-card" onclick="showPage('laboratorio')">
+            <span class="svc-icon">🧪</span>
+            <div class="svc-name">Laboratorio y Diagnóstico</div>
+            <div class="svc-desc">
+              Análisis clínicos, radiografías digitales, ecografías y más.
+            </div>
+            <button class="svc-link">Ver detalles →</button>
+          </div>
+          <div class="svc-card">
+            <span class="svc-icon">🏠</span>
+            <div class="svc-name">Guardería y Hotel</div>
+            <div class="svc-desc">
+              Alojamiento seguro y supervisado médicamente para tu mascota.
+            </div>
+            <button class="svc-link">Próximamente →</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- CONSULTA GENERAL -->
+    <div id="page-consulta" class="page">
+      <div class="page-hero">
+        <div class="page-hero-breadcrumb" onclick="showPage('servicios')">
+          ← Servicios / <span>Consulta General</span>
+        </div>
+        <h1>Consulta General</h1>
+        <p>
+          Diagnóstico integral y seguimiento personalizado para cada etapa de la
+          vida de tu mascota.
+        </p>
+        <span class="page-hero-icon">🩺</span>
+      </div>
+      <section class="content-section">
+        <div class="two-col">
+          <div class="content-block">
+            <h2>Una revisión <em>completa</em> que marca la diferencia</h2>
+            <p>
+              Cada consulta en VetVida es una oportunidad para conocer a fondo
+              el estado de salud de tu mascota. Nuestros veterinarios dedican el
+              tiempo necesario para una exploración exhaustiva y escuchar todas
+              tus inquietudes.
+            </p>
+            <p>
+              Atendemos perros, gatos, conejos, aves, reptiles, hámsteres y
+              otras mascotas exóticas con atención especializada por especie.
+            </p>
+            <div class="highlight-box">
+              <p>
+                💡 <strong>¿Sabías que?</strong> Una revisión anual puede
+                detectar hasta el 80% de las enfermedades comunes antes de que
+                presenten síntomas visibles.
+              </p>
+            </div>
+            <ul class="feature-list">
+              <li>Historia clínica completa y actualizada en cada visita</li>
+              <li>Exploración física sistemática de cabeza a cola</li>
+              <li>
+                Evaluación de peso, condición corporal y estado nutricional
+              </li>
+              <li>
+                Medición de parámetros vitales: temperatura, pulso y respiración
+              </li>
+              <li>Asesoría en prevención y mantenimiento de la salud</li>
+              <li>Emisión de certificados de salud para viajes y adopciones</li>
+            </ul>
+          </div>
+          <div>
+            <div class="info-cards">
+              <div class="info-card">
+                <div class="info-card-icon">⏱️</div>
+                <h3>Duración</h3>
+                <p>
+                  30–45 minutos por consulta. Tiempo suficiente para una
+                  revisión completa sin apresurarse.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">📋</div>
+                <h3>Qué traer</h3>
+                <p>
+                  Cartilla de vacunación, historial médico previo y apuntes de
+                  síntomas o cambios de comportamiento.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">🐾</div>
+                <h3>Especies</h3>
+                <p>
+                  Perros, gatos, aves, reptiles, conejos, roedores y otras
+                  mascotas exóticas.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">💰</div>
+                <h3>Precio</h3>
+                <p>
+                  Desde $35.000 COP. Consulta de especialidad con precio
+                  diferenciado según servicio.
+                </p>
+              </div>
+            </div>
+            <div style="margin-top: 26px">
+              <h3
+                style="
+                  font-family: var(--font-display);
+                  font-size: 1.2rem;
+                  margin-bottom: 18px;
+                "
+              >
+                Preguntas Frecuentes
+              </h3>
+              <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                  ¿Con qué frecuencia debo traer a mi mascota?
+                </div>
+                <div class="faq-answer">
+                  Para mascotas adultas sanas recomendamos al menos una consulta
+                  anual. En cachorros, geriátricos o con condiciones crónicas,
+                  las revisiones deben ser más frecuentes (cada 6 meses o según
+                  indicación médica).
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                  ¿Necesito cita previa?
+                </div>
+                <div class="faq-answer">
+                  Para consultas de rutina recomendamos cita previa. Sin
+                  embargo, atendemos sin cita cuando hay disponibilidad. Las
+                  emergencias siempre tienen prioridad y no requieren cita.
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                  ¿Puedo quedarme con mi mascota durante la consulta?
+                </div>
+                <div class="faq-answer">
+                  ¡Por supuesto! Tu presencia tranquiliza a tu mascota. En
+                  procedimientos específicos te indicaremos si es necesario
+                  permanecer en sala de espera.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div style="text-align: center; padding: 0 5% 60px">
+        <button class="btn-primary" onclick="showPage('contacto')">
+          Reservar Consulta →
+        </button>
       </div>
     </div>
-  </section>
-  <div style="text-align:center;padding:0 5% 60px"><button class="btn-primary" onclick="showPage('contacto')">Reservar Limpieza Dental →</button></div>
-</div>
 
-<!-- EMERGENCIAS -->
-<div id="page-emergencias" class="page">
-  <div class="emergency-banner">
-    <p>🚨 <strong>Línea de emergencias 24h:</strong> +57 (1) 800-VET-VIDA — Disponible los 365 días del año</p>
-    <button class="btn-emergency">Llamar ahora</button>
-  </div>
-  <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Emergencias</span></div>
-    <h1>Atención de Emergencias</h1>
-    <p>Disponibles las 24 horas, los 7 días de la semana. Cuando cada minuto cuenta, estamos aquí.</p>
-    <span class="page-hero-icon">🚨</span>
-  </div>
-  <section class="content-section">
-    <div class="two-col">
-      <div class="content-block">
-        <h2>Siempre listos para <em>lo urgente</em></h2>
-        <p>Nuestro servicio de urgencias funciona ininterrumpidamente con un equipo de veterinarios de guardia, enfermería especializada y área de hospitalización completamente equipada.</p>
-        <p>Contamos con todos los recursos para atender emergencias de alta complejidad: cirugías de urgencia, reanimación, cuidados intensivos y diagnóstico inmediato.</p>
-        <div style="background:#fff5f5;border-left:4px solid #e74c3c;border-radius:0 16px 16px 0;padding:20px 24px;margin:22px 0">
-          <p style="color:#c0392b;font-weight:600;margin-bottom:10px">⚠️ Señales que requieren atención INMEDIATA:</p>
-          <ul style="list-style:none;font-size:0.87rem;color:#555;line-height:1.8">
-            <li>• Dificultad respiratoria grave o color azulado en encías</li>
-            <li>• Convulsiones o pérdida de conciencia</li>
-            <li>• Abdomen muy distendido con náuseas (posible torsión gástrica)</li>
-            <li>• Sangrado abundante o trauma severo</li>
-            <li>• Imposibilidad de orinar (especialmente en gatos machos)</li>
-            <li>• Intoxicación o ingestión de sustancias peligrosas</li>
+    <!-- VACUNACIÓN -->
+    <div id="page-vacunas" class="page">
+      <div class="page-hero">
+        <div class="page-hero-breadcrumb" onclick="showPage('servicios')">
+          ← Servicios / <span>Vacunación</span>
+        </div>
+        <h1>Vacunación y Desparasitación</h1>
+        <p>
+          La prevención es la mejor medicina. Protege a tu mascota con planes
+          vacunales completos y personalizados.
+        </p>
+        <span class="page-hero-icon">💉</span>
+      </div>
+      <section class="content-section">
+        <div class="two-col">
+          <div class="content-block">
+            <h2>Prevención inteligente, <em>vida larga</em></h2>
+            <p>
+              Las vacunas y los tratamientos antiparasitarios son pilares
+              fundamentales en la salud de cualquier mascota. En VetVida
+              diseñamos un plan personalizado según la especie, raza, edad, peso
+              y el entorno donde vive tu animal.
+            </p>
+            <p>
+              Contamos con las vacunas más actualizadas del mercado, almacenadas
+              en condiciones óptimas de cadena de frío para garantizar su máxima
+              efectividad.
+            </p>
+            <div class="highlight-box">
+              <p>
+                📅 <strong>Plan Cachorro:</strong> Séxtuple a las 8 sem →
+                Refuerzo a las 12 sem → Rabia a las 16 sem → Refuerzo anual. ¡Tu
+                veterinario te guiará en cada paso!
+              </p>
+            </div>
+            <ul class="feature-list">
+              <li>Plan vacunal para cachorros desde las 6–8 semanas de edad</li>
+              <li>
+                Refuerzos anuales para adultos con recordatorio automático
+              </li>
+              <li>Vacuna antirrábica con certificado oficial</li>
+              <li>
+                Vacunas opcionales según estilo de vida (bordetella, leishmania,
+                etc.)
+              </li>
+              <li>Desparasitación interna y externa integrada al plan</li>
+              <li>
+                Registro digital en historial clínico y cartilla actualizada
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3
+              style="
+                font-family: var(--font-display);
+                font-size: 1.2rem;
+                margin-bottom: 16px;
+              "
+            >
+              Vacunas disponibles
+            </h3>
+            <div style="margin-bottom: 28px">
+              <span class="chip">💉 Séxtuple canina</span
+              ><span class="chip">💉 Antirrábica</span
+              ><span class="chip">💉 Triple felina</span
+              ><span class="chip">💉 Leucemia felina</span
+              ><span class="chip">💉 Bordetella</span
+              ><span class="chip">💉 Leptospirosis</span
+              ><span class="chip">💉 Leishmania</span
+              ><span class="chip">💉 Influenza canina</span>
+            </div>
+            <h3
+              style="
+                font-family: var(--font-display);
+                font-size: 1.2rem;
+                margin-bottom: 18px;
+              "
+            >
+              Preguntas Frecuentes
+            </h3>
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                ¿Mi mascota puede tener reacciones a las vacunas?
+              </div>
+              <div class="faq-answer">
+                Las reacciones son muy poco frecuentes. Pueden presentarse leve
+                somnolencia o sensibilidad en el punto de inyección durante 24h.
+                Reacciones graves son extremadamente raras y siempre
+                supervisamos a tu mascota tras la vacunación.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                ¿Puedo vacunar a mi mascota si está enferma?
+              </div>
+              <div class="faq-answer">
+                No. Las vacunas solo se aplican a mascotas clínicamente sanas.
+                Si presenta síntomas, primero tratamos la enfermedad y luego
+                programamos la vacunación.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                ¿Cada cuánto debo desparasitar a mi mascota?
+              </div>
+              <div class="faq-answer">
+                Cachorros: cada 15 días hasta los 3 meses, luego mensual hasta
+                el año. Adultos: cada 3–6 meses según exposición y estilo de
+                vida. Tu veterinario te dará el plan exacto.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div style="text-align: center; padding: 0 5% 60px">
+        <button class="btn-primary" onclick="showPage('contacto')">
+          Agendar Vacunación →
+        </button>
+      </div>
+    </div>
+
+    <!-- CIRUGÍA -->
+    <div id="page-cirugia" class="page">
+      <div class="page-hero">
+        <div class="page-hero-breadcrumb" onclick="showPage('servicios')">
+          ← Servicios / <span>Cirugía</span>
+        </div>
+        <h1>Cirugía Veterinaria</h1>
+        <p>
+          Quirófano de última generación con monitoreo anestésico avanzado y
+          cirujanos altamente calificados.
+        </p>
+        <span class="page-hero-icon">🔬</span>
+      </div>
+      <section class="content-section">
+        <div class="two-col">
+          <div class="content-block">
+            <h2>Cirugías con la más alta <em>precisión y seguridad</em></h2>
+            <p>
+              Nuestro bloque quirúrgico cumple con todos los estándares
+              internacionales de asepsia y equipamiento. Cada procedimiento es
+              planificado meticulosamente por nuestro equipo de cirujanos
+              especializados.
+            </p>
+            <p>
+              Contamos con monitoreo multiparamétrico continuo durante toda la
+              anestesia: ECG, oximetría de pulso, capnografía, temperatura y
+              presión arterial no invasiva.
+            </p>
+            <ul class="feature-list">
+              <li>Esterilización (OVH y orquiectomía) en todas las especies</li>
+              <li>Cirugías ortopédicas: fracturas, luxaciones y ligamentos</li>
+              <li>
+                Cirugías de tejidos blandos: digestivo, urinario y reproductivo
+              </li>
+              <li>Extirpación de tumores y biopsias diagnósticas</li>
+              <li>Cirugías oftalmológicas y de conducto auditivo</li>
+              <li>Evaluación preoperatoria completa incluida en el costo</li>
+              <li>
+                Seguimiento postoperatorio y hospitalización si se requiere
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="info-cards">
+              <div class="info-card">
+                <div class="info-card-icon">🏥</div>
+                <h3>Hospitalización</h3>
+                <p>
+                  Área de recuperación supervisada con monitoreo post-cirugía
+                  las 24h para máxima seguridad.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">📊</div>
+                <h3>Pre-quirúrgico</h3>
+                <p>
+                  Exámenes de sangre, radiografías y evaluación cardíaca
+                  obligatorios antes de cualquier procedimiento.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">💊</div>
+                <h3>Manejo del dolor</h3>
+                <p>
+                  Protocolo de analgesia multimodal antes, durante y después de
+                  la cirugía para máximo confort.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">📞</div>
+                <h3>Comunicación</h3>
+                <p>
+                  Te informamos en tiempo real durante el procedimiento y al
+                  finalizar con un reporte completo.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div style="text-align: center; padding: 0 5% 60px">
+        <button class="btn-primary" onclick="showPage('contacto')">
+          Solicitar Consulta Quirúrgica →
+        </button>
+      </div>
+    </div>
+
+    <!-- ESTÉTICA -->
+    <div id="page-estetica" class="page">
+      <div class="page-hero">
+        <div class="page-hero-breadcrumb" onclick="showPage('servicios')">
+          ← Servicios / <span>Estética</span>
+        </div>
+        <h1>Estética y Peluquería</h1>
+        <p>
+          Que tu mascota siempre luzca y se sienta increíble con nuestro
+          servicio de grooming profesional.
+        </p>
+        <span class="page-hero-icon">✂️</span>
+      </div>
+      <section class="content-section">
+        <div class="two-col">
+          <div class="content-block">
+            <h2>Más que un baño: <em>bienestar total</em></h2>
+            <p>
+              Nuestro equipo de estilistas veterinarios está capacitado para
+              trabajar con mascotas de todo tipo de temperamento, incluyendo
+              animales ansiosos o con necesidades especiales. Utilizamos
+              productos dermatológicamente aprobados e hipoalergénicos.
+            </p>
+            <ul class="feature-list">
+              <li>Baño con secado y perfume hipoalergénico certificado</li>
+              <li>Corte de pelo según estándar de raza o a gusto del dueño</li>
+              <li>Limpieza de oídos y revisión del conducto auditivo</li>
+              <li>Corte de uñas con lima de acabado profesional</li>
+              <li>Limpieza de glándulas anales en perros</li>
+              <li>Tratamientos antipulgas y antigarrapatas</li>
+              <li>Tratamiento de hidratación de pelo y piel</li>
+              <li>Servicio spa con aromaterapia canina felina</li>
+            </ul>
+          </div>
+          <div>
+            <div
+              class="pricing-grid"
+              style="grid-template-columns: 1fr 1fr; margin-top: 0"
+            >
+              <div class="price-card">
+                <div class="price-name">Básico</div>
+                <div class="price-amount">$35k</div>
+                <div class="price-period">COP por sesión</div>
+                <ul class="price-features">
+                  <li class="price-feature">Baño y secado</li>
+                  <li class="price-feature">Cepillado completo</li>
+                  <li class="price-feature">Perfumado</li>
+                </ul>
+                <button
+                  class="btn-secondary"
+                  style="width: 100%; padding: 12px"
+                  onclick="showPage('contacto')"
+                >
+                  Agendar
+                </button>
+              </div>
+              <div class="price-card featured">
+                <div class="price-badge">Popular</div>
+                <div class="price-name">Completo</div>
+                <div class="price-amount">$65k</div>
+                <div class="price-period">COP por sesión</div>
+                <ul class="price-features">
+                  <li class="price-feature">Todo lo básico</li>
+                  <li class="price-feature">Corte de pelo</li>
+                  <li class="price-feature">Limpieza oídos</li>
+                  <li class="price-feature">Corte de uñas</li>
+                </ul>
+                <button
+                  class="btn-primary"
+                  style="width: 100%; padding: 12px"
+                  onclick="showPage('contacto')"
+                >
+                  Agendar
+                </button>
+              </div>
+            </div>
+            <p
+              style="
+                font-size: 0.78rem;
+                color: var(--mid-gray);
+                margin-top: 12px;
+                text-align: center;
+              "
+            >
+              *Precios pueden variar según tamaño y raza de la mascota
+            </p>
+            <div class="highlight-box" style="margin-top: 20px">
+              <p>
+                ✨ <strong>Tip:</strong> Acostumbra a tu mascota al baño desde
+                cachorro para hacer de la sesión de peluquería una experiencia
+                agradable y sin estrés.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- NUTRICIÓN -->
+    <div id="page-nutricion" class="page">
+      <div class="page-hero">
+        <div class="page-hero-breadcrumb" onclick="showPage('servicios')">
+          ← Servicios / <span>Nutrición</span>
+        </div>
+        <h1>Nutrición Clínica</h1>
+        <p>
+          La alimentación correcta es medicina preventiva. Diseñamos planes
+          nutricionales basados en ciencia veterinaria.
+        </p>
+        <span class="page-hero-icon">🥗</span>
+      </div>
+      <section class="content-section">
+        <div class="two-col">
+          <div class="content-block">
+            <h2>Alimenta con <em>ciencia y amor</em></h2>
+            <p>
+              Una nutrición inadecuada es causa directa o predisponente de
+              muchas enfermedades en mascotas. Nuestra especialista evalúa a tu
+              mascota de forma integral para diseñar el plan alimenticio ideal.
+            </p>
+            <p>
+              Trabajamos tanto con dietas comerciales premium como con dietas
+              caseras balanceadas (BARF, cocidas o mixtas), siempre garantizando
+              el aporte correcto de nutrientes esenciales.
+            </p>
+            <ul class="feature-list">
+              <li>Evaluación de condición corporal y composición</li>
+              <li>Plan nutricional con cálculo de energía metabólica exacta</li>
+              <li>
+                Dietas terapéuticas para diabetes, insuficiencia renal, alergias
+                alimentarias
+              </li>
+              <li>
+                Asesoría especializada en alimentación BARF y dietas caseras
+              </li>
+              <li>Control de peso con seguimiento y ajuste mensual</li>
+              <li>Recomendación de suplementos específicos según necesidad</li>
+            </ul>
+          </div>
+          <div>
+            <div class="info-cards">
+              <div class="info-card">
+                <div class="info-card-icon">🐕</div>
+                <h3>Para cada etapa</h3>
+                <p>
+                  Cachorros, adultos, gestantes, seniors y pacientes con
+                  enfermedades crónicas tienen necesidades nutricionales
+                  distintas.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">📐</div>
+                <h3>Cálculo preciso</h3>
+                <p>
+                  Usamos herramientas validadas para calcular energía metabólica
+                  y proporciones óptimas de macronutrientes.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">🔄</div>
+                <h3>Seguimiento</h3>
+                <p>
+                  Revisiones mensuales para ajustar el plan según la respuesta
+                  de tu mascota y sus cambios fisiológicos.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">🛒</div>
+                <h3>Tienda</h3>
+                <p>
+                  Amplia gama de alimentos terapéuticos y suplementos
+                  disponibles directamente en nuestra clínica.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div style="text-align: center; padding: 0 5% 60px">
+        <button class="btn-primary" onclick="showPage('contacto')">
+          Consulta Nutricional →
+        </button>
+      </div>
+    </div>
+
+    <!-- DENTAL -->
+    <div id="page-dental" class="page">
+      <div class="page-hero">
+        <div class="page-hero-breadcrumb" onclick="showPage('servicios')">
+          ← Servicios / <span>Odontología</span>
+        </div>
+        <h1>Odontología Veterinaria</h1>
+        <p>
+          La salud bucal impacta directamente la salud general. Cuida los
+          dientes de tu mascota con nuestros expertos.
+        </p>
+        <span class="page-hero-icon">🦷</span>
+      </div>
+      <section class="content-section">
+        <div class="two-col">
+          <div class="content-block">
+            <h2>Sonrisas <em>saludables</em> y felices</h2>
+            <p>
+              El 80% de los perros y gatos mayores de 3 años presentan algún
+              grado de enfermedad periodontal. Esta condición, si no se trata,
+              puede afectar el corazón, riñones e hígado de tu mascota.
+            </p>
+            <p>
+              Realizamos limpiezas dentales profesionales bajo sedación
+              anestésica para garantizar una revisión completa y cómoda.
+              Utilizamos ultrasonido y pulido para eliminar sarro y placa
+              bacteriana en profundidad.
+            </p>
+            <ul class="feature-list">
+              <li>Limpieza dental ultrasónica subgingival con pulido final</li>
+              <li>Extracción de piezas comprometidas o rotas</li>
+              <li>Tratamiento integral de enfermedad periodontal</li>
+              <li>Endodoncia veterinaria (tratamiento de conductos)</li>
+              <li>Radiografías dentales digitales intraorales</li>
+              <li>Asesoría completa en higiene dental domiciliaria</li>
+            </ul>
+          </div>
+          <div>
+            <div class="highlight-box">
+              <p>
+                🦷 <strong>Consejo VetVida:</strong> Acostumbra a tu mascota al
+                cepillado dental desde cachorro. Una revisión oral en cada
+                consulta anual puede prevenir problemas graves y costosos en el
+                futuro.
+              </p>
+            </div>
+            <div style="margin-top: 26px">
+              <h3
+                style="
+                  font-family: var(--font-display);
+                  font-size: 1.2rem;
+                  margin-bottom: 18px;
+                "
+              >
+                Señales de alerta
+              </h3>
+              <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                  ¿Cuándo debo preocuparme por la boca de mi mascota?
+                </div>
+                <div class="faq-answer">
+                  Señales de alerta: mal aliento intenso, encías rojas o
+                  inflamadas, dificultad para comer, babeo excesivo, frotarse la
+                  cara con las patas, o dientes visiblemente rotos con sarro
+                  abundante.
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                  ¿Es segura la anestesia para la limpieza dental?
+                </div>
+                <div class="faq-answer">
+                  Sí. Realizamos una evaluación preoperatoria completa para
+                  minimizar riesgos. La anestesia es necesaria para hacer una
+                  limpieza completa y segura sin causar estrés al animal.
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                  ¿Con qué frecuencia debo hacer la limpieza dental?
+                </div>
+                <div class="faq-answer">
+                  Generalmente una vez al año. Mascotas con alta predisposición
+                  a sarro (razas braquicéfalas, dieta húmeda) pueden necesitarla
+                  cada 6 meses. Tu veterinario lo indicará según el caso.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div style="text-align: center; padding: 0 5% 60px">
+        <button class="btn-primary" onclick="showPage('contacto')">
+          Reservar Limpieza Dental →
+        </button>
+      </div>
+    </div>
+
+    <!-- EMERGENCIAS -->
+    <div id="page-emergencias" class="page">
+      <div class="emergency-banner">
+        <p>
+          🚨 <strong>Línea de emergencias 24h:</strong> +57 (1) 800-VET-VIDA —
+          Disponible los 365 días del año
+        </p>
+        <button class="btn-emergency">Llamar ahora</button>
+      </div>
+      <div class="page-hero">
+        <div class="page-hero-breadcrumb" onclick="showPage('home')">
+          ← Inicio / <span>Emergencias</span>
+        </div>
+        <h1>Atención de Emergencias</h1>
+        <p>
+          Disponibles las 24 horas, los 7 días de la semana. Cuando cada minuto
+          cuenta, estamos aquí.
+        </p>
+        <span class="page-hero-icon">🚨</span>
+      </div>
+      <section class="content-section">
+        <div class="two-col">
+          <div class="content-block">
+            <h2>Siempre listos para <em>lo urgente</em></h2>
+            <p>
+              Nuestro servicio de urgencias funciona ininterrumpidamente con un
+              equipo de veterinarios de guardia, enfermería especializada y área
+              de hospitalización completamente equipada.
+            </p>
+            <p>
+              Contamos con todos los recursos para atender emergencias de alta
+              complejidad: cirugías de urgencia, reanimación, cuidados
+              intensivos y diagnóstico inmediato.
+            </p>
+            <div
+              style="
+                background: #fff5f5;
+                border-left: 4px solid #e74c3c;
+                border-radius: 0 16px 16px 0;
+                padding: 20px 24px;
+                margin: 22px 0;
+              "
+            >
+              <p style="color: #c0392b; font-weight: 600; margin-bottom: 10px">
+                ⚠️ Señales que requieren atención INMEDIATA:
+              </p>
+              <ul
+                style="
+                  list-style: none;
+                  font-size: 0.87rem;
+                  color: #555;
+                  line-height: 1.8;
+                "
+              >
+                <li>
+                  • Dificultad respiratoria grave o color azulado en encías
+                </li>
+                <li>• Convulsiones o pérdida de conciencia</li>
+                <li>
+                  • Abdomen muy distendido con náuseas (posible torsión
+                  gástrica)
+                </li>
+                <li>• Sangrado abundante o trauma severo</li>
+                <li>
+                  • Imposibilidad de orinar (especialmente en gatos machos)
+                </li>
+                <li>• Intoxicación o ingestión de sustancias peligrosas</li>
+              </ul>
+            </div>
+            <ul class="feature-list">
+              <li>Guardia veterinaria permanente los 365 días del año</li>
+              <li>Quirófano de urgencias disponible en todo momento</li>
+              <li>UCI veterinaria con monitoreo multiparamétrico</li>
+              <li>Banco de sangre veterinario para transfusiones</li>
+              <li>Diagnóstico por imagen urgente (RX y ecografía)</li>
+              <li>Laboratorio en línea con resultados en 30 minutos</li>
+            </ul>
+          </div>
+          <div>
+            <div class="info-cards">
+              <div class="info-card">
+                <div class="info-card-icon">📞</div>
+                <h3>Teléfono 24h</h3>
+                <p>
+                  +57 (1) 800-VET-VIDA<br />Línea directa al equipo de
+                  urgencias, sin esperas ni menús.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">📍</div>
+                <h3>Dirección</h3>
+                <p>
+                  Calle 72 #15-30, Bogotá. Ingreso de urgencias por costado
+                  norte, disponible 24h.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">🚑</div>
+                <h3>Ambulancia</h3>
+                <p>
+                  Servicio de ambulancia veterinaria disponible para traslados
+                  de emergencia en el área urbana.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">💬</div>
+                <h3>WhatsApp</h3>
+                <p>
+                  +57 300 838-8432 para fotos o videos que nos ayuden a evaluar
+                  la urgencia antes de llegar.
+                </p>
+              </div>
+            </div>
+            <div
+              style="
+                margin-top: 26px;
+                background: var(--forest);
+                border-radius: 20px;
+                padding: 26px;
+                color: white;
+              "
+            >
+              <h3
+                style="
+                  font-family: var(--font-display);
+                  font-size: 1.2rem;
+                  margin-bottom: 10px;
+                "
+              >
+                💡 Primeros auxilios mientras llegas
+              </h3>
+              <p style="font-size: 0.86rem; opacity: 0.85; line-height: 1.7">
+                Mantén a tu mascota tranquila y caliente. No le des medicamentos
+                humanos. Si hay herida, aplica presión suave con un paño limpio.
+                Llámanos: te guiaremos paso a paso hasta llegar a la clínica.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- LABORATORIO -->
+    <div id="page-laboratorio" class="page">
+      <div class="page-hero">
+        <div class="page-hero-breadcrumb" onclick="showPage('servicios')">
+          ← Servicios / <span>Laboratorio</span>
+        </div>
+        <h1>Laboratorio y Diagnóstico</h1>
+        <p>
+          Diagnóstico preciso y rápido con tecnología de imagen y análisis
+          clínico de última generación.
+        </p>
+        <span class="page-hero-icon">🧪</span>
+      </div>
+      <section class="content-section">
+        <div class="two-col">
+          <div class="content-block">
+            <h2>Diagnóstico <em>preciso</em> para tratamientos efectivos</h2>
+            <p>
+              Un diagnóstico correcto y oportuno es el primer paso para un
+              tratamiento exitoso. Nuestro laboratorio clínico y área de imagen
+              están disponibles para pacientes ambulatorios, hospitalizados y de
+              urgencias.
+            </p>
+            <ul class="feature-list">
+              <li>Hemograma completo y bioquímica sérica</li>
+              <li>Urianálisis completo y urocultivo con antibiograma</li>
+              <li>Coprología y análisis parasitológico cuantitativo</li>
+              <li>Citología y anatomía patológica</li>
+              <li>Pruebas de función tiroidea y adrenal (Cushing, Addison)</li>
+              <li>
+                Radiografía digital de alta resolución (todas las proyecciones)
+              </li>
+              <li>Ultrasonografía abdominal y ecocardiografía</li>
+              <li>
+                Pruebas rápidas: Parvovirus, Moquillo, FIV, FeLV, Ehrlichia
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="info-cards">
+              <div class="info-card">
+                <div class="info-card-icon">⏱️</div>
+                <h3>Resultados rápidos</h3>
+                <p>
+                  Laboratorio básico en 30 minutos. Análisis especializados en
+                  24–48h con envío digital.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">📱</div>
+                <h3>Plataforma digital</h3>
+                <p>
+                  Accede a resultados y radiografías desde nuestra plataforma
+                  online con tu cuenta de paciente.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">🤝</div>
+                <h3>Segunda opinión</h3>
+                <p>
+                  Trabajamos con radiólogos y patólogos especializados para
+                  casos complejos que requieran mayor análisis.
+                </p>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">📦</div>
+                <h3>Chequeos anuales</h3>
+                <p>
+                  Paquetes preventivos con descuento que incluyen análisis de
+                  sangre completos y radiografías de tórax.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div style="text-align: center; padding: 0 5% 60px">
+        <button class="btn-primary" onclick="showPage('contacto')">
+          Solicitar Diagnóstico →
+        </button>
+      </div>
+    </div>
+
+    <!-- NOSOTROS -->
+    <div id="page-nosotros" class="page">
+      <div class="page-hero">
+        <div class="page-hero-breadcrumb" onclick="showPage('home')">
+          ← Inicio / <span>Nosotros</span>
+        </div>
+        <h1>Sobre VetVida</h1>
+        <p>
+          15 años cuidando mascotas con pasión, ciencia y el amor que cada ser
+          vivo merece.
+        </p>
+        <span class="page-hero-icon">❤️</span>
+      </div>
+      <section class="content-section">
+        <div class="two-col" style="margin-bottom: 70px">
+          <div class="content-block">
+            <h2>Nuestra <em>misión</em></h2>
+            <p>
+              VetVida nació en 2010 con una misión clara: brindar atención
+              veterinaria de nivel hospitalario en un ambiente cálido y
+              familiar, donde tanto mascotas como sus dueños se sientan
+              completamente seguros y atendidos.
+            </p>
+            <p>
+              Hoy somos un equipo de 12 veterinarios especializados, 8
+              enfermeras veterinarias y 5 estilistas certificados, unidos por la
+              misma pasión por los animales.
+            </p>
+            <div class="highlight-box">
+              <p>
+                🏆 <strong>Reconocimientos:</strong> Premio a la Mejor Clínica
+                Veterinaria de Bogotá 2022 y 2023, otorgado por la Asociación
+                Colombiana de Médicos Veterinarios y Zootecnistas.
+              </p>
+            </div>
+          </div>
+          <div class="content-block">
+            <h2>Nuestros <em>valores</em></h2>
+            <ul class="feature-list">
+              <li>
+                <strong>Compasión:</strong> Cada mascota es tratada como si
+                fuera de nuestra propia familia
+              </li>
+              <li>
+                <strong>Excelencia:</strong> Formación continua y tecnología
+                actualizada en todos los servicios
+              </li>
+              <li>
+                <strong>Transparencia:</strong> Comunicación honesta sobre
+                diagnósticos, tratamientos y costos
+              </li>
+              <li>
+                <strong>Bienestar animal:</strong> Protocolos de manejo libre de
+                miedo y estrés mínimo
+              </li>
+              <li>
+                <strong>Comunidad:</strong> Programas de esterilización gratuita
+                y atención a mascotas en calle
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="section-label">Nuestro Equipo</div>
+        <h2 class="section-title">
+          Conoce a los <em>especialistas</em><br />detrás de VetVida
+        </h2>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar">👨‍⚕️</div>
+            <div class="team-name">Dr. Andrés Ramírez</div>
+            <div class="team-role">Director · Cirujano</div>
+            <div class="team-desc">
+              15 años de experiencia. Especialista en cirugía de tejidos blandos
+              y ortopedia veterinaria.
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">👩‍⚕️</div>
+            <div class="team-name">Dra. Valentina Torres</div>
+            <div class="team-role">Medicina Interna</div>
+            <div class="team-desc">
+              Especializada en enfermedades crónicas, dermatología y medicina
+              felina avanzada.
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">👨‍⚕️</div>
+            <div class="team-name">Dr. Luis Gómez</div>
+            <div class="team-role">Urgencias y Críticos</div>
+            <div class="team-desc">
+              Experto en medicina de urgencias y cuidados intensivos
+              veterinarios 24h.
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">👩‍⚕️</div>
+            <div class="team-name">Dra. Carolina Mejía</div>
+            <div class="team-role">Nutrición · Etología</div>
+            <div class="team-desc">
+              Nutrición clínica y comportamiento animal. Certificada por la
+              ESAVS Europa.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- CONTACTO -->
+    <div id="page-contacto" class="page">
+      <div class="page-hero">
+        <div class="page-hero-breadcrumb" onclick="showPage('home')">
+          ← Inicio / <span>Contacto</span>
+        </div>
+        <h1>Reserva tu Cita</h1>
+        <p>
+          Estamos aquí para ayudarte. Agenda una cita o contáctanos con
+          cualquier duda.
+        </p>
+        <span class="page-hero-icon">📅</span>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Ponte en <em>contacto</em> con nosotros</h2>
+          <p>
+            Puedes agendar tu cita por teléfono, WhatsApp, correo o directamente
+            en nuestro formulario. Respondemos en menos de 2 horas en horario de
+            atención.
+          </p>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Dirección</div>
+              <div class="contact-item-val">
+                Calle 72 #15-30, Chapinero, Bogotá
+              </div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Teléfono</div>
+              <div class="contact-item-val">+57 (1) 800-VET-VIDA</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">💬</div>
+            <div>
+              <div class="contact-item-label">WhatsApp</div>
+              <div class="contact-item-val">+57 300 838-8432</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">Correo</div>
+              <div class="contact-item-val">citas@vetvida.com.co</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <div class="contact-item-label">Horarios</div>
+              <div class="contact-item-val">
+                Lun–Vie: 7am–8pm · Sáb–Dom: 8am–6pm<br /><span
+                  style="font-size: 0.82rem; color: var(--clay)"
+                  >Urgencias: 24 horas, 365 días del año</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="appointment-form">
+          <h3>Solicitar Cita</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="owner-name">Nombre del dueño</label>
+              <input
+                id="owner-name"
+                name="owner_name"
+                type="text"
+                autocomplete="name"
+                required
+                placeholder="Tu nombre completo"
+              />
+            </div>
+            <div class="form-group">
+              <label for="phone">Teléfono</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                autocomplete="tel"
+                required
+                placeholder="+57 300 0000000"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pet-name">Nombre de la mascota</label>
+              <input
+                id="pet-name"
+                name="pet_name"
+                type="text"
+                required
+                placeholder="Nombre"
+              />
+            </div>
+            <div class="form-group">
+              <label for="species">Especie</label>
+              <select id="species" name="species" required>
+                <option value="" disabled selected>Seleccionar especie</option>
+                <option>Perro</option>
+                <option>Gato</option>
+                <option>Ave</option>
+                <option>Conejo</option>
+                <option>Reptil</option>
+                <option>Otro</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service">Servicio requerido</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Seleccionar servicio</option>
+              <option>Consulta general</option>
+              <option>Vacunación y desparasitación</option>
+              <option>Cirugía programada</option>
+              <option>Estética y peluquería</option>
+              <option>Nutrición clínica</option>
+              <option>Odontología</option>
+              <option>Laboratorio y diagnóstico</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">Fecha preferida</label>
+              <input id="date" name="date" type="date" required />
+            </div>
+            <div class="form-group">
+              <label for="time">Hora preferida</label>
+              <select id="time" name="time" required>
+                <option value="" disabled selected>Seleccionar hora</option>
+                <option>7:00 AM</option>
+                <option>8:00 AM</option>
+                <option>9:00 AM</option>
+                <option>10:00 AM</option>
+                <option>11:00 AM</option>
+                <option>2:00 PM</option>
+                <option>3:00 PM</option>
+                <option>4:00 PM</option>
+                <option>5:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="reason">Motivo de consulta</label>
+            <textarea
+              id="reason"
+              name="reason"
+              placeholder="Describe brevemente los síntomas o el motivo de tu visita..."
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="btn-primary"
+            id="submit-btn"
+            style="width: 100%"
+          >
+            Enviar Solicitud →
+          </button>
+          <p
+            style="
+              font-size: 0.78rem;
+              color: var(--mid-gray);
+              text-align: center;
+              margin-top: 12px;
+            "
+          >
+            Te confirmaremos tu cita por WhatsApp o correo en menos de 2 horas
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div
+            class="nav-logo footer-logo"
+            id="footer-logo"
+            tabindex="0"
+            role="link"
+            aria-label="VetVida Home"
+            style="color: white; cursor: pointer"
+            onclick="showPage('home')"
+          >
+            Vet<span>Vida</span>
+          </div>
+          <p>
+            Cuidamos a tu mascota con la misma dedicación y amor que merece cada
+            ser vivo. Tu confianza es nuestra mayor responsabilidad.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <ul class="footer-links">
+            <li><a onclick="showPage('consulta')">Consulta General</a></li>
+            <li><a onclick="showPage('vacunas')">Vacunación</a></li>
+            <li><a onclick="showPage('cirugia')">Cirugía</a></li>
+            <li><a onclick="showPage('estetica')">Estética</a></li>
+            <li><a onclick="showPage('nutricion')">Nutrición</a></li>
+            <li><a onclick="showPage('dental')">Odontología</a></li>
+            <li><a onclick="showPage('laboratorio')">Laboratorio</a></li>
           </ul>
         </div>
-        <ul class="feature-list">
-          <li>Guardia veterinaria permanente los 365 días del año</li>
-          <li>Quirófano de urgencias disponible en todo momento</li>
-          <li>UCI veterinaria con monitoreo multiparamétrico</li>
-          <li>Banco de sangre veterinario para transfusiones</li>
-          <li>Diagnóstico por imagen urgente (RX y ecografía)</li>
-          <li>Laboratorio en línea con resultados en 30 minutos</li>
-        </ul>
-      </div>
-      <div>
-        <div class="info-cards">
-          <div class="info-card"><div class="info-card-icon">📞</div><h3>Teléfono 24h</h3><p>+57 (1) 800-VET-VIDA<br>Línea directa al equipo de urgencias, sin esperas ni menús.</p></div>
-          <div class="info-card"><div class="info-card-icon">📍</div><h3>Dirección</h3><p>Calle 72 #15-30, Bogotá. Ingreso de urgencias por costado norte, disponible 24h.</p></div>
-          <div class="info-card"><div class="info-card-icon">🚑</div><h3>Ambulancia</h3><p>Servicio de ambulancia veterinaria disponible para traslados de emergencia en el área urbana.</p></div>
-          <div class="info-card"><div class="info-card-icon">💬</div><h3>WhatsApp</h3><p>+57 300 838-8432 para fotos o videos que nos ayuden a evaluar la urgencia antes de llegar.</p></div>
+        <div class="footer-col">
+          <h4>Clínica</h4>
+          <ul class="footer-links">
+            <li><a onclick="showPage('nosotros')">Nosotros</a></li>
+            <li><a onclick="showPage('emergencias')">Emergencias 24h</a></li>
+            <li><a onclick="showPage('contacto')">Reservar Cita</a></li>
+            <li><a>Blog Veterinario</a></li>
+            <li><a>Trabaja con nosotros</a></li>
+          </ul>
         </div>
-        <div style="margin-top:26px;background:var(--forest);border-radius:20px;padding:26px;color:white">
-          <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:10px">💡 Primeros auxilios mientras llegas</h3>
-          <p style="font-size:0.86rem;opacity:0.85;line-height:1.7">Mantén a tu mascota tranquila y caliente. No le des medicamentos humanos. Si hay herida, aplica presión suave con un paño limpio. Llámanos: te guiaremos paso a paso hasta llegar a la clínica.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- LABORATORIO -->
-<div id="page-laboratorio" class="page">
-  <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Laboratorio</span></div>
-    <h1>Laboratorio y Diagnóstico</h1>
-    <p>Diagnóstico preciso y rápido con tecnología de imagen y análisis clínico de última generación.</p>
-    <span class="page-hero-icon">🧪</span>
-  </div>
-  <section class="content-section">
-    <div class="two-col">
-      <div class="content-block">
-        <h2>Diagnóstico <em>preciso</em> para tratamientos efectivos</h2>
-        <p>Un diagnóstico correcto y oportuno es el primer paso para un tratamiento exitoso. Nuestro laboratorio clínico y área de imagen están disponibles para pacientes ambulatorios, hospitalizados y de urgencias.</p>
-        <ul class="feature-list">
-          <li>Hemograma completo y bioquímica sérica</li>
-          <li>Urianálisis completo y urocultivo con antibiograma</li>
-          <li>Coprología y análisis parasitológico cuantitativo</li>
-          <li>Citología y anatomía patológica</li>
-          <li>Pruebas de función tiroidea y adrenal (Cushing, Addison)</li>
-          <li>Radiografía digital de alta resolución (todas las proyecciones)</li>
-          <li>Ultrasonografía abdominal y ecocardiografía</li>
-          <li>Pruebas rápidas: Parvovirus, Moquillo, FIV, FeLV, Ehrlichia</li>
-        </ul>
-      </div>
-      <div>
-        <div class="info-cards">
-          <div class="info-card"><div class="info-card-icon">⏱️</div><h3>Resultados rápidos</h3><p>Laboratorio básico en 30 minutos. Análisis especializados en 24–48h con envío digital.</p></div>
-          <div class="info-card"><div class="info-card-icon">📱</div><h3>Plataforma digital</h3><p>Accede a resultados y radiografías desde nuestra plataforma online con tu cuenta de paciente.</p></div>
-          <div class="info-card"><div class="info-card-icon">🤝</div><h3>Segunda opinión</h3><p>Trabajamos con radiólogos y patólogos especializados para casos complejos que requieran mayor análisis.</p></div>
-          <div class="info-card"><div class="info-card-icon">📦</div><h3>Chequeos anuales</h3><p>Paquetes preventivos con descuento que incluyen análisis de sangre completos y radiografías de tórax.</p></div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul class="footer-links">
+            <li><a>📍 Calle 72 #15-30, Bogotá</a></li>
+            <li><a>📞 +57 (1) 800-VET-VIDA</a></li>
+            <li><a>💬 +57 300 838-8432</a></li>
+            <li><a>✉️ citas@vetvida.com.co</a></li>
+            <li><a>⏰ Urgencias 24h</a></li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
-  <div style="text-align:center;padding:0 5% 60px"><button class="btn-primary" onclick="showPage('contacto')">Solicitar Diagnóstico →</button></div>
-</div>
-
-<!-- NOSOTROS -->
-<div id="page-nosotros" class="page">
-  <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Nosotros</span></div>
-    <h1>Sobre VetVida</h1>
-    <p>15 años cuidando mascotas con pasión, ciencia y el amor que cada ser vivo merece.</p>
-    <span class="page-hero-icon">❤️</span>
-  </div>
-  <section class="content-section">
-    <div class="two-col" style="margin-bottom:70px">
-      <div class="content-block">
-        <h2>Nuestra <em>misión</em></h2>
-        <p>VetVida nació en 2010 con una misión clara: brindar atención veterinaria de nivel hospitalario en un ambiente cálido y familiar, donde tanto mascotas como sus dueños se sientan completamente seguros y atendidos.</p>
-        <p>Hoy somos un equipo de 12 veterinarios especializados, 8 enfermeras veterinarias y 5 estilistas certificados, unidos por la misma pasión por los animales.</p>
-        <div class="highlight-box"><p>🏆 <strong>Reconocimientos:</strong> Premio a la Mejor Clínica Veterinaria de Bogotá 2022 y 2023, otorgado por la Asociación Colombiana de Médicos Veterinarios y Zootecnistas.</p></div>
+      <div class="footer-bottom">
+        <span
+          >© 2025 VetVida Clínica Veterinaria · Todos los derechos
+          reservados</span
+        >
+        <span>🐾 Hecho con amor para las mascotas de Colombia</span>
       </div>
-      <div class="content-block">
-        <h2>Nuestros <em>valores</em></h2>
-        <ul class="feature-list">
-          <li><strong>Compasión:</strong> Cada mascota es tratada como si fuera de nuestra propia familia</li>
-          <li><strong>Excelencia:</strong> Formación continua y tecnología actualizada en todos los servicios</li>
-          <li><strong>Transparencia:</strong> Comunicación honesta sobre diagnósticos, tratamientos y costos</li>
-          <li><strong>Bienestar animal:</strong> Protocolos de manejo libre de miedo y estrés mínimo</li>
-          <li><strong>Comunidad:</strong> Programas de esterilización gratuita y atención a mascotas en calle</li>
-        </ul>
-      </div>
-    </div>
-    <div class="section-label">Nuestro Equipo</div>
-    <h2 class="section-title">Conoce a los <em>especialistas</em><br>detrás de VetVida</h2>
-    <div class="team-grid">
-      <div class="team-card"><div class="team-avatar">👨‍⚕️</div><div class="team-name">Dr. Andrés Ramírez</div><div class="team-role">Director · Cirujano</div><div class="team-desc">15 años de experiencia. Especialista en cirugía de tejidos blandos y ortopedia veterinaria.</div></div>
-      <div class="team-card"><div class="team-avatar">👩‍⚕️</div><div class="team-name">Dra. Valentina Torres</div><div class="team-role">Medicina Interna</div><div class="team-desc">Especializada en enfermedades crónicas, dermatología y medicina felina avanzada.</div></div>
-      <div class="team-card"><div class="team-avatar">👨‍⚕️</div><div class="team-name">Dr. Luis Gómez</div><div class="team-role">Urgencias y Críticos</div><div class="team-desc">Experto en medicina de urgencias y cuidados intensivos veterinarios 24h.</div></div>
-      <div class="team-card"><div class="team-avatar">👩‍⚕️</div><div class="team-name">Dra. Carolina Mejía</div><div class="team-role">Nutrición · Etología</div><div class="team-desc">Nutrición clínica y comportamiento animal. Certificada por la ESAVS Europa.</div></div>
-    </div>
-  </section>
-</div>
+    </footer>
 
-<!-- CONTACTO -->
-<div id="page-contacto" class="page">
-  <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Contacto</span></div>
-    <h1>Reserva tu Cita</h1>
-    <p>Estamos aquí para ayudarte. Agenda una cita o contáctanos con cualquier duda.</p>
-    <span class="page-hero-icon">📅</span>
-  </div>
-  <div class="contact-grid">
-    <div class="contact-info">
-      <h2>Ponte en <em>contacto</em> con nosotros</h2>
-      <p>Puedes agendar tu cita por teléfono, WhatsApp, correo o directamente en nuestro formulario. Respondemos en menos de 2 horas en horario de atención.</p>
-      <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Dirección</div><div class="contact-item-val">Calle 72 #15-30, Chapinero, Bogotá</div></div></div>
-      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Teléfono</div><div class="contact-item-val">+57 (1) 800-VET-VIDA</div></div></div>
-      <div class="contact-item"><div class="contact-icon">💬</div><div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val">+57 300 838-8432</div></div></div>
-      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val">citas@vetvida.com.co</div></div></div>
-      <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-item-label">Horarios</div><div class="contact-item-val">Lun–Vie: 7am–8pm · Sáb–Dom: 8am–6pm<br><span style="font-size:0.82rem;color:var(--clay)">Urgencias: 24 horas, 365 días del año</span></div></div></div>
-    </div>
-    <div class="contact-form">
-      <h3>Solicitar Cita</h3>
-      <div class="form-row">
-        <div class="form-group"><label>Nombre del dueño</label><input type="text" placeholder="Tu nombre completo"></div>
-        <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+57 300 0000000"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Nombre de la mascota</label><input type="text" placeholder="Nombre"></div>
-        <div class="form-group"><label>Especie</label><select><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
-      </div>
-      <div class="form-group"><label>Servicio requerido</label><select><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
-      <div class="form-row">
-        <div class="form-group"><label>Fecha preferida</label><input type="date"></div>
-        <div class="form-group"><label>Hora preferida</label><select><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
-      </div>
-      <div class="form-group"><label>Motivo de consulta</label><textarea placeholder="Describe brevemente los síntomas o el motivo de tu visita..."></textarea></div>
-      <button class="btn-primary" style="width:100%" onclick="submitForm()">Enviar Solicitud →</button>
-      <p style="font-size:0.78rem;color:var(--mid-gray);text-align:center;margin-top:12px">Te confirmaremos tu cita por WhatsApp o correo en menos de 2 horas</p>
-    </div>
-  </div>
-</div>
+    <script>
+      const pageMap = {
+        home: "page-home",
+        servicios: "page-servicios",
+        consulta: "page-consulta",
+        vacunas: "page-vacunas",
+        cirugia: "page-cirugia",
+        estetica: "page-estetica",
+        nutricion: "page-nutricion",
+        dental: "page-dental",
+        emergencias: "page-emergencias",
+        laboratorio: "page-laboratorio",
+        nosotros: "page-nosotros",
+        contacto: "page-contacto",
+      };
 
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="nav-logo" style="color:white;cursor:pointer" onclick="showPage('home')">Vet<span>Vida</span></div>
-      <p>Cuidamos a tu mascota con la misma dedicación y amor que merece cada ser vivo. Tu confianza es nuestra mayor responsabilidad.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Servicios</h4>
-      <ul class="footer-links">
-        <li><a onclick="showPage('consulta')">Consulta General</a></li>
-        <li><a onclick="showPage('vacunas')">Vacunación</a></li>
-        <li><a onclick="showPage('cirugia')">Cirugía</a></li>
-        <li><a onclick="showPage('estetica')">Estética</a></li>
-        <li><a onclick="showPage('nutricion')">Nutrición</a></li>
-        <li><a onclick="showPage('dental')">Odontología</a></li>
-        <li><a onclick="showPage('laboratorio')">Laboratorio</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Clínica</h4>
-      <ul class="footer-links">
-        <li><a onclick="showPage('nosotros')">Nosotros</a></li>
-        <li><a onclick="showPage('emergencias')">Emergencias 24h</a></li>
-        <li><a onclick="showPage('contacto')">Reservar Cita</a></li>
-        <li><a>Blog Veterinario</a></li>
-        <li><a>Trabaja con nosotros</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contacto</h4>
-      <ul class="footer-links">
-        <li><a>📍 Calle 72 #15-30, Bogotá</a></li>
-        <li><a>📞 +57 (1) 800-VET-VIDA</a></li>
-        <li><a>💬 +57 300 838-8432</a></li>
-        <li><a>✉️ citas@vetvida.com.co</a></li>
-        <li><a>⏰ Urgencias 24h</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 VetVida Clínica Veterinaria · Todos los derechos reservados</span>
-    <span>🐾 Hecho con amor para las mascotas de Colombia</span>
-  </div>
-</footer>
+      const navMap = {
+        home: "nav-home",
+        servicios: "nav-servicios",
+        consulta: "nav-servicios",
+        vacunas: "nav-servicios",
+        cirugia: "nav-servicios",
+        estetica: "nav-servicios",
+        nutricion: "nav-servicios",
+        dental: "nav-servicios",
+        laboratorio: "nav-servicios",
+        emergencias: "nav-emergencias",
+        nosotros: "nav-nosotros",
+        contacto: "nav-contacto",
+      };
 
-<script>
-  const pageMap = {
-    'home': 'page-home',
-    'servicios': 'page-servicios',
-    'consulta': 'page-consulta',
-    'vacunas': 'page-vacunas',
-    'cirugia': 'page-cirugia',
-    'estetica': 'page-estetica',
-    'nutricion': 'page-nutricion',
-    'dental': 'page-dental',
-    'emergencias': 'page-emergencias',
-    'laboratorio': 'page-laboratorio',
-    'nosotros': 'page-nosotros',
-    'contacto': 'page-contacto',
-  };
+      function showPage(id) {
+        document
+          .querySelectorAll(".page")
+          .forEach((p) => p.classList.remove("active"));
+        document
+          .querySelectorAll(".nav-links a")
+          .forEach((a) => a.classList.remove("active"));
+        const pageId = pageMap[id] || "page-" + id;
+        const page = document.getElementById(pageId);
+        if (page) {
+          page.classList.add("active");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        const navId = navMap[id];
+        if (navId) {
+          const el = document.getElementById(navId);
+          if (el) el.classList.add("active");
+        }
+      }
 
-  const navMap = {
-    'home': 'nav-home', 'servicios': 'nav-servicios',
-    'consulta': 'nav-servicios', 'vacunas': 'nav-servicios',
-    'cirugia': 'nav-servicios', 'estetica': 'nav-servicios',
-    'nutricion': 'nav-servicios', 'dental': 'nav-servicios',
-    'laboratorio': 'nav-servicios',
-    'emergencias': 'nav-emergencias',
-    'nosotros': 'nav-nosotros', 'contacto': 'nav-contacto',
-  };
+      window.addEventListener("scroll", () => {
+        document
+          .getElementById("navbar")
+          .classList.toggle("scrolled", window.scrollY > 20);
+      });
 
-  function showPage(id) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-    const pageId = pageMap[id] || 'page-' + id;
-    const page = document.getElementById(pageId);
-    if (page) { page.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
-    const navId = navMap[id];
-    if (navId) { const el = document.getElementById(navId); if (el) el.classList.add('active'); }
-  }
+      const mainLogo = document.getElementById("main-logo");
+      const footerLogo = document.getElementById("footer-logo");
+      const handleLogoKeydown = (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          showPage("home");
+        }
+      };
+      if (mainLogo) mainLogo.addEventListener("keydown", handleLogoKeydown);
+      if (footerLogo) footerLogo.addEventListener("keydown", handleLogoKeydown);
 
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
-  });
+      function toggleFaq(el) {
+        el.parentElement.classList.toggle("open");
+      }
 
-  function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+      const appointmentForm = document.getElementById("appointment-form");
+      if (appointmentForm) {
+        appointmentForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const btn = document.getElementById("submit-btn");
+          const originalText = btn.innerText;
 
-  function submitForm() {
-    alert('✅ ¡Solicitud enviada correctamente!\n\nTe confirmaremos tu cita en menos de 2 horas por WhatsApp o correo electrónico.\n\n¡Gracias por confiar en VetVida! 🐾');
-  }
+          btn.disabled = true;
+          btn.innerText = "Enviando...";
+          btn.style.opacity = "0.7";
 
-  document.getElementById('nav-home').classList.add('active');
-</script>
-</body>
+          setTimeout(() => {
+            alert(
+              "✅ ¡Solicitud enviada correctamente!\n\nTe confirmaremos tu cita en menos de 2 horas por WhatsApp o correo electrónico.\n\n¡Gracias por confiar en VetVida! 🐾",
+            );
+            event.target.reset();
+            btn.disabled = false;
+            btn.innerText = originalText;
+            btn.style.opacity = "1";
+          }, 1000);
+        });
+      }
+
+      document.getElementById("nav-home").classList.add("active");
+    </script>
+  </body>
 </html>
