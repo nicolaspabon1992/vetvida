@@ -1,0 +1,3 @@
+## 2025-05-15 - [Accessibility & Keyboard Navigation]
+**Learning:** Nested interactive elements (e.g., a focusable button inside a focusable card div) create a confusing experience for screen reader and keyboard users. Always ensure focus is managed by a single element in a component. Custom interactive elements like `<div>` need `role="link"` or `role="button"`, `tabindex="0"`, and an "Enter" key listener to be accessible.
+**Action:** Use `role="link"` and `tabindex="0"` on non-semantic elements that act as links, and ensure they don't contain other buttons or links. Use `:focus-visible` for clear focus indicators without affecting mouse users.
