@@ -21,6 +21,7 @@
     --font-body: 'DM Sans', sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  *:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-body); background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
 
@@ -33,7 +34,7 @@
     transition: box-shadow 0.3s;
   }
   nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
-  .nav-logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; color: var(--forest); cursor: pointer; }
+  .nav-logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; color: var(--forest); cursor: pointer; text-decoration: none; }
   .nav-logo span { color: var(--amber); }
   .nav-links { display: flex; gap: 0; list-style: none; }
   .nav-links li a { display: block; padding: 8px 14px; font-size: 0.875rem; font-weight: 500; color: var(--mid-gray); text-decoration: none; border-radius: 24px; transition: all 0.2s; cursor: pointer; }
@@ -217,13 +218,13 @@
 <body>
 
 <nav id="navbar">
-  <div class="nav-logo" onclick="showPage('home')">Vet<span>Vida</span></div>
+  <a class="nav-logo" onclick="showPage('home')" href="javascript:void(0)">Vet<span>Vida</span></a>
   <ul class="nav-links">
-    <li><a onclick="showPage('home')" id="nav-home">Inicio</a></li>
-    <li><a onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
-    <li><a onclick="showPage('nosotros')" id="nav-nosotros">Nosotros</a></li>
-    <li><a onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;">🚨 Emergencias</a></li>
-    <li><a onclick="showPage('contacto')" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
+    <li><a onclick="showPage('home')" id="nav-home" href="javascript:void(0)">Inicio</a></li>
+    <li><a onclick="showPage('servicios')" id="nav-servicios" href="javascript:void(0)">Servicios</a></li>
+    <li><a onclick="showPage('nosotros')" id="nav-nosotros" href="javascript:void(0)">Nosotros</a></li>
+    <li><a onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;" href="javascript:void(0)">🚨 Emergencias</a></li>
+    <li><a onclick="showPage('contacto')" id="nav-contacto" class="nav-cta" href="javascript:void(0)">Reservar Cita</a></li>
   </ul>
 </nav>
 
