@@ -1,0 +1,3 @@
+## 2025-05-14 - Keyboard Parity for Non-Semantic Elements
+**Learning:** Interactive elements implemented as `<div>` or `<span>` (like logos or custom cards) require more than just `tabindex="0"` and `role="link"` to be truly accessible. Without a dedicated keyboard event listener, these elements remain non-functional for keyboard users even when focused, as they do not natively trigger `click` events on 'Enter' or 'Space'.
+**Action:** Always implement a global or element-specific `keydown` listener to trigger `.click()` on focused elements with `role="link"` or `role="button"` when the 'Enter' key is pressed. Use `:focus-visible` to provide clear visual feedback only to keyboard users, maintaining the aesthetic for mouse users.
