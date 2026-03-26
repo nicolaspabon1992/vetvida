@@ -1,0 +1,3 @@
+## 2025-05-14 - Keyboard Accessibility for Non-Semantic Interactive Elements
+**Learning:** Retrofitting accessibility on a legacy static site often involves adding `role` and `tabindex` to non-semantic elements like `div`s. However, when using scripts to automate this, it is critical to preserve existing event handler arguments (e.g., `onclick="showPage('id')"`) and avoid attribute duplication, which can lead to functional regressions and invalid HTML.
+**Action:** Always verify that automated accessibility patches preserve JavaScript logic and use lint-like checks to prevent attribute duplication on modified elements.
