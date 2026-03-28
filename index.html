@@ -21,6 +21,8 @@
     --font-body: 'DM Sans', sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  *:focus { outline: none; }
+  *:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-body); background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
 
@@ -217,13 +219,13 @@
 <body>
 
 <nav id="navbar">
-  <div class="nav-logo" onclick="showPage('home')">Vet<span>Vida</span></div>
+  <div class="nav-logo" onclick="showPage('home')" role="link" tabindex="0">Vet<span>Vida</span></div>
   <ul class="nav-links">
-    <li><a onclick="showPage('home')" id="nav-home">Inicio</a></li>
-    <li><a onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
-    <li><a onclick="showPage('nosotros')" id="nav-nosotros">Nosotros</a></li>
-    <li><a onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;">🚨 Emergencias</a></li>
-    <li><a onclick="showPage('contacto')" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
+    <li><a onclick="showPage('home')" id="nav-home" role="link" tabindex="0">Inicio</a></li>
+    <li><a onclick="showPage('servicios')" id="nav-servicios" role="link" tabindex="0">Servicios</a></li>
+    <li><a onclick="showPage('nosotros')" id="nav-nosotros" role="link" tabindex="0">Nosotros</a></li>
+    <li><a onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;" role="link" tabindex="0">🚨 Emergencias</a></li>
+    <li><a onclick="showPage('contacto')" id="nav-contacto" class="nav-cta" role="link" tabindex="0">Reservar Cita</a></li>
   </ul>
 </nav>
 
@@ -694,10 +696,10 @@
     <div class="contact-info">
       <h2>Ponte en <em>contacto</em> con nosotros</h2>
       <p>Puedes agendar tu cita por teléfono, WhatsApp, correo o directamente en nuestro formulario. Respondemos en menos de 2 horas en horario de atención.</p>
-      <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Dirección</div><div class="contact-item-val">Calle 72 #15-30, Chapinero, Bogotá</div></div></div>
-      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Teléfono</div><div class="contact-item-val">+57 (1) 800-VET-VIDA</div></div></div>
-      <div class="contact-item"><div class="contact-icon">💬</div><div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val">+57 300 838-8432</div></div></div>
-      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val">citas@vetvida.com.co</div></div></div>
+      <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Dirección</div><div class="contact-item-val"><a href="https://www.google.com/maps/search/?api=1&query=Calle+72+%2315-30,+Chapinero,+Bogotá" target="_blank" style="text-decoration:none;color:inherit;">Calle 72 #15-30, Chapinero, Bogotá</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Teléfono</div><div class="contact-item-val"><a href="tel:+5718008388432" style="text-decoration:none;color:inherit;">+57 (1) 800-VET-VIDA</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">💬</div><div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val"><a href="https://wa.me/573008388432" target="_blank" style="text-decoration:none;color:inherit;">+57 300 838-8432</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val"><a href="mailto:citas@vetvida.com.co" style="text-decoration:none;color:inherit;">citas@vetvida.com.co</a></div></div></div>
       <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-item-label">Horarios</div><div class="contact-item-val">Lun–Vie: 7am–8pm · Sáb–Dom: 8am–6pm<br><span style="font-size:0.82rem;color:var(--clay)">Urgencias: 24 horas, 365 días del año</span></div></div></div>
     </div>
     <div class="contact-form">
@@ -725,7 +727,7 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="nav-logo" style="color:white;cursor:pointer" onclick="showPage('home')">Vet<span>Vida</span></div>
+      <div class="nav-logo" style="color:white;cursor:pointer" onclick="showPage('home')" role="link" tabindex="0">Vet<span>Vida</span></div>
       <p>Cuidamos a tu mascota con la misma dedicación y amor que merece cada ser vivo. Tu confianza es nuestra mayor responsabilidad.</p>
     </div>
     <div class="footer-col">
@@ -753,10 +755,10 @@
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul class="footer-links">
-        <li><a>📍 Calle 72 #15-30, Bogotá</a></li>
-        <li><a>📞 +57 (1) 800-VET-VIDA</a></li>
-        <li><a>💬 +57 300 838-8432</a></li>
-        <li><a>✉️ citas@vetvida.com.co</a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Calle+72+%2315-30,+Bogotá" target="_blank">📍 Calle 72 #15-30, Bogotá</a></li>
+        <li><a href="tel:+5718008388432">📞 +57 (1) 800-VET-VIDA</a></li>
+        <li><a href="https://wa.me/573008388432" target="_blank">💬 +57 300 838-8432</a></li>
+        <li><a href="mailto:citas@vetvida.com.co">✉️ citas@vetvida.com.co</a></li>
         <li><a>⏰ Urgencias 24h</a></li>
       </ul>
     </div>
@@ -812,6 +814,14 @@
   function submitForm() {
     alert('✅ ¡Solicitud enviada correctamente!\n\nTe confirmaremos tu cita en menos de 2 horas por WhatsApp o correo electrónico.\n\n¡Gracias por confiar en VetVida! 🐾');
   }
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') && (document.activeElement.getAttribute('role') === 'link' || document.activeElement.getAttribute('role') === 'button')) {
+      if (document.activeElement.tagName === 'A' && document.activeElement.hasAttribute('href')) return;
+      if (e.key === ' ') e.preventDefault();
+      document.activeElement.click();
+    }
+  });
 
   document.getElementById('nav-home').classList.add('active');
 </script>

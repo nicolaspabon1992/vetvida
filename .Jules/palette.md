@@ -1,0 +1,3 @@
+## 2025-03-28 - Keyboard Accessibility and Functional Contact Links
+**Learning:** Interactive elements implemented as <div> or <span> (like logos or custom buttons) require 'role="link"' or 'role="button"', 'tabindex="0"', and a global keyboard listener for 'Enter' and 'Space' to meet accessibility standards and provide a predictable user experience. Additionally, converting plain-text contact details into functional links significantly improves UX for mobile users.
+**Action:** Always check for non-semantic interactive elements and apply the ARIA role, tabindex, and keyboard listener pattern. Ensure all contact information is actionable via appropriate URI schemes (tel:, mailto:, etc.).
