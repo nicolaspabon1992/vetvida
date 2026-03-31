@@ -23,6 +23,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-body); background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+  :focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; border-radius: 4px; }
 
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
@@ -219,11 +220,11 @@
 <nav id="navbar">
   <div class="nav-logo" onclick="showPage('home')">Vet<span>Vida</span></div>
   <ul class="nav-links">
-    <li><a onclick="showPage('home')" id="nav-home">Inicio</a></li>
-    <li><a onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
-    <li><a onclick="showPage('nosotros')" id="nav-nosotros">Nosotros</a></li>
-    <li><a onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;">🚨 Emergencias</a></li>
-    <li><a onclick="showPage('contacto')" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('home')" id="nav-home">Inicio</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('nosotros')" id="nav-nosotros">Nosotros</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;">🚨 Emergencias</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('contacto')" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
   </ul>
 </nav>
 
@@ -283,7 +284,7 @@
 <!-- TODOS LOS SERVICIOS -->
 <div id="page-servicios" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Servicios</span></div>
+    <div class="page-hero-breadcrumb" role="link" tabindex="0" onclick="showPage('home')">← Inicio / <span>Servicios</span></div>
     <h1>Nuestros Servicios</h1>
     <p>Atención integral para perros, gatos, aves, conejos, reptiles y más. Tecnología y amor en cada visita.</p>
     <span class="page-hero-icon">🐾</span>
@@ -306,7 +307,7 @@
 <!-- CONSULTA GENERAL -->
 <div id="page-consulta" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Consulta General</span></div>
+    <div class="page-hero-breadcrumb" role="link" tabindex="0" onclick="showPage('servicios')">← Servicios / <span>Consulta General</span></div>
     <h1>Consulta General</h1>
     <p>Diagnóstico integral y seguimiento personalizado para cada etapa de la vida de tu mascota.</p>
     <span class="page-hero-icon">🩺</span>
@@ -349,7 +350,7 @@
 <!-- VACUNACIÓN -->
 <div id="page-vacunas" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Vacunación</span></div>
+    <div class="page-hero-breadcrumb" role="link" tabindex="0" onclick="showPage('servicios')">← Servicios / <span>Vacunación</span></div>
     <h1>Vacunación y Desparasitación</h1>
     <p>La prevención es la mejor medicina. Protege a tu mascota con planes vacunales completos y personalizados.</p>
     <span class="page-hero-icon">💉</span>
@@ -388,7 +389,7 @@
 <!-- CIRUGÍA -->
 <div id="page-cirugia" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Cirugía</span></div>
+    <div class="page-hero-breadcrumb" role="link" tabindex="0" onclick="showPage('servicios')">← Servicios / <span>Cirugía</span></div>
     <h1>Cirugía Veterinaria</h1>
     <p>Quirófano de última generación con monitoreo anestésico avanzado y cirujanos altamente calificados.</p>
     <span class="page-hero-icon">🔬</span>
@@ -425,7 +426,7 @@
 <!-- ESTÉTICA -->
 <div id="page-estetica" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Estética</span></div>
+    <div class="page-hero-breadcrumb" role="link" tabindex="0" onclick="showPage('servicios')">← Servicios / <span>Estética</span></div>
     <h1>Estética y Peluquería</h1>
     <p>Que tu mascota siempre luzca y se sienta increíble con nuestro servicio de grooming profesional.</p>
     <span class="page-hero-icon">✂️</span>
@@ -483,7 +484,7 @@
 <!-- NUTRICIÓN -->
 <div id="page-nutricion" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Nutrición</span></div>
+    <div class="page-hero-breadcrumb" role="link" tabindex="0" onclick="showPage('servicios')">← Servicios / <span>Nutrición</span></div>
     <h1>Nutrición Clínica</h1>
     <p>La alimentación correcta es medicina preventiva. Diseñamos planes nutricionales basados en ciencia veterinaria.</p>
     <span class="page-hero-icon">🥗</span>
@@ -519,7 +520,7 @@
 <!-- DENTAL -->
 <div id="page-dental" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Odontología</span></div>
+    <div class="page-hero-breadcrumb" role="link" tabindex="0" onclick="showPage('servicios')">← Servicios / <span>Odontología</span></div>
     <h1>Odontología Veterinaria</h1>
     <p>La salud bucal impacta directamente la salud general. Cuida los dientes de tu mascota con nuestros expertos.</p>
     <span class="page-hero-icon">🦷</span>
@@ -560,7 +561,7 @@
     <button class="btn-emergency">Llamar ahora</button>
   </div>
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Emergencias</span></div>
+    <div class="page-hero-breadcrumb" role="link" tabindex="0" onclick="showPage('home')">← Inicio / <span>Emergencias</span></div>
     <h1>Atención de Emergencias</h1>
     <p>Disponibles las 24 horas, los 7 días de la semana. Cuando cada minuto cuenta, estamos aquí.</p>
     <span class="page-hero-icon">🚨</span>
@@ -610,7 +611,7 @@
 <!-- LABORATORIO -->
 <div id="page-laboratorio" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Laboratorio</span></div>
+    <div class="page-hero-breadcrumb" role="link" tabindex="0" onclick="showPage('servicios')">← Servicios / <span>Laboratorio</span></div>
     <h1>Laboratorio y Diagnóstico</h1>
     <p>Diagnóstico preciso y rápido con tecnología de imagen y análisis clínico de última generación.</p>
     <span class="page-hero-icon">🧪</span>
@@ -647,7 +648,7 @@
 <!-- NOSOTROS -->
 <div id="page-nosotros" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Nosotros</span></div>
+    <div class="page-hero-breadcrumb" role="link" tabindex="0" onclick="showPage('home')">← Inicio / <span>Nosotros</span></div>
     <h1>Sobre VetVida</h1>
     <p>15 años cuidando mascotas con pasión, ciencia y el amor que cada ser vivo merece.</p>
     <span class="page-hero-icon">❤️</span>
@@ -685,7 +686,7 @@
 <!-- CONTACTO -->
 <div id="page-contacto" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Contacto</span></div>
+    <div class="page-hero-breadcrumb" role="link" tabindex="0" onclick="showPage('home')">← Inicio / <span>Contacto</span></div>
     <h1>Reserva tu Cita</h1>
     <p>Estamos aquí para ayudarte. Agenda una cita o contáctanos con cualquier duda.</p>
     <span class="page-hero-icon">📅</span>
@@ -703,19 +704,19 @@
     <div class="contact-form">
       <h3>Solicitar Cita</h3>
       <div class="form-row">
-        <div class="form-group"><label>Nombre del dueño</label><input type="text" placeholder="Tu nombre completo"></div>
-        <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+57 300 0000000"></div>
+        <div class="form-group"><label for="owner-name">Nombre del dueño</label><input type="text" id="owner-name" placeholder="Tu nombre completo"></div>
+        <div class="form-group"><label for="owner-tel">Teléfono</label><input type="tel" id="owner-tel" placeholder="+57 300 0000000"></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Nombre de la mascota</label><input type="text" placeholder="Nombre"></div>
-        <div class="form-group"><label>Especie</label><select><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
+        <div class="form-group"><label for="pet-name">Nombre de la mascota</label><input type="text" id="pet-name" placeholder="Nombre"></div>
+        <div class="form-group"><label for="pet-species">Especie</label><select id="pet-species"><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
       </div>
-      <div class="form-group"><label>Servicio requerido</label><select><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
+      <div class="form-group"><label for="service">Servicio requerido</label><select id="service"><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
       <div class="form-row">
-        <div class="form-group"><label>Fecha preferida</label><input type="date"></div>
-        <div class="form-group"><label>Hora preferida</label><select><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
+        <div class="form-group"><label for="pref-date">Fecha preferida</label><input type="date" id="pref-date"></div>
+        <div class="form-group"><label for="pref-time">Hora preferida</label><select id="pref-time"><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
       </div>
-      <div class="form-group"><label>Motivo de consulta</label><textarea placeholder="Describe brevemente los síntomas o el motivo de tu visita..."></textarea></div>
+      <div class="form-group"><label for="consult-reason">Motivo de consulta</label><textarea id="consult-reason" placeholder="Describe brevemente los síntomas o el motivo de tu visita..."></textarea></div>
       <button class="btn-primary" style="width:100%" onclick="submitForm()">Enviar Solicitud →</button>
       <p style="font-size:0.78rem;color:var(--mid-gray);text-align:center;margin-top:12px">Te confirmaremos tu cita por WhatsApp o correo en menos de 2 horas</p>
     </div>
@@ -731,33 +732,33 @@
     <div class="footer-col">
       <h4>Servicios</h4>
       <ul class="footer-links">
-        <li><a onclick="showPage('consulta')">Consulta General</a></li>
-        <li><a onclick="showPage('vacunas')">Vacunación</a></li>
-        <li><a onclick="showPage('cirugia')">Cirugía</a></li>
-        <li><a onclick="showPage('estetica')">Estética</a></li>
-        <li><a onclick="showPage('nutricion')">Nutrición</a></li>
-        <li><a onclick="showPage('dental')">Odontología</a></li>
-        <li><a onclick="showPage('laboratorio')">Laboratorio</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('consulta')">Consulta General</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('vacunas')">Vacunación</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('cirugia')">Cirugía</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('estetica')">Estética</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('nutricion')">Nutrición</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('dental')">Odontología</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('laboratorio')">Laboratorio</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Clínica</h4>
       <ul class="footer-links">
-        <li><a onclick="showPage('nosotros')">Nosotros</a></li>
-        <li><a onclick="showPage('emergencias')">Emergencias 24h</a></li>
-        <li><a onclick="showPage('contacto')">Reservar Cita</a></li>
-        <li><a>Blog Veterinario</a></li>
-        <li><a>Trabaja con nosotros</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('nosotros')">Nosotros</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('emergencias')">Emergencias 24h</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('contacto')">Reservar Cita</a></li>
+        <li><a href="javascript:void(0)">Blog Veterinario</a></li>
+        <li><a href="javascript:void(0)">Trabaja con nosotros</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul class="footer-links">
-        <li><a>📍 Calle 72 #15-30, Bogotá</a></li>
-        <li><a>📞 +57 (1) 800-VET-VIDA</a></li>
-        <li><a>💬 +57 300 838-8432</a></li>
-        <li><a>✉️ citas@vetvida.com.co</a></li>
-        <li><a>⏰ Urgencias 24h</a></li>
+        <li><a href="https://maps.google.com/?q=Calle+72+%2315-30,+Bogotá" target="_blank" rel="noopener noreferrer">📍 Calle 72 #15-30, Bogotá</a></li>
+        <li><a href="tel:+571800VETVIDA">📞 +57 (1) 800-VET-VIDA</a></li>
+        <li><a href="https://wa.me/573008388432" target="_blank" rel="noopener noreferrer">💬 +57 300 838-8432</a></li>
+        <li><a href="mailto:citas@vetvida.com.co">✉️ citas@vetvida.com.co</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('emergencias')">⏰ Urgencias 24h</a></li>
       </ul>
     </div>
   </div>
@@ -814,6 +815,17 @@
   }
 
   document.getElementById('nav-home').classList.add('active');
+
+  // Global keyboard listener for non-native interactive elements
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const active = document.activeElement;
+      if (active && (active.getAttribute('role') === 'link' || active.getAttribute('role') === 'button')) {
+        e.preventDefault();
+        active.click();
+      }
+    }
+  });
 </script>
 </body>
 </html>

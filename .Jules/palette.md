@@ -1,0 +1,3 @@
+## 2025-05-15 - Improving Accessibility and Keyboard Navigation in Static Sites
+**Learning:** Static sites with custom navigation (e.g., div-based breadcrumbs or anchor tags without href) are often inaccessible to keyboard and screen reader users. Simply adding onclick is not enough; elements need a focusable state (tabindex="0"), a semantic role (role="link"), and a keyboard listener for Enter/Space keys. Also, associating labels with form inputs via 'for' and 'id' is a critical but often overlooked micro-UX improvement.
+**Action:** Always check for non-native interactive elements (div/span with onclick) and add role="link"/"button" and tabindex="0". Ensure a global or local keyboard listener handles Enter/Space keys. For forms, always verify label-input associations.
