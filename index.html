@@ -219,11 +219,11 @@
 <nav id="navbar">
   <div class="nav-logo" onclick="showPage('home')">Vet<span>Vida</span></div>
   <ul class="nav-links">
-    <li><a onclick="showPage('home')" id="nav-home">Inicio</a></li>
-    <li><a onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
-    <li><a onclick="showPage('nosotros')" id="nav-nosotros">Nosotros</a></li>
-    <li><a onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;">🚨 Emergencias</a></li>
-    <li><a onclick="showPage('contacto')" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('home')" id="nav-home">Inicio</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('nosotros')" id="nav-nosotros">Nosotros</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;">🚨 Emergencias</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('contacto')" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
   </ul>
 </nav>
 
@@ -694,31 +694,31 @@
     <div class="contact-info">
       <h2>Ponte en <em>contacto</em> con nosotros</h2>
       <p>Puedes agendar tu cita por teléfono, WhatsApp, correo o directamente en nuestro formulario. Respondemos en menos de 2 horas en horario de atención.</p>
-      <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Dirección</div><div class="contact-item-val">Calle 72 #15-30, Chapinero, Bogotá</div></div></div>
-      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Teléfono</div><div class="contact-item-val">+57 (1) 800-VET-VIDA</div></div></div>
-      <div class="contact-item"><div class="contact-icon">💬</div><div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val">+57 300 838-8432</div></div></div>
-      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val">citas@vetvida.com.co</div></div></div>
+      <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Dirección</div><div class="contact-item-val"><a href="https://www.google.com/maps/search/?api=1&query=Calle+72+%2315-30%2C+Chapinero%2C+Bogot%C3%A1" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">Calle 72 #15-30, Chapinero, Bogotá</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Teléfono</div><div class="contact-item-val"><a href="tel:+5718008388432" style="text-decoration:none;color:inherit;">+57 (1) 800-VET-VIDA</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">💬</div><div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val"><a href="https://wa.me/573008388432" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">+57 300 838-8432</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val"><a href="mailto:citas@vetvida.com.co" style="text-decoration:none;color:inherit;">citas@vetvida.com.co</a></div></div></div>
       <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-item-label">Horarios</div><div class="contact-item-val">Lun–Vie: 7am–8pm · Sáb–Dom: 8am–6pm<br><span style="font-size:0.82rem;color:var(--clay)">Urgencias: 24 horas, 365 días del año</span></div></div></div>
     </div>
-    <div class="contact-form">
+    <form class="contact-form" onsubmit="event.preventDefault(); submitForm();">
       <h3>Solicitar Cita</h3>
       <div class="form-row">
-        <div class="form-group"><label>Nombre del dueño</label><input type="text" placeholder="Tu nombre completo"></div>
-        <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+57 300 0000000"></div>
+        <div class="form-group"><label for="owner-name">Nombre del dueño</label><input type="text" id="owner-name" placeholder="Tu nombre completo" required></div>
+        <div class="form-group"><label for="owner-tel">Teléfono</label><input type="tel" id="owner-tel" placeholder="+57 300 0000000" required></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Nombre de la mascota</label><input type="text" placeholder="Nombre"></div>
-        <div class="form-group"><label>Especie</label><select><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
+        <div class="form-group"><label for="pet-name">Nombre de la mascota</label><input type="text" id="pet-name" placeholder="Nombre" required></div>
+        <div class="form-group"><label for="pet-species">Especie</label><select id="pet-species"><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
       </div>
-      <div class="form-group"><label>Servicio requerido</label><select><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
+      <div class="form-group"><label for="service">Servicio requerido</label><select id="service"><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
       <div class="form-row">
-        <div class="form-group"><label>Fecha preferida</label><input type="date"></div>
-        <div class="form-group"><label>Hora preferida</label><select><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
+        <div class="form-group"><label for="pref-date">Fecha preferida</label><input type="date" id="pref-date" required></div>
+        <div class="form-group"><label for="pref-time">Hora preferida</label><select id="pref-time"><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
       </div>
-      <div class="form-group"><label>Motivo de consulta</label><textarea placeholder="Describe brevemente los síntomas o el motivo de tu visita..."></textarea></div>
-      <button class="btn-primary" style="width:100%" onclick="submitForm()">Enviar Solicitud →</button>
+      <div class="form-group"><label for="reason">Motivo de consulta</label><textarea id="reason" placeholder="Describe brevemente los síntomas o el motivo de tu visita..."></textarea></div>
+      <button type="submit" class="btn-primary" style="width:100%">Enviar Solicitud →</button>
       <p style="font-size:0.78rem;color:var(--mid-gray);text-align:center;margin-top:12px">Te confirmaremos tu cita por WhatsApp o correo en menos de 2 horas</p>
-    </div>
+    </form>
   </div>
 </div>
 
@@ -731,32 +731,32 @@
     <div class="footer-col">
       <h4>Servicios</h4>
       <ul class="footer-links">
-        <li><a onclick="showPage('consulta')">Consulta General</a></li>
-        <li><a onclick="showPage('vacunas')">Vacunación</a></li>
-        <li><a onclick="showPage('cirugia')">Cirugía</a></li>
-        <li><a onclick="showPage('estetica')">Estética</a></li>
-        <li><a onclick="showPage('nutricion')">Nutrición</a></li>
-        <li><a onclick="showPage('dental')">Odontología</a></li>
-        <li><a onclick="showPage('laboratorio')">Laboratorio</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('consulta')">Consulta General</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('vacunas')">Vacunación</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('cirugia')">Cirugía</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('estetica')">Estética</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('nutricion')">Nutrición</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('dental')">Odontología</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('laboratorio')">Laboratorio</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Clínica</h4>
       <ul class="footer-links">
-        <li><a onclick="showPage('nosotros')">Nosotros</a></li>
-        <li><a onclick="showPage('emergencias')">Emergencias 24h</a></li>
-        <li><a onclick="showPage('contacto')">Reservar Cita</a></li>
-        <li><a>Blog Veterinario</a></li>
-        <li><a>Trabaja con nosotros</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('nosotros')">Nosotros</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('emergencias')">Emergencias 24h</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('contacto')">Reservar Cita</a></li>
+        <li><a href="javascript:void(0)">Blog Veterinario</a></li>
+        <li><a href="javascript:void(0)">Trabaja con nosotros</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul class="footer-links">
-        <li><a>📍 Calle 72 #15-30, Bogotá</a></li>
-        <li><a>📞 +57 (1) 800-VET-VIDA</a></li>
-        <li><a>💬 +57 300 838-8432</a></li>
-        <li><a>✉️ citas@vetvida.com.co</a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Calle+72+%2315-30%2C+Bogot%C3%A1" target="_blank" rel="noopener noreferrer">📍 Calle 72 #15-30, Bogotá</a></li>
+        <li><a href="tel:+5718008388432">📞 +57 (1) 800-VET-VIDA</a></li>
+        <li><a href="https://wa.me/573008388432" target="_blank" rel="noopener noreferrer">💬 +57 300 838-8432</a></li>
+        <li><a href="mailto:citas@vetvida.com.co">✉️ citas@vetvida.com.co</a></li>
         <li><a>⏰ Urgencias 24h</a></li>
       </ul>
     </div>
