@@ -24,6 +24,8 @@
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-body); background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
 
+  :focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     background: rgba(250,246,240,0.95); backdrop-filter: blur(12px);
@@ -33,11 +35,12 @@
     transition: box-shadow 0.3s;
   }
   nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
-  .nav-logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; color: var(--forest); cursor: pointer; }
+  .nav-logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; color: var(--forest); cursor: pointer; text-decoration: none; }
   .nav-logo span { color: var(--amber); }
   .nav-links { display: flex; gap: 0; list-style: none; }
   .nav-links li a { display: block; padding: 8px 14px; font-size: 0.875rem; font-weight: 500; color: var(--mid-gray); text-decoration: none; border-radius: 24px; transition: all 0.2s; cursor: pointer; }
   .nav-links li a:hover, .nav-links li a.active { color: var(--forest); background: rgba(45,80,22,0.08); }
+  .nav-link-emergency { color: #c0392b !important; font-weight: 700 !important; }
   .nav-cta { background: var(--forest) !important; color: var(--cream) !important; padding: 10px 20px !important; }
   .nav-cta:hover { background: var(--moss) !important; }
 
@@ -217,13 +220,13 @@
 <body>
 
 <nav id="navbar">
-  <div class="nav-logo" onclick="showPage('home')">Vet<span>Vida</span></div>
+  <a href="javascript:void(0)" class="nav-logo" onclick="showPage('home')">Vet<span>Vida</span></a>
   <ul class="nav-links">
-    <li><a onclick="showPage('home')" id="nav-home">Inicio</a></li>
-    <li><a onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
-    <li><a onclick="showPage('nosotros')" id="nav-nosotros">Nosotros</a></li>
-    <li><a onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;">🚨 Emergencias</a></li>
-    <li><a onclick="showPage('contacto')" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('home')" id="nav-home">Inicio</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('nosotros')" id="nav-nosotros">Nosotros</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('emergencias')" id="nav-emergencias" class="nav-link-emergency">🚨 Emergencias</a></li>
+    <li><a href="javascript:void(0)" onclick="showPage('contacto')" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
   </ul>
 </nav>
 
@@ -700,23 +703,23 @@
       <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val">citas@vetvida.com.co</div></div></div>
       <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-item-label">Horarios</div><div class="contact-item-val">Lun–Vie: 7am–8pm · Sáb–Dom: 8am–6pm<br><span style="font-size:0.82rem;color:var(--clay)">Urgencias: 24 horas, 365 días del año</span></div></div></div>
     </div>
-    <div class="contact-form">
+    <form class="contact-form" onsubmit="event.preventDefault(); submitForm();">
       <h3>Solicitar Cita</h3>
       <div class="form-row">
-        <div class="form-group"><label>Nombre del dueño</label><input type="text" placeholder="Tu nombre completo"></div>
-        <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+57 300 0000000"></div>
+        <div class="form-group"><label for="owner-name">Nombre del dueño</label><input type="text" id="owner-name" placeholder="Tu nombre completo" required></div>
+        <div class="form-group"><label for="phone">Teléfono</label><input type="tel" id="phone" placeholder="+57 300 0000000" required></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Nombre de la mascota</label><input type="text" placeholder="Nombre"></div>
-        <div class="form-group"><label>Especie</label><select><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
+        <div class="form-group"><label for="pet-name">Nombre de la mascota</label><input type="text" id="pet-name" placeholder="Nombre" required></div>
+        <div class="form-group"><label for="species">Especie</label><select id="species"><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
       </div>
-      <div class="form-group"><label>Servicio requerido</label><select><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
+      <div class="form-group"><label for="service">Servicio requerido</label><select id="service"><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
       <div class="form-row">
-        <div class="form-group"><label>Fecha preferida</label><input type="date"></div>
-        <div class="form-group"><label>Hora preferida</label><select><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
+        <div class="form-group"><label for="date">Fecha preferida</label><input type="date" id="date"></div>
+        <div class="form-group"><label for="time">Hora preferida</label><select id="time"><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
       </div>
-      <div class="form-group"><label>Motivo de consulta</label><textarea placeholder="Describe brevemente los síntomas o el motivo de tu visita..."></textarea></div>
-      <button class="btn-primary" style="width:100%" onclick="submitForm()">Enviar Solicitud →</button>
+      <div class="form-group"><label for="reason">Motivo de consulta</label><textarea id="reason" placeholder="Describe brevemente los síntomas o el motivo de tu visita..."></textarea></div>
+      <button type="submit" class="btn-primary" style="width:100%">Enviar Solicitud →</button>
       <p style="font-size:0.78rem;color:var(--mid-gray);text-align:center;margin-top:12px">Te confirmaremos tu cita por WhatsApp o correo en menos de 2 horas</p>
     </div>
   </div>
@@ -725,7 +728,7 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="nav-logo" style="color:white;cursor:pointer" onclick="showPage('home')">Vet<span>Vida</span></div>
+      <a href="javascript:void(0)" class="nav-logo" style="color:white;cursor:pointer" onclick="showPage('home')">Vet<span>Vida</span></a>
       <p>Cuidamos a tu mascota con la misma dedicación y amor que merece cada ser vivo. Tu confianza es nuestra mayor responsabilidad.</p>
     </div>
     <div class="footer-col">
@@ -814,6 +817,27 @@
   }
 
   document.getElementById('nav-home').classList.add('active');
+
+  // Accessibility: Add keyboard support and focusability to interactive elements
+  document.querySelectorAll('[onclick]').forEach(el => {
+    if (el.tagName !== 'A' && el.tagName !== 'BUTTON') {
+      if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+      if (!el.hasAttribute('role')) el.setAttribute('role', 'button');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const active = document.activeElement;
+      if (active && (active.hasAttribute('onclick') || active.getAttribute('role') === 'button' || active.getAttribute('role') === 'link')) {
+        const isNative = ['BUTTON', 'A'].includes(active.tagName);
+        if (!isNative || (active.tagName === 'A' && !active.hasAttribute('href'))) {
+          if (e.key === ' ') e.preventDefault();
+          active.click();
+        }
+      }
+    }
+  });
 </script>
 </body>
 </html>
