@@ -1,0 +1,3 @@
+## 2025-05-14 - Global Accessibility Bridge for Non-Semantic SPA
+**Learning:** In static single-page applications where navigation is driven by `onclick` handlers on non-semantic elements (like `div` cards or logos), these elements remain completely inaccessible to keyboard users. Using a global script to automatically inject `tabindex="0"` and `role="button"` based on the presence of `onclick` is a high-leverage way to fix widespread accessibility gaps without manually editing hundreds of lines.
+**Action:** Always check for `onclick` handlers on non-interactive tags and implement a global keyboard listener (supporting Enter/Space) alongside automated attribute assignment to ensure a "keyboard-first" experience in custom-built SPAs.
