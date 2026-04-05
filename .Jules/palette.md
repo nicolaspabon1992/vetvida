@@ -1,0 +1,3 @@
+## 2025-05-14 - Semantic Form Conversion for JS-driven Apps
+**Learning:** In projects that use JavaScript-driven form submission (like calling a `submitForm` function via `onclick` on a button), converting the container to a semantic `<form>` and using the `onsubmit` event with `event.preventDefault()` provides significant UX and accessibility wins: native browser validation (via `required`), improved keyboard navigation (Enter key to submit), and better screen reader identification.
+**Action:** Always prefer `<form onsubmit="event.preventDefault(); submitForm();">` over generic containers with `onclick` buttons for interactive data collection sections.
