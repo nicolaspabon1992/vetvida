@@ -1,0 +1,3 @@
+## 2025-05-15 - Universal Keyboard Accessibility for Legacy Static Sites
+**Learning:** In static sites using vanilla JS for navigation (where interactive elements are often `div` or `span` with `onclick` handlers), a small global script can automatically bridge the accessibility gap by assigning `tabindex="0"` and `role="button"` to any element with an `onclick` attribute.
+**Action:** Use a `document.querySelectorAll('[onclick]').forEach(...)` loop combined with a global `keydown` listener for 'Enter' and 'Space' to provide immediate keyboard accessibility across the entire application without manual per-element refactoring.
