@@ -56,6 +56,7 @@
 
   .btn-primary { background: var(--forest); color: var(--cream); padding: 14px 30px; border: none; border-radius: 50px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.25s; box-shadow: 0 4px 20px rgba(45,80,22,0.3); }
   .btn-primary:hover { background: var(--moss); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(45,80,22,0.35); }
+  *:focus-visible { outline: 3px solid var(--amber) !important; outline-offset: 2px !important; }
   .btn-secondary { background: transparent; color: var(--forest); padding: 14px 30px; border: 2px solid var(--forest); border-radius: 50px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.25s; }
   .btn-secondary:hover { background: var(--forest); color: var(--cream); transform: translateY(-2px); }
 
@@ -217,13 +218,13 @@
 <body>
 
 <nav id="navbar">
-  <div class="nav-logo" onclick="showPage('home')">Vet<span>Vida</span></div>
+  <div class="nav-logo" tabindex="0" role="link" onclick="showPage('home')">Vet<span>Vida</span></div>
   <ul class="nav-links">
-    <li><a onclick="showPage('home')" id="nav-home">Inicio</a></li>
-    <li><a onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
-    <li><a onclick="showPage('nosotros')" id="nav-nosotros">Nosotros</a></li>
-    <li><a onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;">🚨 Emergencias</a></li>
-    <li><a onclick="showPage('contacto')" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
+    <li><a tabindex="0" role="link" onclick="showPage('home')" id="nav-home">Inicio</a></li>
+    <li><a tabindex="0" role="link" onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
+    <li><a tabindex="0" role="link" onclick="showPage('nosotros')" id="nav-nosotros">Nosotros</a></li>
+    <li><a tabindex="0" role="link" onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;">🚨 Emergencias</a></li>
+    <li><a tabindex="0" role="link" onclick="showPage('contacto')" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
   </ul>
 </nav>
 
@@ -260,12 +261,12 @@
     <h2 class="section-title">Todo lo que tu mascota<br><em>necesita</em>, en un solo lugar</h2>
     <p class="section-sub">Ofrecemos servicios veterinarios integrales para perros, gatos, aves, conejos, reptiles y más mascotas.</p>
     <div class="services-grid">
-      <div class="svc-card" onclick="showPage('consulta')"><span class="svc-icon">🩺</span><div class="svc-name">Consulta General</div><div class="svc-desc">Revisiones completas con diagnóstico integral y seguimiento personalizado para cada especie.</div><button class="svc-link">Conocer más →</button></div>
-      <div class="svc-card" onclick="showPage('vacunas')"><span class="svc-icon">💉</span><div class="svc-name">Vacunación</div><div class="svc-desc">Planes vacunales completos adaptados a la especie, raza, edad y estilo de vida de tu mascota.</div><button class="svc-link">Conocer más →</button></div>
-      <div class="svc-card" onclick="showPage('cirugia')"><span class="svc-icon">🔬</span><div class="svc-name">Cirugía</div><div class="svc-desc">Quirófano equipado con tecnología de última generación para cirugías programadas y urgentes.</div><button class="svc-link">Conocer más →</button></div>
-      <div class="svc-card" onclick="showPage('estetica')"><span class="svc-icon">✂️</span><div class="svc-name">Estética y Peluquería</div><div class="svc-desc">Baño, corte, cepillado y tratamientos especiales con productos hipoalergénicos certificados.</div><button class="svc-link">Conocer más →</button></div>
-      <div class="svc-card" onclick="showPage('nutricion')"><span class="svc-icon">🥗</span><div class="svc-name">Nutrición Clínica</div><div class="svc-desc">Planes alimenticios personalizados y dietas terapéuticas basadas en ciencia veterinaria.</div><button class="svc-link">Conocer más →</button></div>
-      <div class="svc-card" onclick="showPage('dental')"><span class="svc-icon">🦷</span><div class="svc-name">Odontología</div><div class="svc-desc">Limpieza dental profesional, extracciones y tratamientos para la salud bucal completa.</div><button class="svc-link">Conocer más →</button></div>
+      <div class="svc-card" tabindex="0" role="button" onclick="showPage('consulta')"><span class="svc-icon">🩺</span><div class="svc-name">Consulta General</div><div class="svc-desc">Revisiones completas con diagnóstico integral y seguimiento personalizado para cada especie.</div><button class="svc-link">Conocer más →</button></div>
+      <div class="svc-card" tabindex="0" role="button" onclick="showPage('vacunas')"><span class="svc-icon">💉</span><div class="svc-name">Vacunación</div><div class="svc-desc">Planes vacunales completos adaptados a la especie, raza, edad y estilo de vida de tu mascota.</div><button class="svc-link">Conocer más →</button></div>
+      <div class="svc-card" tabindex="0" role="button" onclick="showPage('cirugia')"><span class="svc-icon">🔬</span><div class="svc-name">Cirugía</div><div class="svc-desc">Quirófano equipado con tecnología de última generación para cirugías programadas y urgentes.</div><button class="svc-link">Conocer más →</button></div>
+      <div class="svc-card" tabindex="0" role="button" onclick="showPage('estetica')"><span class="svc-icon">✂️</span><div class="svc-name">Estética y Peluquería</div><div class="svc-desc">Baño, corte, cepillado y tratamientos especiales con productos hipoalergénicos certificados.</div><button class="svc-link">Conocer más →</button></div>
+      <div class="svc-card" tabindex="0" role="button" onclick="showPage('nutricion')"><span class="svc-icon">🥗</span><div class="svc-name">Nutrición Clínica</div><div class="svc-desc">Planes alimenticios personalizados y dietas terapéuticas basadas en ciencia veterinaria.</div><button class="svc-link">Conocer más →</button></div>
+      <div class="svc-card" tabindex="0" role="button" onclick="showPage('dental')"><span class="svc-icon">🦷</span><div class="svc-name">Odontología</div><div class="svc-desc">Limpieza dental profesional, extracciones y tratamientos para la salud bucal completa.</div><button class="svc-link">Conocer más →</button></div>
     </div>
     <div style="text-align:center;margin-top:40px"><button class="btn-secondary" onclick="showPage('servicios')">Ver todos los servicios</button></div>
   </section>
@@ -283,21 +284,21 @@
 <!-- TODOS LOS SERVICIOS -->
 <div id="page-servicios" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Servicios</span></div>
+    <div class="page-hero-breadcrumb" tabindex="0" role="link" onclick="showPage('home')">← Inicio / <span>Servicios</span></div>
     <h1>Nuestros Servicios</h1>
     <p>Atención integral para perros, gatos, aves, conejos, reptiles y más. Tecnología y amor en cada visita.</p>
     <span class="page-hero-icon">🐾</span>
   </div>
   <section class="content-section">
     <div class="services-grid">
-      <div class="svc-card" onclick="showPage('consulta')"><span class="svc-icon">🩺</span><div class="svc-name">Consulta General</div><div class="svc-desc">Revisión completa con historia clínica y exploración física detallada.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card" onclick="showPage('vacunas')"><span class="svc-icon">💉</span><div class="svc-name">Vacunación y Desparasitación</div><div class="svc-desc">Protege a tu mascota con planes vacunales completos y antiparasitarios.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card" onclick="showPage('cirugia')"><span class="svc-icon">🔬</span><div class="svc-name">Cirugía y Anestesia</div><div class="svc-desc">Quirófano de última generación para cirugías programadas y urgentes.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card" onclick="showPage('estetica')"><span class="svc-icon">✂️</span><div class="svc-name">Estética y Peluquería</div><div class="svc-desc">Grooming completo con productos hipoalergénicos y técnicas por raza.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card" onclick="showPage('nutricion')"><span class="svc-icon">🥗</span><div class="svc-name">Nutrición Clínica</div><div class="svc-desc">Planes nutricionales personalizados con cálculo calórico preciso.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card" onclick="showPage('dental')"><span class="svc-icon">🦷</span><div class="svc-name">Odontología Veterinaria</div><div class="svc-desc">Limpieza, prevención y tratamiento de enfermedades orales.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card" onclick="showPage('emergencias')"><span class="svc-icon">🚨</span><div class="svc-name">Emergencias 24h</div><div class="svc-desc">Atención inmediata las 24 horas, los 7 días de la semana.</div><button class="svc-link">Ver detalles →</button></div>
-      <div class="svc-card" onclick="showPage('laboratorio')"><span class="svc-icon">🧪</span><div class="svc-name">Laboratorio y Diagnóstico</div><div class="svc-desc">Análisis clínicos, radiografías digitales, ecografías y más.</div><button class="svc-link">Ver detalles →</button></div>
+      <div class="svc-card" tabindex="0" role="button" onclick="showPage('consulta')"><span class="svc-icon">🩺</span><div class="svc-name">Consulta General</div><div class="svc-desc">Revisión completa con historia clínica y exploración física detallada.</div><button class="svc-link">Ver detalles →</button></div>
+      <div class="svc-card" tabindex="0" role="button" onclick="showPage('vacunas')"><span class="svc-icon">💉</span><div class="svc-name">Vacunación y Desparasitación</div><div class="svc-desc">Protege a tu mascota con planes vacunales completos y antiparasitarios.</div><button class="svc-link">Ver detalles →</button></div>
+      <div class="svc-card" tabindex="0" role="button" onclick="showPage('cirugia')"><span class="svc-icon">🔬</span><div class="svc-name">Cirugía y Anestesia</div><div class="svc-desc">Quirófano de última generación para cirugías programadas y urgentes.</div><button class="svc-link">Ver detalles →</button></div>
+      <div class="svc-card" tabindex="0" role="button" onclick="showPage('estetica')"><span class="svc-icon">✂️</span><div class="svc-name">Estética y Peluquería</div><div class="svc-desc">Grooming completo con productos hipoalergénicos y técnicas por raza.</div><button class="svc-link">Ver detalles →</button></div>
+      <div class="svc-card" tabindex="0" role="button" onclick="showPage('nutricion')"><span class="svc-icon">🥗</span><div class="svc-name">Nutrición Clínica</div><div class="svc-desc">Planes nutricionales personalizados con cálculo calórico preciso.</div><button class="svc-link">Ver detalles →</button></div>
+      <div class="svc-card" tabindex="0" role="button" onclick="showPage('dental')"><span class="svc-icon">🦷</span><div class="svc-name">Odontología Veterinaria</div><div class="svc-desc">Limpieza, prevención y tratamiento de enfermedades orales.</div><button class="svc-link">Ver detalles →</button></div>
+      <div class="svc-card" tabindex="0" role="button" onclick="showPage('emergencias')"><span class="svc-icon">🚨</span><div class="svc-name">Emergencias 24h</div><div class="svc-desc">Atención inmediata las 24 horas, los 7 días de la semana.</div><button class="svc-link">Ver detalles →</button></div>
+      <div class="svc-card" tabindex="0" role="button" onclick="showPage('laboratorio')"><span class="svc-icon">🧪</span><div class="svc-name">Laboratorio y Diagnóstico</div><div class="svc-desc">Análisis clínicos, radiografías digitales, ecografías y más.</div><button class="svc-link">Ver detalles →</button></div>
       <div class="svc-card"><span class="svc-icon">🏠</span><div class="svc-name">Guardería y Hotel</div><div class="svc-desc">Alojamiento seguro y supervisado médicamente para tu mascota.</div><button class="svc-link">Próximamente →</button></div>
     </div>
   </section>
@@ -306,7 +307,7 @@
 <!-- CONSULTA GENERAL -->
 <div id="page-consulta" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Consulta General</span></div>
+    <div class="page-hero-breadcrumb" tabindex="0" role="link" onclick="showPage('servicios')">← Servicios / <span>Consulta General</span></div>
     <h1>Consulta General</h1>
     <p>Diagnóstico integral y seguimiento personalizado para cada etapa de la vida de tu mascota.</p>
     <span class="page-hero-icon">🩺</span>
@@ -336,9 +337,9 @@
         </div>
         <div style="margin-top:26px">
           <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:18px">Preguntas Frecuentes</h3>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Con qué frecuencia debo traer a mi mascota?</div><div class="faq-answer">Para mascotas adultas sanas recomendamos al menos una consulta anual. En cachorros, geriátricos o con condiciones crónicas, las revisiones deben ser más frecuentes (cada 6 meses o según indicación médica).</div></div>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Necesito cita previa?</div><div class="faq-answer">Para consultas de rutina recomendamos cita previa. Sin embargo, atendemos sin cita cuando hay disponibilidad. Las emergencias siempre tienen prioridad y no requieren cita.</div></div>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Puedo quedarme con mi mascota durante la consulta?</div><div class="faq-answer">¡Por supuesto! Tu presencia tranquiliza a tu mascota. En procedimientos específicos te indicaremos si es necesario permanecer en sala de espera.</div></div>
+          <div class="faq-item"><div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">¿Con qué frecuencia debo traer a mi mascota?</div><div class="faq-answer">Para mascotas adultas sanas recomendamos al menos una consulta anual. En cachorros, geriátricos o con condiciones crónicas, las revisiones deben ser más frecuentes (cada 6 meses o según indicación médica).</div></div>
+          <div class="faq-item"><div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">¿Necesito cita previa?</div><div class="faq-answer">Para consultas de rutina recomendamos cita previa. Sin embargo, atendemos sin cita cuando hay disponibilidad. Las emergencias siempre tienen prioridad y no requieren cita.</div></div>
+          <div class="faq-item"><div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">¿Puedo quedarme con mi mascota durante la consulta?</div><div class="faq-answer">¡Por supuesto! Tu presencia tranquiliza a tu mascota. En procedimientos específicos te indicaremos si es necesario permanecer en sala de espera.</div></div>
         </div>
       </div>
     </div>
@@ -349,7 +350,7 @@
 <!-- VACUNACIÓN -->
 <div id="page-vacunas" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Vacunación</span></div>
+    <div class="page-hero-breadcrumb" tabindex="0" role="link" onclick="showPage('servicios')">← Servicios / <span>Vacunación</span></div>
     <h1>Vacunación y Desparasitación</h1>
     <p>La prevención es la mejor medicina. Protege a tu mascota con planes vacunales completos y personalizados.</p>
     <span class="page-hero-icon">💉</span>
@@ -376,9 +377,9 @@
           <span class="chip">💉 Séxtuple canina</span><span class="chip">💉 Antirrábica</span><span class="chip">💉 Triple felina</span><span class="chip">💉 Leucemia felina</span><span class="chip">💉 Bordetella</span><span class="chip">💉 Leptospirosis</span><span class="chip">💉 Leishmania</span><span class="chip">💉 Influenza canina</span>
         </div>
         <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:18px">Preguntas Frecuentes</h3>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Mi mascota puede tener reacciones a las vacunas?</div><div class="faq-answer">Las reacciones son muy poco frecuentes. Pueden presentarse leve somnolencia o sensibilidad en el punto de inyección durante 24h. Reacciones graves son extremadamente raras y siempre supervisamos a tu mascota tras la vacunación.</div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Puedo vacunar a mi mascota si está enferma?</div><div class="faq-answer">No. Las vacunas solo se aplican a mascotas clínicamente sanas. Si presenta síntomas, primero tratamos la enfermedad y luego programamos la vacunación.</div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Cada cuánto debo desparasitar a mi mascota?</div><div class="faq-answer">Cachorros: cada 15 días hasta los 3 meses, luego mensual hasta el año. Adultos: cada 3–6 meses según exposición y estilo de vida. Tu veterinario te dará el plan exacto.</div></div>
+        <div class="faq-item"><div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">¿Mi mascota puede tener reacciones a las vacunas?</div><div class="faq-answer">Las reacciones son muy poco frecuentes. Pueden presentarse leve somnolencia o sensibilidad en el punto de inyección durante 24h. Reacciones graves son extremadamente raras y siempre supervisamos a tu mascota tras la vacunación.</div></div>
+        <div class="faq-item"><div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">¿Puedo vacunar a mi mascota si está enferma?</div><div class="faq-answer">No. Las vacunas solo se aplican a mascotas clínicamente sanas. Si presenta síntomas, primero tratamos la enfermedad y luego programamos la vacunación.</div></div>
+        <div class="faq-item"><div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">¿Cada cuánto debo desparasitar a mi mascota?</div><div class="faq-answer">Cachorros: cada 15 días hasta los 3 meses, luego mensual hasta el año. Adultos: cada 3–6 meses según exposición y estilo de vida. Tu veterinario te dará el plan exacto.</div></div>
       </div>
     </div>
   </section>
@@ -388,7 +389,7 @@
 <!-- CIRUGÍA -->
 <div id="page-cirugia" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Cirugía</span></div>
+    <div class="page-hero-breadcrumb" tabindex="0" role="link" onclick="showPage('servicios')">← Servicios / <span>Cirugía</span></div>
     <h1>Cirugía Veterinaria</h1>
     <p>Quirófano de última generación con monitoreo anestésico avanzado y cirujanos altamente calificados.</p>
     <span class="page-hero-icon">🔬</span>
@@ -425,7 +426,7 @@
 <!-- ESTÉTICA -->
 <div id="page-estetica" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Estética</span></div>
+    <div class="page-hero-breadcrumb" tabindex="0" role="link" onclick="showPage('servicios')">← Servicios / <span>Estética</span></div>
     <h1>Estética y Peluquería</h1>
     <p>Que tu mascota siempre luzca y se sienta increíble con nuestro servicio de grooming profesional.</p>
     <span class="page-hero-icon">✂️</span>
@@ -483,7 +484,7 @@
 <!-- NUTRICIÓN -->
 <div id="page-nutricion" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Nutrición</span></div>
+    <div class="page-hero-breadcrumb" tabindex="0" role="link" onclick="showPage('servicios')">← Servicios / <span>Nutrición</span></div>
     <h1>Nutrición Clínica</h1>
     <p>La alimentación correcta es medicina preventiva. Diseñamos planes nutricionales basados en ciencia veterinaria.</p>
     <span class="page-hero-icon">🥗</span>
@@ -519,7 +520,7 @@
 <!-- DENTAL -->
 <div id="page-dental" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Odontología</span></div>
+    <div class="page-hero-breadcrumb" tabindex="0" role="link" onclick="showPage('servicios')">← Servicios / <span>Odontología</span></div>
     <h1>Odontología Veterinaria</h1>
     <p>La salud bucal impacta directamente la salud general. Cuida los dientes de tu mascota con nuestros expertos.</p>
     <span class="page-hero-icon">🦷</span>
@@ -543,9 +544,9 @@
         <div class="highlight-box"><p>🦷 <strong>Consejo VetVida:</strong> Acostumbra a tu mascota al cepillado dental desde cachorro. Una revisión oral en cada consulta anual puede prevenir problemas graves y costosos en el futuro.</p></div>
         <div style="margin-top:26px">
           <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:18px">Señales de alerta</h3>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Cuándo debo preocuparme por la boca de mi mascota?</div><div class="faq-answer">Señales de alerta: mal aliento intenso, encías rojas o inflamadas, dificultad para comer, babeo excesivo, frotarse la cara con las patas, o dientes visiblemente rotos con sarro abundante.</div></div>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Es segura la anestesia para la limpieza dental?</div><div class="faq-answer">Sí. Realizamos una evaluación preoperatoria completa para minimizar riesgos. La anestesia es necesaria para hacer una limpieza completa y segura sin causar estrés al animal.</div></div>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Con qué frecuencia debo hacer la limpieza dental?</div><div class="faq-answer">Generalmente una vez al año. Mascotas con alta predisposición a sarro (razas braquicéfalas, dieta húmeda) pueden necesitarla cada 6 meses. Tu veterinario lo indicará según el caso.</div></div>
+          <div class="faq-item"><div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">¿Cuándo debo preocuparme por la boca de mi mascota?</div><div class="faq-answer">Señales de alerta: mal aliento intenso, encías rojas o inflamadas, dificultad para comer, babeo excesivo, frotarse la cara con las patas, o dientes visiblemente rotos con sarro abundante.</div></div>
+          <div class="faq-item"><div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">¿Es segura la anestesia para la limpieza dental?</div><div class="faq-answer">Sí. Realizamos una evaluación preoperatoria completa para minimizar riesgos. La anestesia es necesaria para hacer una limpieza completa y segura sin causar estrés al animal.</div></div>
+          <div class="faq-item"><div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">¿Con qué frecuencia debo hacer la limpieza dental?</div><div class="faq-answer">Generalmente una vez al año. Mascotas con alta predisposición a sarro (razas braquicéfalas, dieta húmeda) pueden necesitarla cada 6 meses. Tu veterinario lo indicará según el caso.</div></div>
         </div>
       </div>
     </div>
@@ -560,7 +561,7 @@
     <button class="btn-emergency">Llamar ahora</button>
   </div>
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Emergencias</span></div>
+    <div class="page-hero-breadcrumb" tabindex="0" role="link" onclick="showPage('home')">← Inicio / <span>Emergencias</span></div>
     <h1>Atención de Emergencias</h1>
     <p>Disponibles las 24 horas, los 7 días de la semana. Cuando cada minuto cuenta, estamos aquí.</p>
     <span class="page-hero-icon">🚨</span>
@@ -610,7 +611,7 @@
 <!-- LABORATORIO -->
 <div id="page-laboratorio" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Laboratorio</span></div>
+    <div class="page-hero-breadcrumb" tabindex="0" role="link" onclick="showPage('servicios')">← Servicios / <span>Laboratorio</span></div>
     <h1>Laboratorio y Diagnóstico</h1>
     <p>Diagnóstico preciso y rápido con tecnología de imagen y análisis clínico de última generación.</p>
     <span class="page-hero-icon">🧪</span>
@@ -647,7 +648,7 @@
 <!-- NOSOTROS -->
 <div id="page-nosotros" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Nosotros</span></div>
+    <div class="page-hero-breadcrumb" tabindex="0" role="link" onclick="showPage('home')">← Inicio / <span>Nosotros</span></div>
     <h1>Sobre VetVida</h1>
     <p>15 años cuidando mascotas con pasión, ciencia y el amor que cada ser vivo merece.</p>
     <span class="page-hero-icon">❤️</span>
@@ -685,7 +686,7 @@
 <!-- CONTACTO -->
 <div id="page-contacto" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Contacto</span></div>
+    <div class="page-hero-breadcrumb" tabindex="0" role="link" onclick="showPage('home')">← Inicio / <span>Contacto</span></div>
     <h1>Reserva tu Cita</h1>
     <p>Estamos aquí para ayudarte. Agenda una cita o contáctanos con cualquier duda.</p>
     <span class="page-hero-icon">📅</span>
@@ -700,52 +701,52 @@
       <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val">citas@vetvida.com.co</div></div></div>
       <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-item-label">Horarios</div><div class="contact-item-val">Lun–Vie: 7am–8pm · Sáb–Dom: 8am–6pm<br><span style="font-size:0.82rem;color:var(--clay)">Urgencias: 24 horas, 365 días del año</span></div></div></div>
     </div>
-    <div class="contact-form">
+    <form class="contact-form" onsubmit="event.preventDefault(); submitForm(this);">
       <h3>Solicitar Cita</h3>
       <div class="form-row">
-        <div class="form-group"><label>Nombre del dueño</label><input type="text" placeholder="Tu nombre completo"></div>
-        <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+57 300 0000000"></div>
+        <div class="form-group"><label for="owner-name">Nombre del dueño</label><input type="text" id="owner-name" placeholder="Tu nombre completo" required></div>
+        <div class="form-group"><label for="phone">Teléfono</label><input type="tel" id="phone" placeholder="+57 300 0000000" required></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Nombre de la mascota</label><input type="text" placeholder="Nombre"></div>
-        <div class="form-group"><label>Especie</label><select><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
+        <div class="form-group"><label for="pet-name">Nombre de la mascota</label><input type="text" id="pet-name" placeholder="Nombre" required></div>
+        <div class="form-group"><label for="species">Especie</label><select id="species" required><option value="">Selecciona...</option><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
       </div>
-      <div class="form-group"><label>Servicio requerido</label><select><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
+      <div class="form-group"><label for="service">Servicio requerido</label><select id="service" required><option value="">Selecciona...</option><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
       <div class="form-row">
-        <div class="form-group"><label>Fecha preferida</label><input type="date"></div>
-        <div class="form-group"><label>Hora preferida</label><select><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
+        <div class="form-group"><label for="date">Fecha preferida</label><input type="date" id="date" required></div>
+        <div class="form-group"><label for="time">Hora preferida</label><select id="time" required><option value="">Selecciona...</option><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
       </div>
-      <div class="form-group"><label>Motivo de consulta</label><textarea placeholder="Describe brevemente los síntomas o el motivo de tu visita..."></textarea></div>
-      <button class="btn-primary" style="width:100%" onclick="submitForm()">Enviar Solicitud →</button>
+      <div class="form-group"><label for="reason">Motivo de consulta</label><textarea id="reason" placeholder="Describe brevemente los síntomas o el motivo de tu visita..." required></textarea></div>
+      <button type="submit" class="btn-primary" style="width:100%">Enviar Solicitud →</button>
       <p style="font-size:0.78rem;color:var(--mid-gray);text-align:center;margin-top:12px">Te confirmaremos tu cita por WhatsApp o correo en menos de 2 horas</p>
-    </div>
+    </form>
   </div>
 </div>
 
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="nav-logo" style="color:white;cursor:pointer" onclick="showPage('home')">Vet<span>Vida</span></div>
+      <div class="nav-logo" tabindex="0" role="link" style="color:white;cursor:pointer" onclick="showPage('home')">Vet<span>Vida</span></div>
       <p>Cuidamos a tu mascota con la misma dedicación y amor que merece cada ser vivo. Tu confianza es nuestra mayor responsabilidad.</p>
     </div>
     <div class="footer-col">
       <h4>Servicios</h4>
       <ul class="footer-links">
-        <li><a onclick="showPage('consulta')">Consulta General</a></li>
-        <li><a onclick="showPage('vacunas')">Vacunación</a></li>
-        <li><a onclick="showPage('cirugia')">Cirugía</a></li>
-        <li><a onclick="showPage('estetica')">Estética</a></li>
-        <li><a onclick="showPage('nutricion')">Nutrición</a></li>
-        <li><a onclick="showPage('dental')">Odontología</a></li>
-        <li><a onclick="showPage('laboratorio')">Laboratorio</a></li>
+        <li><a tabindex="0" role="link" onclick="showPage('consulta')">Consulta General</a></li>
+        <li><a tabindex="0" role="link" onclick="showPage('vacunas')">Vacunación</a></li>
+        <li><a tabindex="0" role="link" onclick="showPage('cirugia')">Cirugía</a></li>
+        <li><a tabindex="0" role="link" onclick="showPage('estetica')">Estética</a></li>
+        <li><a tabindex="0" role="link" onclick="showPage('nutricion')">Nutrición</a></li>
+        <li><a tabindex="0" role="link" onclick="showPage('dental')">Odontología</a></li>
+        <li><a tabindex="0" role="link" onclick="showPage('laboratorio')">Laboratorio</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Clínica</h4>
       <ul class="footer-links">
-        <li><a onclick="showPage('nosotros')">Nosotros</a></li>
-        <li><a onclick="showPage('emergencias')">Emergencias 24h</a></li>
-        <li><a onclick="showPage('contacto')">Reservar Cita</a></li>
+        <li><a tabindex="0" role="link" onclick="showPage('nosotros')">Nosotros</a></li>
+        <li><a tabindex="0" role="link" onclick="showPage('emergencias')">Emergencias 24h</a></li>
+        <li><a tabindex="0" role="link" onclick="showPage('contacto')">Reservar Cita</a></li>
         <li><a>Blog Veterinario</a></li>
         <li><a>Trabaja con nosotros</a></li>
       </ul>
@@ -809,8 +810,19 @@
 
   function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
 
-  function submitForm() {
+  window.addEventListener('keydown', (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') &&
+        document.activeElement.hasAttribute('onclick') &&
+        !['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName) &&
+        !(document.activeElement.tagName === 'A' && document.activeElement.hasAttribute('href'))) {
+      if (e.key === ' ') e.preventDefault();
+      document.activeElement.click();
+    }
+  });
+
+  function submitForm(form) {
     alert('✅ ¡Solicitud enviada correctamente!\n\nTe confirmaremos tu cita en menos de 2 horas por WhatsApp o correo electrónico.\n\n¡Gracias por confiar en VetVida! 🐾');
+    form.reset();
   }
 
   document.getElementById('nav-home').classList.add('active');

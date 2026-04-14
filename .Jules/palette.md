@@ -1,0 +1,3 @@
+## 2025-05-15 - Universal Keyboard Accessibility for Non-Semantic Elements
+**Learning:** In projects where interactivity is implemented via 'onclick' on non-semantic elements (div, span, a without href), keyboard users are completely locked out. Adding 'tabindex="0"' and appropriate 'role' attributes is only half the battle; a global keyboard listener is needed to translate 'Enter' and 'Space' into 'click' events for these elements.
+**Action:** Implement a global 'keydown' listener that checks for 'Enter' or 'Space' and triggers '.click()' on the active element if it has an 'onclick' attribute but isn't a native interactive element (button, input, etc.). Combine this with ':focus-visible' styles to ensure the focus state is visually obvious.
