@@ -1,0 +1,3 @@
+## 2025-05-14 - Systematic Accessibility for Legacy-style Event Handlers
+**Learning:** In projects that rely heavily on `onclick` handlers on non-semantic elements (like `div` or `span`), it is more efficient and less error-prone to implement a global initialization script that injects `role` and `tabindex` attributes than to manually patch hundreds of elements. This ensures a baseline of keyboard discoverability across the entire site.
+**Action:** Use a script to find `[onclick]` elements and assign `role="button"` (or `"link"`) and `tabindex="0"`, combined with a global `keydown` listener to bridge the gap for keyboard activation (Enter/Space).
