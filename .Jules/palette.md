@@ -1,0 +1,3 @@
+## 2025-05-15 - Global Accessibility Utility for Static Landing Pages
+**Learning:** In simple landing pages where interactivity is often added via inline 'onclick' handlers on non-semantic elements (like divs or spans), a centralized JavaScript utility can automatically bridge the accessibility gap by injecting ARIA roles and tabindex. This ensures that custom cards and logos become keyboard-discoverable without manually refactoring every element.
+**Action:** When working on "onclick-heavy" static sites, implement a lightweight 'initAccessibility' function to retroactively apply 'role="button"' and 'tabindex="0"', and attach a global 'keydown' listener to handle 'Enter' and 'Space' activation.
