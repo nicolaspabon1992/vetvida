@@ -1,0 +1,3 @@
+## 2025-05-15 - Automated Accessibility for Legacy Interactive Elements
+**Learning:** In projects with many non-semantic interactive elements (like divs with onclick), a small utility script can systematically apply `role="link"` and `tabindex="0"`, while a global keydown listener can ensure they respond to Enter and Space. This provides immediate, site-wide accessibility gains without manual refactoring of every element.
+**Action:** Use a utility function like `initAccessibility()` and a global key listener when encountering large amounts of legacy `onclick` attributes on non-native elements.

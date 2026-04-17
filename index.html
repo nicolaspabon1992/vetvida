@@ -21,6 +21,8 @@
     --font-body: 'DM Sans', sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  *:focus { outline: none; }
+  *:focus-visible { outline: 3px solid var(--amber) !important; outline-offset: 2px !important; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-body); background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
 
@@ -154,6 +156,8 @@
   .contact-icon { width: 42px; height: 42px; flex-shrink: 0; background: var(--forest); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
   .contact-item-label { font-size: 0.73rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--sage); margin-bottom: 4px; }
   .contact-item-val { font-size: 0.93rem; font-weight: 500; }
+  .contact-item-val a { color: inherit; text-decoration: none; border-bottom: 1px dashed var(--sage); transition: all 0.2s; }
+  .contact-item-val a:hover { color: var(--forest); border-bottom-style: solid; }
 
   .contact-form { background: white; border-radius: 28px; padding: 38px; box-shadow: 0 8px 40px rgba(0,0,0,0.06); }
   .contact-form h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 28px; }
@@ -556,8 +560,8 @@
 <!-- EMERGENCIAS -->
 <div id="page-emergencias" class="page">
   <div class="emergency-banner">
-    <p>🚨 <strong>Línea de emergencias 24h:</strong> +57 (1) 800-VET-VIDA — Disponible los 365 días del año</p>
-    <button class="btn-emergency">Llamar ahora</button>
+    <p>🚨 <strong>Línea de emergencias 24h:</strong> <a href="tel:+5718008388432" style="color:inherit;text-decoration:underline;">+57 (1) 800-VET-VIDA</a> — Disponible los 365 días del año</p>
+    <a href="tel:+5718008388432" class="btn-emergency" style="text-decoration:none;display:inline-block;">Llamar ahora</a>
   </div>
   <div class="page-hero">
     <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Emergencias</span></div>
@@ -593,10 +597,10 @@
       </div>
       <div>
         <div class="info-cards">
-          <div class="info-card"><div class="info-card-icon">📞</div><h3>Teléfono 24h</h3><p>+57 (1) 800-VET-VIDA<br>Línea directa al equipo de urgencias, sin esperas ni menús.</p></div>
-          <div class="info-card"><div class="info-card-icon">📍</div><h3>Dirección</h3><p>Calle 72 #15-30, Bogotá. Ingreso de urgencias por costado norte, disponible 24h.</p></div>
+          <div class="info-card"><div class="info-card-icon">📞</div><h3>Teléfono 24h</h3><p><a href="tel:+5718008388432" style="color:inherit;text-decoration:none;font-weight:600;">+57 (1) 800-VET-VIDA</a><br>Línea directa al equipo de urgencias, sin esperas ni menús.</p></div>
+          <div class="info-card"><div class="info-card-icon">📍</div><h3>Dirección</h3><p><a href="https://maps.google.com/?q=Calle+72+%2315-30,+Bogota" target="_blank" style="color:inherit;text-decoration:none;font-weight:600;">Calle 72 #15-30, Bogotá.</a> Ingreso de urgencias por costado norte, disponible 24h.</p></div>
           <div class="info-card"><div class="info-card-icon">🚑</div><h3>Ambulancia</h3><p>Servicio de ambulancia veterinaria disponible para traslados de emergencia en el área urbana.</p></div>
-          <div class="info-card"><div class="info-card-icon">💬</div><h3>WhatsApp</h3><p>+57 300 838-8432 para fotos o videos que nos ayuden a evaluar la urgencia antes de llegar.</p></div>
+          <div class="info-card"><div class="info-card-icon">💬</div><h3>WhatsApp</h3><p><a href="https://wa.me/573008388432" target="_blank" style="color:inherit;text-decoration:none;font-weight:600;">+57 300 838-8432</a> para fotos o videos que nos ayuden a evaluar la urgencia antes de llegar.</p></div>
         </div>
         <div style="margin-top:26px;background:var(--forest);border-radius:20px;padding:26px;color:white">
           <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:10px">💡 Primeros auxilios mientras llegas</h3>
@@ -694,31 +698,31 @@
     <div class="contact-info">
       <h2>Ponte en <em>contacto</em> con nosotros</h2>
       <p>Puedes agendar tu cita por teléfono, WhatsApp, correo o directamente en nuestro formulario. Respondemos en menos de 2 horas en horario de atención.</p>
-      <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Dirección</div><div class="contact-item-val">Calle 72 #15-30, Chapinero, Bogotá</div></div></div>
-      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Teléfono</div><div class="contact-item-val">+57 (1) 800-VET-VIDA</div></div></div>
-      <div class="contact-item"><div class="contact-icon">💬</div><div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val">+57 300 838-8432</div></div></div>
-      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val">citas@vetvida.com.co</div></div></div>
+      <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Dirección</div><div class="contact-item-val"><a href="https://maps.google.com/?q=Calle+72+%2315-30,+Bogota" target="_blank">Calle 72 #15-30, Chapinero, Bogotá</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Teléfono</div><div class="contact-item-val"><a href="tel:+5718008388432">+57 (1) 800-VET-VIDA</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">💬</div><div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val"><a href="https://wa.me/573008388432" target="_blank">+57 300 838-8432</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val"><a href="mailto:citas@vetvida.com.co">citas@vetvida.com.co</a></div></div></div>
       <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-item-label">Horarios</div><div class="contact-item-val">Lun–Vie: 7am–8pm · Sáb–Dom: 8am–6pm<br><span style="font-size:0.82rem;color:var(--clay)">Urgencias: 24 horas, 365 días del año</span></div></div></div>
     </div>
-    <div class="contact-form">
+    <form class="contact-form" onsubmit="event.preventDefault(); submitForm(this);">
       <h3>Solicitar Cita</h3>
       <div class="form-row">
-        <div class="form-group"><label>Nombre del dueño</label><input type="text" placeholder="Tu nombre completo"></div>
-        <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+57 300 0000000"></div>
+        <div class="form-group"><label for="owner-name">Nombre del dueño</label><input type="text" id="owner-name" placeholder="Tu nombre completo" required></div>
+        <div class="form-group"><label for="phone">Teléfono</label><input type="tel" id="phone" placeholder="+57 300 0000000" required></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Nombre de la mascota</label><input type="text" placeholder="Nombre"></div>
-        <div class="form-group"><label>Especie</label><select><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
+        <div class="form-group"><label for="pet-name">Nombre de la mascota</label><input type="text" id="pet-name" placeholder="Nombre" required></div>
+        <div class="form-group"><label for="species">Especie</label><select id="species"><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
       </div>
-      <div class="form-group"><label>Servicio requerido</label><select><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
+      <div class="form-group"><label for="service">Servicio requerido</label><select id="service"><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
       <div class="form-row">
-        <div class="form-group"><label>Fecha preferida</label><input type="date"></div>
-        <div class="form-group"><label>Hora preferida</label><select><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
+        <div class="form-group"><label for="date">Fecha preferida</label><input type="date" id="date" required></div>
+        <div class="form-group"><label for="time">Hora preferida</label><select id="time"><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
       </div>
-      <div class="form-group"><label>Motivo de consulta</label><textarea placeholder="Describe brevemente los síntomas o el motivo de tu visita..."></textarea></div>
-      <button class="btn-primary" style="width:100%" onclick="submitForm()">Enviar Solicitud →</button>
+      <div class="form-group"><label for="reason">Motivo de consulta</label><textarea id="reason" placeholder="Describe brevemente los síntomas o el motivo de tu visita..." required></textarea></div>
+      <button type="submit" class="btn-primary" style="width:100%">Enviar Solicitud →</button>
       <p style="font-size:0.78rem;color:var(--mid-gray);text-align:center;margin-top:12px">Te confirmaremos tu cita por WhatsApp o correo en menos de 2 horas</p>
-    </div>
+    </form>
   </div>
 </div>
 
@@ -753,11 +757,11 @@
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul class="footer-links">
-        <li><a>📍 Calle 72 #15-30, Bogotá</a></li>
-        <li><a>📞 +57 (1) 800-VET-VIDA</a></li>
-        <li><a>💬 +57 300 838-8432</a></li>
-        <li><a>✉️ citas@vetvida.com.co</a></li>
-        <li><a>⏰ Urgencias 24h</a></li>
+        <li><a href="https://maps.google.com/?q=Calle+72+%2315-30,+Bogota" target="_blank">📍 Calle 72 #15-30, Bogotá</a></li>
+        <li><a href="tel:+5718008388432">📞 +57 (1) 800-VET-VIDA</a></li>
+        <li><a href="https://wa.me/573008388432" target="_blank">💬 +57 300 838-8432</a></li>
+        <li><a href="mailto:citas@vetvida.com.co">✉️ citas@vetvida.com.co</a></li>
+        <li><a onclick="showPage('emergencias')">⏰ Urgencias 24h</a></li>
       </ul>
     </div>
   </div>
@@ -809,10 +813,32 @@
 
   function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
 
-  function submitForm() {
+  function submitForm(form) {
     alert('✅ ¡Solicitud enviada correctamente!\n\nTe confirmaremos tu cita en menos de 2 horas por WhatsApp o correo electrónico.\n\n¡Gracias por confiar en VetVida! 🐾');
+    if (form && typeof form.reset === 'function') form.reset();
   }
 
+  function initAccessibility() {
+    document.querySelectorAll('[onclick]').forEach(el => {
+      const tag = el.tagName.toLowerCase();
+      if (tag !== 'button' && tag !== 'input' && (tag !== 'a' || !el.hasAttribute('href'))) {
+        if (!el.hasAttribute('role')) el.setAttribute('role', 'link');
+        if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+      }
+    });
+  }
+
+  document.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ' ') && document.activeElement && document.activeElement.hasAttribute('onclick')) {
+      const tag = document.activeElement.tagName.toLowerCase();
+      if (tag !== 'button' && tag !== 'input' && (tag !== 'a' || !document.activeElement.hasAttribute('href'))) {
+        if (e.key === ' ') e.preventDefault();
+        document.activeElement.click();
+      }
+    }
+  });
+
+  initAccessibility();
   document.getElementById('nav-home').classList.add('active');
 </script>
 </body>
