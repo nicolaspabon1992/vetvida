@@ -23,6 +23,9 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-body); background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+  *:focus-visible { outline: 3px solid var(--amber) !important; outline-offset: 2px !important; }
+  .contact-link { color: inherit; text-decoration: none; transition: opacity 0.2s; border-bottom: 1px dashed var(--sage); }
+  .contact-link:hover { opacity: 0.8; text-decoration: underline; }
 
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
@@ -217,7 +220,7 @@
 <body>
 
 <nav id="navbar">
-  <div class="nav-logo" onclick="showPage('home')">Vet<span>Vida</span></div>
+  <div class="nav-logo" onclick="showPage('home')" role="link" tabindex="0" aria-label="VetVida Inicio">Vet<span>Vida</span></div>
   <ul class="nav-links">
     <li><a onclick="showPage('home')" id="nav-home">Inicio</a></li>
     <li><a onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
@@ -283,7 +286,7 @@
 <!-- TODOS LOS SERVICIOS -->
 <div id="page-servicios" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Servicios</span></div>
+    <div class="page-hero-breadcrumb" onclick="showPage('home')" role="link" tabindex="0" aria-label="Volver a Inicio">← Inicio / <span>Servicios</span></div>
     <h1>Nuestros Servicios</h1>
     <p>Atención integral para perros, gatos, aves, conejos, reptiles y más. Tecnología y amor en cada visita.</p>
     <span class="page-hero-icon">🐾</span>
@@ -306,7 +309,7 @@
 <!-- CONSULTA GENERAL -->
 <div id="page-consulta" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Consulta General</span></div>
+    <div class="page-hero-breadcrumb" onclick="showPage('servicios')" role="link" tabindex="0" aria-label="Volver a Servicios">← Servicios / <span>Consulta General</span></div>
     <h1>Consulta General</h1>
     <p>Diagnóstico integral y seguimiento personalizado para cada etapa de la vida de tu mascota.</p>
     <span class="page-hero-icon">🩺</span>
@@ -349,7 +352,7 @@
 <!-- VACUNACIÓN -->
 <div id="page-vacunas" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Vacunación</span></div>
+    <div class="page-hero-breadcrumb" onclick="showPage('servicios')" role="link" tabindex="0" aria-label="Volver a Servicios">← Servicios / <span>Vacunación</span></div>
     <h1>Vacunación y Desparasitación</h1>
     <p>La prevención es la mejor medicina. Protege a tu mascota con planes vacunales completos y personalizados.</p>
     <span class="page-hero-icon">💉</span>
@@ -388,7 +391,7 @@
 <!-- CIRUGÍA -->
 <div id="page-cirugia" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Cirugía</span></div>
+    <div class="page-hero-breadcrumb" onclick="showPage('servicios')" role="link" tabindex="0" aria-label="Volver a Servicios">← Servicios / <span>Cirugía</span></div>
     <h1>Cirugía Veterinaria</h1>
     <p>Quirófano de última generación con monitoreo anestésico avanzado y cirujanos altamente calificados.</p>
     <span class="page-hero-icon">🔬</span>
@@ -425,7 +428,7 @@
 <!-- ESTÉTICA -->
 <div id="page-estetica" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Estética</span></div>
+    <div class="page-hero-breadcrumb" onclick="showPage('servicios')" role="link" tabindex="0" aria-label="Volver a Servicios">← Servicios / <span>Estética</span></div>
     <h1>Estética y Peluquería</h1>
     <p>Que tu mascota siempre luzca y se sienta increíble con nuestro servicio de grooming profesional.</p>
     <span class="page-hero-icon">✂️</span>
@@ -483,7 +486,7 @@
 <!-- NUTRICIÓN -->
 <div id="page-nutricion" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Nutrición</span></div>
+    <div class="page-hero-breadcrumb" onclick="showPage('servicios')" role="link" tabindex="0" aria-label="Volver a Servicios">← Servicios / <span>Nutrición</span></div>
     <h1>Nutrición Clínica</h1>
     <p>La alimentación correcta es medicina preventiva. Diseñamos planes nutricionales basados en ciencia veterinaria.</p>
     <span class="page-hero-icon">🥗</span>
@@ -519,7 +522,7 @@
 <!-- DENTAL -->
 <div id="page-dental" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Odontología</span></div>
+    <div class="page-hero-breadcrumb" onclick="showPage('servicios')" role="link" tabindex="0" aria-label="Volver a Servicios">← Servicios / <span>Odontología</span></div>
     <h1>Odontología Veterinaria</h1>
     <p>La salud bucal impacta directamente la salud general. Cuida los dientes de tu mascota con nuestros expertos.</p>
     <span class="page-hero-icon">🦷</span>
@@ -560,7 +563,7 @@
     <button class="btn-emergency">Llamar ahora</button>
   </div>
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Emergencias</span></div>
+    <div class="page-hero-breadcrumb" onclick="showPage('home')" role="link" tabindex="0" aria-label="Volver a Inicio">← Inicio / <span>Emergencias</span></div>
     <h1>Atención de Emergencias</h1>
     <p>Disponibles las 24 horas, los 7 días de la semana. Cuando cada minuto cuenta, estamos aquí.</p>
     <span class="page-hero-icon">🚨</span>
@@ -610,7 +613,7 @@
 <!-- LABORATORIO -->
 <div id="page-laboratorio" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('servicios')">← Servicios / <span>Laboratorio</span></div>
+    <div class="page-hero-breadcrumb" onclick="showPage('servicios')" role="link" tabindex="0" aria-label="Volver a Servicios">← Servicios / <span>Laboratorio</span></div>
     <h1>Laboratorio y Diagnóstico</h1>
     <p>Diagnóstico preciso y rápido con tecnología de imagen y análisis clínico de última generación.</p>
     <span class="page-hero-icon">🧪</span>
@@ -647,7 +650,7 @@
 <!-- NOSOTROS -->
 <div id="page-nosotros" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Nosotros</span></div>
+    <div class="page-hero-breadcrumb" onclick="showPage('home')" role="link" tabindex="0" aria-label="Volver a Inicio">← Inicio / <span>Nosotros</span></div>
     <h1>Sobre VetVida</h1>
     <p>15 años cuidando mascotas con pasión, ciencia y el amor que cada ser vivo merece.</p>
     <span class="page-hero-icon">❤️</span>
@@ -685,7 +688,7 @@
 <!-- CONTACTO -->
 <div id="page-contacto" class="page">
   <div class="page-hero">
-    <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Contacto</span></div>
+    <div class="page-hero-breadcrumb" onclick="showPage('home')" role="link" tabindex="0" aria-label="Volver a Inicio">← Inicio / <span>Contacto</span></div>
     <h1>Reserva tu Cita</h1>
     <p>Estamos aquí para ayudarte. Agenda una cita o contáctanos con cualquier duda.</p>
     <span class="page-hero-icon">📅</span>
@@ -695,37 +698,37 @@
       <h2>Ponte en <em>contacto</em> con nosotros</h2>
       <p>Puedes agendar tu cita por teléfono, WhatsApp, correo o directamente en nuestro formulario. Respondemos en menos de 2 horas en horario de atención.</p>
       <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Dirección</div><div class="contact-item-val">Calle 72 #15-30, Chapinero, Bogotá</div></div></div>
-      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Teléfono</div><div class="contact-item-val">+57 (1) 800-VET-VIDA</div></div></div>
-      <div class="contact-item"><div class="contact-icon">💬</div><div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val">+57 300 838-8432</div></div></div>
-      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val">citas@vetvida.com.co</div></div></div>
+      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Teléfono</div><div class="contact-item-val"><a href="tel:+5718008388432" class="contact-link">+57 (1) 800-VET-VIDA</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">💬</div><div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val"><a href="https://wa.me/573008388432" target="_blank" class="contact-link">+57 300 838-8432</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val"><a href="mailto:citas@vetvida.com.co" class="contact-link">citas@vetvida.com.co</a></div></div></div>
       <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-item-label">Horarios</div><div class="contact-item-val">Lun–Vie: 7am–8pm · Sáb–Dom: 8am–6pm<br><span style="font-size:0.82rem;color:var(--clay)">Urgencias: 24 horas, 365 días del año</span></div></div></div>
     </div>
-    <div class="contact-form">
+    <form class="contact-form" onsubmit="event.preventDefault(); submitForm(this);">
       <h3>Solicitar Cita</h3>
       <div class="form-row">
-        <div class="form-group"><label>Nombre del dueño</label><input type="text" placeholder="Tu nombre completo"></div>
-        <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+57 300 0000000"></div>
+        <div class="form-group"><label for="owner-name">Nombre del dueño</label><input type="text" id="owner-name" placeholder="Tu nombre completo" required></div>
+        <div class="form-group"><label for="phone">Teléfono</label><input type="tel" id="phone" placeholder="+57 300 0000000" required></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Nombre de la mascota</label><input type="text" placeholder="Nombre"></div>
-        <div class="form-group"><label>Especie</label><select><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
+        <div class="form-group"><label for="pet-name">Nombre de la mascota</label><input type="text" id="pet-name" placeholder="Nombre" required></div>
+        <div class="form-group"><label for="species">Especie</label><select id="species" required><option value="" disabled selected>Seleccionar</option><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
       </div>
-      <div class="form-group"><label>Servicio requerido</label><select><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
+      <div class="form-group"><label for="service">Servicio requerido</label><select id="service" required><option value="" disabled selected>Seleccionar servicio</option><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
       <div class="form-row">
-        <div class="form-group"><label>Fecha preferida</label><input type="date"></div>
-        <div class="form-group"><label>Hora preferida</label><select><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
+        <div class="form-group"><label for="date">Fecha preferida</label><input type="date" id="date" required></div>
+        <div class="form-group"><label for="time">Hora preferida</label><select id="time" required><option value="" disabled selected>Seleccionar hora</option><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
       </div>
-      <div class="form-group"><label>Motivo de consulta</label><textarea placeholder="Describe brevemente los síntomas o el motivo de tu visita..."></textarea></div>
-      <button class="btn-primary" style="width:100%" onclick="submitForm()">Enviar Solicitud →</button>
+      <div class="form-group"><label for="reason">Motivo de consulta</label><textarea id="reason" placeholder="Describe brevemente los síntomas o el motivo de tu visita..." required></textarea></div>
+      <button type="submit" class="btn-primary" style="width:100%">Enviar Solicitud →</button>
       <p style="font-size:0.78rem;color:var(--mid-gray);text-align:center;margin-top:12px">Te confirmaremos tu cita por WhatsApp o correo en menos de 2 horas</p>
-    </div>
+    </form>
   </div>
 </div>
 
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="nav-logo" style="color:white;cursor:pointer" onclick="showPage('home')">Vet<span>Vida</span></div>
+      <div class="nav-logo" style="color:white;cursor:pointer" onclick="showPage('home')" role="link" tabindex="0" aria-label="VetVida Inicio">Vet<span>Vida</span></div>
       <p>Cuidamos a tu mascota con la misma dedicación y amor que merece cada ser vivo. Tu confianza es nuestra mayor responsabilidad.</p>
     </div>
     <div class="footer-col">
@@ -809,11 +812,24 @@
 
   function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
 
-  function submitForm() {
+  function submitForm(form) {
     alert('✅ ¡Solicitud enviada correctamente!\n\nTe confirmaremos tu cita en menos de 2 horas por WhatsApp o correo electrónico.\n\n¡Gracias por confiar en VetVida! 🐾');
+    if (form && typeof form.reset === 'function') form.reset();
   }
 
   document.getElementById('nav-home').classList.add('active');
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const el = document.activeElement;
+      if (el && (el.getAttribute('onclick') || el.getAttribute('role') === 'link' || el.getAttribute('role') === 'button')) {
+        if (el.tagName === 'A' && el.getAttribute('href')) return;
+        if (el.tagName === 'BUTTON' || el.tagName === 'INPUT' || el.tagName === 'SELECT' || el.tagName === 'TEXTAREA') return;
+        e.preventDefault();
+        el.click();
+      }
+    }
+  });
 </script>
 </body>
 </html>
