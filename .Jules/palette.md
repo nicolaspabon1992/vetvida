@@ -1,0 +1,3 @@
+## 2025-04-26 - Semantic Forms and Accessibility in Static Projects
+**Learning:** In projects using legacy-style single-file HTML (vanilla JS/CSS), converting `div`-based form containers to semantic `<form>` elements and implementing proper `id`/`for` label associations provides a high-impact micro-UX win. This enables native browser validation, keyboard submission ("Enter" to submit), and screen reader support with minimal code overhead (< 20 lines).
+**Action:** Prioritize identifying non-semantic forms and applying these accessibility patterns as a first-choice micro-improvement in similar static architectures.
