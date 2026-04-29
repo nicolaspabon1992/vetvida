@@ -1,0 +1,3 @@
+## 2025-05-14 - Semantic Form Enhancement for VetVida
+**Learning:** Converting `div`-based form containers to semantic `<form>` elements with proper `<label>` associations and `required` attributes significantly improves accessibility and UX. It enables native browser validation, allows "Enter to submit" behavior, and ensures screen readers correctly associate labels with their respective inputs.
+**Action:** Always prefer semantic `<form>` elements over `div` containers for user input. Ensure labels are explicitly associated with inputs using `id` and `for` attributes, and leverage native HTML validation (e.g., `required`, `type="tel"`) to provide immediate feedback to the user.
