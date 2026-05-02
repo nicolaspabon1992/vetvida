@@ -1,0 +1,3 @@
+## 2025-05-15 - Improving Form Accessibility and Usability in Static Sites
+**Learning:** Converting generic `div` containers to semantic `<form>` elements in static sites significantly improves UX by enabling native browser validation and "Enter to submit" behavior. Properly associating `<label>` elements with their inputs using `for` and `id` is a fundamental accessibility win that also improves clickability for all users.
+**Action:** Always prefer semantic `<form>` tags and ensure every input has a correctly associated label. Use the `required` attribute for mandatory fields and remember to reset the form in the submission handler to provide clear interaction feedback.
