@@ -1,0 +1,3 @@
+## 2025-05-15 - Improving Form Accessibility and Feedback in Static Sites
+**Learning:** In simple static sites where forms are often implemented as collections of divs with JavaScript onclick handlers, accessibility and standard browser behaviors (like Enter-to-submit and native validation) are lost. Converting these to semantic <form> elements with proper <label> associations and utilizing the onsubmit event provides a much better UX with minimal code changes.
+**Action:** Always prefer semantic <form> elements over div-based forms, and use form.reset() in the success handler to provide clear visual feedback that the action was completed.
