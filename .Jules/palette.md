@@ -1,0 +1,3 @@
+## 2025-05-15 - [Semantic Forms and Native Validation]
+**Learning:** In projects where forms are implemented using generic `div` containers and manual `onclick` handlers, refactoring to a semantic `<form>` with `required` attributes and `type="submit"` buttons significantly improves accessibility (screen readers, keyboard navigation) and usability (native validation tooltips, Enter-to-submit behavior).
+**Action:** Always prioritize converting interaction-heavy `div` structures into their semantic HTML equivalents to leverage built-in browser features and improve the user feedback loop with minimal custom code.
