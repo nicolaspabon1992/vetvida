@@ -1,0 +1,3 @@
+## 2025-05-15 - Semantic Form Refactoring for Accessibility and Usability
+**Learning:** Refactoring div-based form containers to semantic `<form>` elements in static sites significantly improves UX by enabling native browser validation (via `required` attribute) and standard keyboard interactions like "Enter to submit" without extra JavaScript. Associating labels with `for`/`id` is essential for screen reader accessibility.
+**Action:** Always use semantic `<form>` tags and ensure interactive handlers like `submitForm` allow for state reset (e.g., `form.reset()`) to provide clear feedback to the user after action completion.
