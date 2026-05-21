@@ -1,0 +1,3 @@
+## 2026-05-21 - Semantic Form Refactoring for Accessibility and Usability
+**Learning:** Converting generic div containers to semantic <form> elements with proper label-input associations (for/id) significantly improves accessibility for screen readers and enables native browser features like validation and "Enter to submit," providing a more intuitive and robust user experience.
+**Action:** When implementing or refactoring forms, always use semantic <form> tags, ensure all labels are correctly associated with inputs, and leverage native validation attributes (required, type) before relying on custom JavaScript validation.
