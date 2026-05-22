@@ -1,0 +1,3 @@
+## 2025-05-22 - Semantic Form Refactoring for Accessibility and Usability
+**Learning:** Converting div-based forms to semantic `<form>` elements with proper label associations and native validation attributes (`required`, `type`) significantly improves accessibility (screen readers, keyboard navigation) and simplifies form handling in JavaScript.
+**Action:** Always use semantic `<form>` elements for user input, ensure all fields have associated `<label>`s via `id`/`for`, and leverage native browser validation before implementing custom JavaScript logic. For AJAX-like behavior in static sites, use `onsubmit="event.preventDefault(); submitHandler(this);"` and call `form.reset()` in the success callback.
