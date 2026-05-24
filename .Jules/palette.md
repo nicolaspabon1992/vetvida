@@ -1,0 +1,3 @@
+## 2026-05-24 - Semantic Form Refactoring for Accessibility and Usability
+**Learning:** Converting `div`-based form containers to semantic `<form>` elements and using `onsubmit="event.preventDefault(); submitForm(this);"` enables native browser validation and improves keyboard accessibility (Enter to submit) in static sites. Associating labels with `for` and `id` is critical for screen readers and improves the hit area for mobile users.
+**Action:** When refactoring forms, always include native validation attributes (required, type), ensure proper label associations, and provide visual feedback (like a loading state) during submission to improve the overall UX.
