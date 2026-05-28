@@ -176,8 +176,8 @@
 
   .emergency-banner { background: linear-gradient(135deg, #c0392b, #e74c3c); color: white; padding: 18px 5%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
   .emergency-banner p { font-size: 0.93rem; font-weight: 500; }
-  .btn-emergency { background: white; color: #c0392b; padding: 10px 22px; border: none; border-radius: 50px; font-weight: 700; font-size: 0.86rem; cursor: pointer; white-space: nowrap; font-family: var(--font-body); transition: transform 0.2s; }
-  .btn-emergency:hover { transform: scale(1.05); }
+  .btn-emergency { background: white; color: #c0392b; padding: 10px 22px; border: none; border-radius: 50px; font-weight: 700; font-size: 0.86rem; cursor: pointer; white-space: nowrap; font-family: var(--font-body); transition: transform 0.2s; display: inline-block; text-decoration: none; }
+  .btn-emergency:hover { transform: scale(1.05); color: #c0392b; }
 
   .highlight-box { background: linear-gradient(135deg, #f0f5ea, #e8f0df); border-left: 4px solid var(--sage); border-radius: 0 16px 16px 0; padding: 22px 26px; margin: 22px 0; }
   .highlight-box p { font-size: 0.9rem; line-height: 1.7; }
@@ -212,6 +212,8 @@
     .footer-grid { grid-template-columns: 1fr; }
     .price-card.featured { transform: none; }
   }
+  .contact-link { color: inherit; text-decoration: none; border-bottom: 1px dashed var(--sage); transition: all 0.2s; cursor: pointer; }
+  .contact-link:hover { opacity: 0.8; text-decoration: underline; border-bottom-style: solid; }
 </style>
 </head>
 <body>
@@ -556,8 +558,8 @@
 <!-- EMERGENCIAS -->
 <div id="page-emergencias" class="page">
   <div class="emergency-banner">
-    <p>🚨 <strong>Línea de emergencias 24h:</strong> +57 (1) 800-VET-VIDA — Disponible los 365 días del año</p>
-    <button class="btn-emergency">Llamar ahora</button>
+    <p>🚨 <strong>Línea de emergencias 24h:</strong> <a href="tel:+5718008388432" class="contact-link" aria-label="Llamar a la línea de emergencias" style="border-bottom-color: white;">+57 (1) 800-VET-VIDA</a> — Disponible los 365 días del año</p>
+    <a href="tel:+5718008388432" class="btn-emergency">Llamar ahora</a>
   </div>
   <div class="page-hero">
     <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Emergencias</span></div>
