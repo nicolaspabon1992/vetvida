@@ -176,7 +176,7 @@
 
   .emergency-banner { background: linear-gradient(135deg, #c0392b, #e74c3c); color: white; padding: 18px 5%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
   .emergency-banner p { font-size: 0.93rem; font-weight: 500; }
-  .btn-emergency { background: white; color: #c0392b; padding: 10px 22px; border: none; border-radius: 50px; font-weight: 700; font-size: 0.86rem; cursor: pointer; white-space: nowrap; font-family: var(--font-body); transition: transform 0.2s; }
+  .btn-emergency { background: white; color: #c0392b; padding: 10px 22px; border: none; border-radius: 50px; font-weight: 700; font-size: 0.86rem; cursor: pointer; white-space: nowrap; font-family: var(--font-body); transition: transform 0.2s; display: inline-block; text-decoration: none; }
   .btn-emergency:hover { transform: scale(1.05); }
 
   .highlight-box { background: linear-gradient(135deg, #f0f5ea, #e8f0df); border-left: 4px solid var(--sage); border-radius: 0 16px 16px 0; padding: 22px 26px; margin: 22px 0; }
@@ -556,8 +556,8 @@
 <!-- EMERGENCIAS -->
 <div id="page-emergencias" class="page">
   <div class="emergency-banner">
-    <p>🚨 <strong>Línea de emergencias 24h:</strong> +57 (1) 800-VET-VIDA — Disponible los 365 días del año</p>
-    <button class="btn-emergency">Llamar ahora</button>
+    <p>🚨 <strong>Línea de emergencias 24h:</strong> <a href="tel:+5718008388432" style="color:inherit;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,0.4)">+57 (1) 800-VET-VIDA</a> — Disponible los 365 días del año</p>
+    <a href="tel:+5718008388432" class="btn-emergency">Llamar ahora</a>
   </div>
   <div class="page-hero">
     <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Emergencias</span></div>
@@ -695,9 +695,9 @@
       <h2>Ponte en <em>contacto</em> con nosotros</h2>
       <p>Puedes agendar tu cita por teléfono, WhatsApp, correo o directamente en nuestro formulario. Respondemos en menos de 2 horas en horario de atención.</p>
       <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Dirección</div><div class="contact-item-val">Calle 72 #15-30, Chapinero, Bogotá</div></div></div>
-      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Teléfono</div><div class="contact-item-val">+57 (1) 800-VET-VIDA</div></div></div>
-      <div class="contact-item"><div class="contact-icon">💬</div><div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val">+57 300 838-8432</div></div></div>
-      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val">citas@vetvida.com.co</div></div></div>
+      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Teléfono</div><div class="contact-item-val"><a href="tel:+5718008388432" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--sage)">+57 (1) 800-VET-VIDA</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">💬</div><div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val"><a href="https://wa.me/573008388432" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--sage)">+57 300 838-8432</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val"><a href="mailto:citas@vetvida.com.co" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--sage)">citas@vetvida.com.co</a></div></div></div>
       <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-item-label">Horarios</div><div class="contact-item-val">Lun–Vie: 7am–8pm · Sáb–Dom: 8am–6pm<br><span style="font-size:0.82rem;color:var(--clay)">Urgencias: 24 horas, 365 días del año</span></div></div></div>
     </div>
     <div class="contact-form">
@@ -754,9 +754,9 @@
       <h4>Contacto</h4>
       <ul class="footer-links">
         <li><a>📍 Calle 72 #15-30, Bogotá</a></li>
-        <li><a>📞 +57 (1) 800-VET-VIDA</a></li>
-        <li><a>💬 +57 300 838-8432</a></li>
-        <li><a>✉️ citas@vetvida.com.co</a></li>
+        <li><a href="tel:+5718008388432">📞 +57 (1) 800-VET-VIDA</a></li>
+        <li><a href="https://wa.me/573008388432">💬 +57 300 838-8432</a></li>
+        <li><a href="mailto:citas@vetvida.com.co">✉️ citas@vetvida.com.co</a></li>
         <li><a>⏰ Urgencias 24h</a></li>
       </ul>
     </div>
