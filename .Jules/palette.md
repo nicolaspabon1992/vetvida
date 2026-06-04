@@ -1,0 +1,3 @@
+## 2026-03-24 - Semantic Form Refactoring for Accessibility and Usability
+**Learning:** Converting div-based forms to semantic <form> elements with associated labels (for/id) and native validation (required) significantly improves keyboard navigation and screen reader support. Adding an asynchronous loading state (disabled button with "Enviando..." text) provides immediate, clear feedback that prevents duplicate submissions and improves perceived performance.
+**Action:** Always wrap form groups in a <form> tag, use 'for' attributes on labels that match input 'id's, and implement a visual 'loading' state for buttons during submissions.
