@@ -1,0 +1,3 @@
+## 2026-05-23 - Semantic Form Refactoring & Loading Feedback
+**Learning:** Converting generic div-based forms to semantic <form> elements with native validation (required attributes) and explicit label associations significantly improves both accessibility and user experience. Adding a simple loading state (disabling the button and changing text) provides essential feedback for asynchronous-like interactions.
+**Action:** Always prefer <form> over <div> for data entry, use labels with 'for' attributes, and implement 'loading' states for submit buttons to prevent double submissions and provide immediate feedback.
