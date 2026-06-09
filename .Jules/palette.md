@@ -1,0 +1,3 @@
+## 2026-06-09 - Semantic Form Feedback and Accessibility
+**Learning:** Converting `div`-based forms to semantic `<form>` elements with native validation (`required`) and explicit labels provides a more robust and accessible experience. Adding a simulated async delay with a loading state (`:disabled` button and text change) significantly improves perceived performance and prevents duplicate submissions.
+**Action:** Always prefer semantic `<form>` over `div` containers for data entry, ensure all fields have associated labels via `id`/`for`, and implement immediate visual feedback (loading states) for submission actions.
