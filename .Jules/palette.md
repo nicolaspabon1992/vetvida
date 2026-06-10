@@ -1,0 +1,3 @@
+## 2026-05-18 - Semantic Form Refactoring and Feedback
+**Learning:** Converting div-based forms to semantic `<form>` elements with native validation (required, type) and explicit label-input associations significantly improves accessibility and provides immediate, standardized feedback to users. Implementing a simulated loading state (disabling button, text change) during submission prevents duplicate entries and enhances the perceived reliability of the application.
+**Action:** Always refactor non-semantic form containers to `<form>`, use the `required` attribute for essential fields, and provide visual loading feedback for all asynchronous or multi-step interactions.
