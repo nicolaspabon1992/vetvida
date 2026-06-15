@@ -1,0 +1,3 @@
+## 2026-06-15 - Semantic Form Refactoring for Accessibility and Usability
+**Learning:** Refactoring div-based forms to semantic <form> elements with native validation (required attributes) and explicitly associated labels improves accessibility for screen readers and enables keyboard-driven workflows (Enter to submit). Providing immediate visual feedback via a simulated loading state (e.g., disabling the button and changing its text) significantly enhances the perceived reliability of the interface.
+**Action:** Always prioritize semantic <form> elements over div-based containers and ensure interactive elements have clear loading/disabled states for async-like operations.
