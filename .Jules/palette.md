@@ -1,0 +1,3 @@
+## 2026-06-22 - [Semantic Form Refactoring and Submission Feedback]
+**Learning:** Refactoring div-based forms to semantic <form> elements with proper for/id associations and native validation (required, disabled selected options) significantly improves both accessibility and user experience. Adding a simulated loading state (disabling the button and changing text) provides immediate, clear feedback for asynchronous operations in a static site.
+**Action:** Always prefer semantic <form> elements and include native validation. Use simulated loading states for form submissions to enhance perceived performance and clarity.
