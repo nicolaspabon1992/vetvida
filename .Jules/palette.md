@@ -1,0 +1,3 @@
+## 2026-12-25 - [Semantic Form Refactoring and Visual Feedback]
+**Learning:** Refactoring div-based forms to semantic <form> elements with native validation attributes (required, type) significantly improves both accessibility (for screen readers) and usability (keyboard submission). Adding a simulated loading state (disabling the button and providing text feedback) provides immediate, clear confirmation to the user that their action is being processed in a static site environment.
+**Action:** Always prioritize semantic HTML for interactive components and provide immediate visual feedback for asynchronous-like operations. Avoid global formatting tools on legacy files to maintain surgical PRs.
