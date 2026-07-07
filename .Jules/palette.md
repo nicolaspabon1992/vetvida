@@ -1,0 +1,3 @@
+## 2026-07-07 - Semantic Form Refactoring and Visual Loading States
+**Learning:** Converting `div`-based form containers to semantic `<form>` elements and using `onsubmit="event.preventDefault(); submitForm(this);"` enables native browser validation and improves keyboard accessibility (Enter to submit). Implementing a simulated asynchronous delay with a 'loading' state (disabling the button and changing its text) provides immediate and necessary visual feedback for users on static sites.
+**Action:** Always wrap interactive input groups in a `<form>` tag and include explicit `for`/`id` associations for labels to ensure accessibility and native validation.
