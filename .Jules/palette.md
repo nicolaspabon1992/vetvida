@@ -1,0 +1,3 @@
+## 2026-07-20 - Semantic Form Refactoring and Visual States
+**Learning:** Moving from non-semantic structure (like generic division tags) to a standard `<form>` element significantly boosts screen-reader compatibility and enables native mobile keyboard enhancements (e.g. `type="tel"`). Implementing a simulated loading delay alongside visual button disabling prevents duplicate form submissions and provides immediate, reassuring feedback to the user.
+**Action:** Always wrap user-input elements within semantic `<form>` containers, match labels and controls with explicit `for` and `id` bindings, and manage submit button lifecycle states using resilient asynchronous JavaScript with error safety.
