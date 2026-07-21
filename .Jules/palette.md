@@ -1,0 +1,3 @@
+## 2026-07-20 - Semantic Contact Form with Loading Feedback
+**Learning:** Converting contact forms to semantic `<form>` elements with explicit 'for' and 'id' associated labels significantly improves screen-reader accessibility and native input validation. Providing a simulated loading state (e.g., 1000ms duration) with a disabled submit button and a visual 'Enviando...' state prevents duplicate submissions and gives users clear, instant feedback on interactive actions.
+**Action:** For all forms in VetVida, replace generic div containers with semantic `<form>` elements, implement native validation, and use robust async handlers to manage button states and loading feedback during submission.
