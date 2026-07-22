@@ -1,0 +1,3 @@
+## 2026-07-22 - Semantic Form Refactoring with Loading State Feedback
+**Learning:** Refactoring form inputs to use explicit `<label for="...">` associations and native HTML5 form elements makes them highly accessible to screen-readers, while providing immediate visual loading states (such as disabling the submit button and showing 'Enviando...') dramatically improves the UX by preventing duplicate submissions and giving clear feedback.
+**Action:** Always replace div-based forms with semantic `<form>` elements, use matching label associations, and implement a robust `try-finally` block to handle disabling/loading states of interactive submission elements.
