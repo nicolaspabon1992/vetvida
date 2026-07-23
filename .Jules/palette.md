@@ -1,0 +1,3 @@
+## 2026-07-25 - Semantic Form Refactoring & Disabled State styling
+**Learning:** Converting div-based forms to semantic `<form>` components with properly paired labels (`for` and `id`) drastically improves screen reader compatibility and keyboard form submission. Disabling the submit button during simulated network requests prevents duplicate submissions while giving clear interactive cues.
+**Action:** Always wrap input containers in `<form>` tags, bind labels explicitly with `id`, use `onsubmit` handlers for single-page applications, and include proper `:disabled` states for button transitions.
