@@ -1,0 +1,3 @@
+## 2026-07-25 - Surgical UX Form Refactoring
+**Learning:** Refactoring a legacy element-based contact form into a semantic form element under a strict 50-line boundary prevents design regressions and avoids triggering massive formatting differences. Explicitly binding labels to input fields using `id`/`for` attributes greatly improves screen reader accessibility, while asynchronous simulated delay ensures clear visual and interactive submission feedback.
+**Action:** When working with legacy codebases with no bundlers or modern frameworks, perform surgical edits in existing elements and preserve their structure to respect PR size constraints. Always use try-finally blocks to guarantee input state recovery if submission fails or delays.
