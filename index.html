@@ -217,13 +217,13 @@
 <body>
 
 <nav id="navbar">
-  <div class="nav-logo" onclick="showPage('home')">Vet<span>Vida</span></div>
+  <div class="nav-logo" onclick="showPage('home')" role="link" tabindex="0" aria-label="Inicio" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showPage('home');}">Vet<span>Vida</span></div>
   <ul class="nav-links">
-    <li><a onclick="showPage('home')" id="nav-home">Inicio</a></li>
-    <li><a onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
-    <li><a onclick="showPage('nosotros')" id="nav-nosotros">Nosotros</a></li>
-    <li><a onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;">🚨 Emergencias</a></li>
-    <li><a onclick="showPage('contacto')" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
+    <li><a href="#" onclick="showPage('home'); return false;" id="nav-home">Inicio</a></li>
+    <li><a href="#" onclick="showPage('servicios'); return false;" id="nav-servicios">Servicios</a></li>
+    <li><a href="#" onclick="showPage('nosotros'); return false;" id="nav-nosotros">Nosotros</a></li>
+    <li><a href="#" onclick="showPage('emergencias'); return false;" id="nav-emergencias" style="color:#c0392b;font-weight:700;">🚨 Emergencias</a></li>
+    <li><a href="#" onclick="showPage('contacto'); return false;" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
   </ul>
 </nav>
 
@@ -557,7 +557,7 @@
 <div id="page-emergencias" class="page">
   <div class="emergency-banner">
     <p>🚨 <strong>Línea de emergencias 24h:</strong> +57 (1) 800-VET-VIDA — Disponible los 365 días del año</p>
-    <button class="btn-emergency">Llamar ahora</button>
+    <a href="tel:+571800915444" class="btn-emergency" style="text-decoration: none; display: inline-block;">Llamar ahora</a>
   </div>
   <div class="page-hero">
     <div class="page-hero-breadcrumb" onclick="showPage('home')">← Inicio / <span>Emergencias</span></div>
@@ -593,10 +593,10 @@
       </div>
       <div>
         <div class="info-cards">
-          <div class="info-card"><div class="info-card-icon">📞</div><h3>Teléfono 24h</h3><p>+57 (1) 800-VET-VIDA<br>Línea directa al equipo de urgencias, sin esperas ni menús.</p></div>
-          <div class="info-card"><div class="info-card-icon">📍</div><h3>Dirección</h3><p>Calle 72 #15-30, Bogotá. Ingreso de urgencias por costado norte, disponible 24h.</p></div>
+          <div class="info-card"><div class="info-card-icon">📞</div><h3>Teléfono 24h</h3><p><a href="tel:+571800915444" style="color: var(--forest); text-decoration: underline; font-weight: 600;">+57 (1) 800-VET-VIDA</a><br>Línea directa al equipo de urgencias, sin esperas ni menús.</p></div>
+          <div class="info-card"><div class="info-card-icon">📍</div><h3>Dirección</h3><p><a href="https://maps.google.com/?q=Calle+72+%2315-30,+Bogota" target="_blank" rel="noopener" style="color: var(--forest); text-decoration: underline; font-weight: 600;">Calle 72 #15-30, Bogotá.</a> Ingreso de urgencias por costado norte, disponible 24h.</p></div>
           <div class="info-card"><div class="info-card-icon">🚑</div><h3>Ambulancia</h3><p>Servicio de ambulancia veterinaria disponible para traslados de emergencia en el área urbana.</p></div>
-          <div class="info-card"><div class="info-card-icon">💬</div><h3>WhatsApp</h3><p>+57 300 838-8432 para fotos o videos que nos ayuden a evaluar la urgencia antes de llegar.</p></div>
+          <div class="info-card"><div class="info-card-icon">💬</div><h3>WhatsApp</h3><p><a href="https://wa.me/573008388432" target="_blank" rel="noopener" style="color: var(--forest); text-decoration: underline; font-weight: 600;">+57 300 838-8432</a> para fotos o videos que nos ayuden a evaluar la urgencia antes de llegar.</p></div>
         </div>
         <div style="margin-top:26px;background:var(--forest);border-radius:20px;padding:26px;color:white">
           <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:10px">💡 Primeros auxilios mientras llegas</h3>
@@ -694,10 +694,10 @@
     <div class="contact-info">
       <h2>Ponte en <em>contacto</em> con nosotros</h2>
       <p>Puedes agendar tu cita por teléfono, WhatsApp, correo o directamente en nuestro formulario. Respondemos en menos de 2 horas en horario de atención.</p>
-      <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Dirección</div><div class="contact-item-val">Calle 72 #15-30, Chapinero, Bogotá</div></div></div>
-      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Teléfono</div><div class="contact-item-val">+57 (1) 800-VET-VIDA</div></div></div>
-      <div class="contact-item"><div class="contact-icon">💬</div><div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val">+57 300 838-8432</div></div></div>
-      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val">citas@vetvida.com.co</div></div></div>
+      <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Dirección</div><div class="contact-item-val"><a href="https://maps.google.com/?q=Calle+72+%2315-30,+Bogota" target="_blank" rel="noopener" style="color: var(--forest); text-decoration: underline; font-weight: 600;">Calle 72 #15-30, Chapinero, Bogotá</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Teléfono</div><div class="contact-item-val"><a href="tel:+571800915444" style="color: var(--forest); text-decoration: underline; font-weight: 600;">+57 (1) 800-VET-VIDA</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">💬</div><div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val"><a href="https://wa.me/573008388432" target="_blank" rel="noopener" style="color: var(--forest); text-decoration: underline; font-weight: 600;">+57 300 838-8432</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Correo</div><div class="contact-item-val"><a href="mailto:citas@vetvida.com.co" style="color: var(--forest); text-decoration: underline; font-weight: 600;">citas@vetvida.com.co</a></div></div></div>
       <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-item-label">Horarios</div><div class="contact-item-val">Lun–Vie: 7am–8pm · Sáb–Dom: 8am–6pm<br><span style="font-size:0.82rem;color:var(--clay)">Urgencias: 24 horas, 365 días del año</span></div></div></div>
     </div>
     <div class="contact-form">
@@ -725,39 +725,39 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="nav-logo" style="color:white;cursor:pointer" onclick="showPage('home')">Vet<span>Vida</span></div>
+      <div class="nav-logo" style="color:white;cursor:pointer" onclick="showPage('home')" role="link" tabindex="0" aria-label="Inicio" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showPage('home');}">Vet<span>Vida</span></div>
       <p>Cuidamos a tu mascota con la misma dedicación y amor que merece cada ser vivo. Tu confianza es nuestra mayor responsabilidad.</p>
     </div>
     <div class="footer-col">
       <h4>Servicios</h4>
       <ul class="footer-links">
-        <li><a onclick="showPage('consulta')">Consulta General</a></li>
-        <li><a onclick="showPage('vacunas')">Vacunación</a></li>
-        <li><a onclick="showPage('cirugia')">Cirugía</a></li>
-        <li><a onclick="showPage('estetica')">Estética</a></li>
-        <li><a onclick="showPage('nutricion')">Nutrición</a></li>
-        <li><a onclick="showPage('dental')">Odontología</a></li>
-        <li><a onclick="showPage('laboratorio')">Laboratorio</a></li>
+        <li><a href="#" onclick="showPage('consulta'); return false;">Consulta General</a></li>
+        <li><a href="#" onclick="showPage('vacunas'); return false;">Vacunación</a></li>
+        <li><a href="#" onclick="showPage('cirugia'); return false;">Cirugía</a></li>
+        <li><a href="#" onclick="showPage('estetica'); return false;">Estética</a></li>
+        <li><a href="#" onclick="showPage('nutricion'); return false;">Nutrición</a></li>
+        <li><a href="#" onclick="showPage('dental'); return false;">Odontología</a></li>
+        <li><a href="#" onclick="showPage('laboratorio'); return false;">Laboratorio</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Clínica</h4>
       <ul class="footer-links">
-        <li><a onclick="showPage('nosotros')">Nosotros</a></li>
-        <li><a onclick="showPage('emergencias')">Emergencias 24h</a></li>
-        <li><a onclick="showPage('contacto')">Reservar Cita</a></li>
-        <li><a>Blog Veterinario</a></li>
-        <li><a>Trabaja con nosotros</a></li>
+        <li><a href="#" onclick="showPage('nosotros'); return false;">Nosotros</a></li>
+        <li><a href="#" onclick="showPage('emergencias'); return false;">Emergencias 24h</a></li>
+        <li><a href="#" onclick="showPage('contacto'); return false;">Reservar Cita</a></li>
+        <li><a href="#" onclick="return false;">Blog Veterinario</a></li>
+        <li><a href="#" onclick="return false;">Trabaja con nosotros</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul class="footer-links">
-        <li><a>📍 Calle 72 #15-30, Bogotá</a></li>
-        <li><a>📞 +57 (1) 800-VET-VIDA</a></li>
-        <li><a>💬 +57 300 838-8432</a></li>
-        <li><a>✉️ citas@vetvida.com.co</a></li>
-        <li><a>⏰ Urgencias 24h</a></li>
+        <li><a href="https://maps.google.com/?q=Calle+72+%2315-30,+Bogota" target="_blank" rel="noopener">📍 Calle 72 #15-30, Bogotá</a></li>
+        <li><a href="tel:+571800915444">📞 +57 (1) 800-VET-VIDA</a></li>
+        <li><a href="https://wa.me/573008388432" target="_blank" rel="noopener">💬 +57 300 838-8432</a></li>
+        <li><a href="mailto:citas@vetvida.com.co">✉️ citas@vetvida.com.co</a></li>
+        <li><a href="#" onclick="showPage('emergencias'); return false;">⏰ Urgencias 24h</a></li>
       </ul>
     </div>
   </div>
