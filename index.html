@@ -33,11 +33,13 @@
     transition: box-shadow 0.3s;
   }
   nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
-  .nav-logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; color: var(--forest); cursor: pointer; }
+  .nav-logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; color: var(--forest); cursor: pointer; outline: none; transition: box-shadow 0.2s; border-radius: 8px; }
+  .nav-logo:focus-visible { box-shadow: 0 0 0 3px var(--amber); }
   .nav-logo span { color: var(--amber); }
   .nav-links { display: flex; gap: 0; list-style: none; }
-  .nav-links li a { display: block; padding: 8px 14px; font-size: 0.875rem; font-weight: 500; color: var(--mid-gray); text-decoration: none; border-radius: 24px; transition: all 0.2s; cursor: pointer; }
+  .nav-links li a { display: block; padding: 8px 14px; font-size: 0.875rem; font-weight: 500; color: var(--mid-gray); text-decoration: none; border-radius: 24px; transition: all 0.2s; cursor: pointer; outline: none; }
   .nav-links li a:hover, .nav-links li a.active { color: var(--forest); background: rgba(45,80,22,0.08); }
+  .nav-links li a:focus-visible { box-shadow: 0 0 0 3px var(--sage); }
   .nav-cta { background: var(--forest) !important; color: var(--cream) !important; padding: 10px 20px !important; }
   .nav-cta:hover { background: var(--moss) !important; }
 
@@ -183,7 +185,8 @@
   .highlight-box p { font-size: 0.9rem; line-height: 1.7; }
 
   .faq-item { border-bottom: 1px solid var(--light-gray); padding: 18px 0; }
-  .faq-question { font-weight: 600; font-size: 0.93rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .faq-question { font-weight: 600; font-size: 0.93rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; outline: none; transition: box-shadow 0.2s; padding: 4px 8px; border-radius: 8px; }
+  .faq-question:focus-visible { box-shadow: 0 0 0 3px var(--sage); }
   .faq-question::after { content: '+'; font-size: 1.3rem; color: var(--sage); flex-shrink: 0; }
   .faq-item.open .faq-question::after { content: '−'; }
   .faq-answer { display: none; font-size: 0.88rem; color: var(--mid-gray); line-height: 1.7; padding-top: 12px; }
@@ -217,13 +220,13 @@
 <body>
 
 <nav id="navbar">
-  <div class="nav-logo" onclick="showPage('home')">Vet<span>Vida</span></div>
+  <div class="nav-logo" role="link" tabindex="0" aria-label="VetVida Inicio" onclick="showPage('home')">Vet<span>Vida</span></div>
   <ul class="nav-links">
-    <li><a onclick="showPage('home')" id="nav-home">Inicio</a></li>
-    <li><a onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
-    <li><a onclick="showPage('nosotros')" id="nav-nosotros">Nosotros</a></li>
-    <li><a onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;">🚨 Emergencias</a></li>
-    <li><a onclick="showPage('contacto')" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
+    <li><a role="link" tabindex="0" onclick="showPage('home')" id="nav-home">Inicio</a></li>
+    <li><a role="link" tabindex="0" onclick="showPage('servicios')" id="nav-servicios">Servicios</a></li>
+    <li><a role="link" tabindex="0" onclick="showPage('nosotros')" id="nav-nosotros">Nosotros</a></li>
+    <li><a role="link" tabindex="0" onclick="showPage('emergencias')" id="nav-emergencias" style="color:#c0392b;font-weight:700;">🚨 Emergencias</a></li>
+    <li><a role="link" tabindex="0" onclick="showPage('contacto')" id="nav-contacto" class="nav-cta">Reservar Cita</a></li>
   </ul>
 </nav>
 
@@ -336,9 +339,9 @@
         </div>
         <div style="margin-top:26px">
           <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:18px">Preguntas Frecuentes</h3>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Con qué frecuencia debo traer a mi mascota?</div><div class="faq-answer">Para mascotas adultas sanas recomendamos al menos una consulta anual. En cachorros, geriátricos o con condiciones crónicas, las revisiones deben ser más frecuentes (cada 6 meses o según indicación médica).</div></div>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Necesito cita previa?</div><div class="faq-answer">Para consultas de rutina recomendamos cita previa. Sin embargo, atendemos sin cita cuando hay disponibilidad. Las emergencias siempre tienen prioridad y no requieren cita.</div></div>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Puedo quedarme con mi mascota durante la consulta?</div><div class="faq-answer">¡Por supuesto! Tu presencia tranquiliza a tu mascota. En procedimientos específicos te indicaremos si es necesario permanecer en sala de espera.</div></div>
+          <div class="faq-item"><div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">¿Con qué frecuencia debo traer a mi mascota?</div><div class="faq-answer">Para mascotas adultas sanas recomendamos al menos una consulta anual. En cachorros, geriátricos o con condiciones crónicas, las revisiones deben ser más frecuentes (cada 6 meses o según indicación médica).</div></div>
+          <div class="faq-item"><div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">¿Necesito cita previa?</div><div class="faq-answer">Para consultas de rutina recomendamos cita previa. Sin embargo, atendemos sin cita cuando hay disponibilidad. Las emergencias siempre tienen prioridad y no requieren cita.</div></div>
+          <div class="faq-item"><div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">¿Puedo quedarme con mi mascota durante la consulta?</div><div class="faq-answer">¡Por supuesto! Tu presencia tranquiliza a tu mascota. En procedimientos específicos te indicaremos si es necesario permanecer en sala de espera.</div></div>
         </div>
       </div>
     </div>
@@ -376,9 +379,9 @@
           <span class="chip">💉 Séxtuple canina</span><span class="chip">💉 Antirrábica</span><span class="chip">💉 Triple felina</span><span class="chip">💉 Leucemia felina</span><span class="chip">💉 Bordetella</span><span class="chip">💉 Leptospirosis</span><span class="chip">💉 Leishmania</span><span class="chip">💉 Influenza canina</span>
         </div>
         <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:18px">Preguntas Frecuentes</h3>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Mi mascota puede tener reacciones a las vacunas?</div><div class="faq-answer">Las reacciones son muy poco frecuentes. Pueden presentarse leve somnolencia o sensibilidad en el punto de inyección durante 24h. Reacciones graves son extremadamente raras y siempre supervisamos a tu mascota tras la vacunación.</div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Puedo vacunar a mi mascota si está enferma?</div><div class="faq-answer">No. Las vacunas solo se aplican a mascotas clínicamente sanas. Si presenta síntomas, primero tratamos la enfermedad y luego programamos la vacunación.</div></div>
-        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Cada cuánto debo desparasitar a mi mascota?</div><div class="faq-answer">Cachorros: cada 15 días hasta los 3 meses, luego mensual hasta el año. Adultos: cada 3–6 meses según exposición y estilo de vida. Tu veterinario te dará el plan exacto.</div></div>
+        <div class="faq-item"><div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">¿Mi mascota puede tener reacciones a las vacunas?</div><div class="faq-answer">Las reacciones son muy poco frecuentes. Pueden presentarse leve somnolencia o sensibilidad en el punto de inyección durante 24h. Reacciones graves son extremadamente raras y siempre supervisamos a tu mascota tras la vacunación.</div></div>
+        <div class="faq-item"><div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">¿Puedo vacunar a mi mascota si está enferma?</div><div class="faq-answer">No. Las vacunas solo se aplican a mascotas clínicamente sanas. Si presenta síntomas, primero tratamos la enfermedad y luego programamos la vacunación.</div></div>
+        <div class="faq-item"><div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">¿Cada cuánto debo desparasitar a mi mascota?</div><div class="faq-answer">Cachorros: cada 15 días hasta los 3 meses, luego mensual hasta el año. Adultos: cada 3–6 meses según exposición y estilo de vida. Tu veterinario te dará el plan exacto.</div></div>
       </div>
     </div>
   </section>
@@ -543,9 +546,9 @@
         <div class="highlight-box"><p>🦷 <strong>Consejo VetVida:</strong> Acostumbra a tu mascota al cepillado dental desde cachorro. Una revisión oral en cada consulta anual puede prevenir problemas graves y costosos en el futuro.</p></div>
         <div style="margin-top:26px">
           <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:18px">Señales de alerta</h3>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Cuándo debo preocuparme por la boca de mi mascota?</div><div class="faq-answer">Señales de alerta: mal aliento intenso, encías rojas o inflamadas, dificultad para comer, babeo excesivo, frotarse la cara con las patas, o dientes visiblemente rotos con sarro abundante.</div></div>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Es segura la anestesia para la limpieza dental?</div><div class="faq-answer">Sí. Realizamos una evaluación preoperatoria completa para minimizar riesgos. La anestesia es necesaria para hacer una limpieza completa y segura sin causar estrés al animal.</div></div>
-          <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">¿Con qué frecuencia debo hacer la limpieza dental?</div><div class="faq-answer">Generalmente una vez al año. Mascotas con alta predisposición a sarro (razas braquicéfalas, dieta húmeda) pueden necesitarla cada 6 meses. Tu veterinario lo indicará según el caso.</div></div>
+          <div class="faq-item"><div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">¿Cuándo debo preocuparme por la boca de mi mascota?</div><div class="faq-answer">Señales de alerta: mal aliento intenso, encías rojas o inflamadas, dificultad para comer, babeo excesivo, frotarse la cara con las patas, o dientes visiblemente rotos con sarro abundante.</div></div>
+          <div class="faq-item"><div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">¿Es segura la anestesia para la limpieza dental?</div><div class="faq-answer">Sí. Realizamos una evaluación preoperatoria completa para minimizar riesgos. La anestesia es necesaria para hacer una limpieza completa y segura sin causar estrés al animal.</div></div>
+          <div class="faq-item"><div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">¿Con qué frecuencia debo hacer la limpieza dental?</div><div class="faq-answer">Generalmente una vez al año. Mascotas con alta predisposición a sarro (razas braquicéfalas, dieta húmeda) pueden necesitarla cada 6 meses. Tu veterinario lo indicará según el caso.</div></div>
         </div>
       </div>
     </div>
@@ -807,11 +810,24 @@
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
   });
 
-  function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+  function toggleFaq(el) {
+    const parent = el.parentElement;
+    parent.classList.toggle('open');
+    const isOpen = parent.classList.contains('open');
+    el.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
 
   function submitForm() {
     alert('✅ ¡Solicitud enviada correctamente!\n\nTe confirmaremos tu cita en menos de 2 horas por WhatsApp o correo electrónico.\n\n¡Gracias por confiar en VetVida! 🐾');
   }
+
+  document.addEventListener('keydown', e => {
+    const role = e.target.getAttribute('role');
+    if ((e.key === 'Enter' || e.key === ' ') && (role === 'button' || role === 'link')) {
+      e.preventDefault();
+      e.target.click();
+    }
+  });
 
   document.getElementById('nav-home').classList.add('active');
 </script>
