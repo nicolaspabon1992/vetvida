@@ -1,0 +1,3 @@
+## 2026-08-04 - Semantic Form Refactoring & Visual Feedback
+**Learning:** Using standard semantic form elements with explicit labels and `id` bindings provides excellent baseline accessibility for keyboard/screen-reader users. Additionally, providing immediate visual feedback during async operations (by disabling form elements and showing an "Enviando..." loading state) prevents redundant clicks and enhances visual trust.
+**Action:** Always prefer standard `<form>` elements and native `<label for="...">` associations over plain non-semantic containers and divs, and always pair async triggers with clear disabled/loading states.
