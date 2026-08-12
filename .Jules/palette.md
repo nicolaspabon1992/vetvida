@@ -1,0 +1,3 @@
+## 2026-08-12 - Form Accessibility & Asynchronous UX
+**Learning:** Transitioning non-semantic forms to semantic `<form>` containers with linked `<label for="...">` elements significantly enhances screen-reader compatibility and click-target hitboxes. Additionally, disabling the primary submit button and changing its inner text to "Enviando..." inside a robust try/finally block prevents duplicate actions and provides essential feedback on low-bandwidth networks.
+**Action:** Always replace div-based form layouts with standard `<form>` tags, utilize native validation attributes, and wrap button disabling inside try/finally constructs to ensure the UI is successfully restored under all outcomes.
