@@ -1,0 +1,3 @@
+## 2026-08-14 - Booking Form Semantic & UX Upgrade
+**Learning:** Refactoring forms to be semantic and accessible (with native `<form>` elements, explicit label-to-input ID associations, and browser validation) improves both the user experience and screen reader accessibility. Additionally, asynchronous form handlers providing clear visual feedback (e.g., button disabling, text modification) with a `try/finally` block prevent double submissions and handle loading errors gracefully.
+**Action:** Always refactor forms to use semantic elements, map `<label for="id">` properly to input `id` values, add native validations, and manage asynchronous button loading states safely inside a try/finally block to ensure visual consistency and accessibility.
