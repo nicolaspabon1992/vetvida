@@ -1,0 +1,3 @@
+## 2026-08-28 - Contact Form UX & Semantic Accessibility Upgrade
+**Learning:** Refactoring interactive input containers into native HTML `<form>` elements with explicit `<label for="...">` mapping and native `required` validations drastically improves screen reader compatibility and keyboard navigation. Using an `async/try/finally` block for simulated loading guarantees submit button restoration even during unexpected execution flows.
+**Action:** Always wrap input fields in a standard `<form>` element using `onsubmit="event.preventDefault(); submitForm(this);"` and explicit standard HTML `for`/`id` bindings. Style disabled state (`.btn-primary:disabled`) to communicate active processing visually and prevent duplicate submissions.
