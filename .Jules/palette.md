@@ -1,0 +1,3 @@
+## 2026-09-14 - Semantic Form & Async Submit Loading State
+**Learning:** Plain `<div>` form containers lack native form semantics, input accessibility bindings, and browser validation. Adding explicit `<label for="...">` associations improves screen reader accessibility, while an async `submitForm` handler with a `try/finally` block ensures the submit button provides clear visual feedback ('Enviando...') and cannot be double-clicked.
+**Action:** Always wrap form controls in a semantic `<form>` element with explicit `for`/`id` bindings, native `required` attributes, and resilient loading button state handling.
