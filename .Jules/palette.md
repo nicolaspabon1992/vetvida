@@ -1,0 +1,3 @@
+## 2026-09-16 - Booking Form Semantic & Asynchronous Submission UX Upgrade
+**Learning:** Refactoring non-semantic form containers into standard HTML `<form>` elements with explicit label associations (`for`/`id`) and native `required` field constraints enables built-in browser accessibility and validation. Managing asynchronous submit button visual states (`disabled`, "Enviando...") inside a `try/finally` block prevents double submissions while guaranteeing UI restoration even if submission errors occur.
+**Action:** When updating form submission flows in plain JS/HTML apps, use `onsubmit="event.preventDefault(); submitForm(this);"` and manage submit button state in a `try/finally` block with `form.reset()`.
