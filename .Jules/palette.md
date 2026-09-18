@@ -1,0 +1,3 @@
+## 2026-09-18 - Booking Form Semantic Accessibility & Asynchronous UX
+**Learning:** Refactoring form containers into native `<form>` elements with explicit `<label for="...">` associations and native `required` attributes ensures accessibility compliance and screen-reader usability. Providing immediate visual submission feedback (disabling submit buttons and displaying 'Enviando...') wrapped in `try/finally` blocks prevents double submissions while guaranteeing UI recovery regardless of errors.
+**Action:** When updating form interaction patterns, ensure all form controls have corresponding IDs and explicitly mapped labels, and manage submission state transitions inside a resilient `try/finally` block.
