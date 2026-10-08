@@ -1,0 +1,3 @@
+## 2026-10-08 - Accessible Form Lifecycle and Loading Feedback in Vanilla HTML
+**Learning:** In non-framework static HTML applications, form submissions lack built-in loading states and ARIA label-to-control bindings. Refactoring forms to use semantic `<form>` elements with explicit `for`/`id` pairs and managing button loading/disabled state inside a `try...finally` block ensures reliable accessibility and prevents duplicate submissions without risking stuck UI states.
+**Action:** When working on static HTML form submissions, wrap form controls in `<form onsubmit="...">`, bind labels explicitly with standard `for` attributes, and always use `try...finally` when disabling submit buttons asynchronously.
