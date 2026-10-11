@@ -56,6 +56,7 @@
 
   .btn-primary { background: var(--forest); color: var(--cream); padding: 14px 30px; border: none; border-radius: 50px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.25s; box-shadow: 0 4px 20px rgba(45,80,22,0.3); }
   .btn-primary:hover { background: var(--moss); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(45,80,22,0.35); }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; background: var(--mid-gray); }
   .btn-secondary { background: transparent; color: var(--forest); padding: 14px 30px; border: 2px solid var(--forest); border-radius: 50px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.25s; }
   .btn-secondary:hover { background: var(--forest); color: var(--cream); transform: translateY(-2px); }
 
@@ -702,21 +703,23 @@
     </div>
     <div class="contact-form">
       <h3>Solicitar Cita</h3>
-      <div class="form-row">
-        <div class="form-group"><label>Nombre del dueño</label><input type="text" placeholder="Tu nombre completo"></div>
-        <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+57 300 0000000"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Nombre de la mascota</label><input type="text" placeholder="Nombre"></div>
-        <div class="form-group"><label>Especie</label><select><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
-      </div>
-      <div class="form-group"><label>Servicio requerido</label><select><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
-      <div class="form-row">
-        <div class="form-group"><label>Fecha preferida</label><input type="date"></div>
-        <div class="form-group"><label>Hora preferida</label><select><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
-      </div>
-      <div class="form-group"><label>Motivo de consulta</label><textarea placeholder="Describe brevemente los síntomas o el motivo de tu visita..."></textarea></div>
-      <button class="btn-primary" style="width:100%" onclick="submitForm()">Enviar Solicitud →</button>
+      <form onsubmit="event.preventDefault(); submitForm(this);">
+        <div class="form-row">
+          <div class="form-group"><label for="owner-name">Nombre del dueño</label><input type="text" id="owner-name" name="owner-name" placeholder="Tu nombre completo" required></div>
+          <div class="form-group"><label for="phone">Teléfono</label><input type="tel" id="phone" name="phone" placeholder="+57 300 0000000" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="pet-name">Nombre de la mascota</label><input type="text" id="pet-name" name="pet-name" placeholder="Nombre" required></div>
+          <div class="form-group"><label for="species">Especie</label><select id="species" name="species"><option>Perro</option><option>Gato</option><option>Ave</option><option>Conejo</option><option>Reptil</option><option>Otro</option></select></div>
+        </div>
+        <div class="form-group"><label for="service">Servicio requerido</label><select id="service" name="service"><option>Consulta general</option><option>Vacunación y desparasitación</option><option>Cirugía programada</option><option>Estética y peluquería</option><option>Nutrición clínica</option><option>Odontología</option><option>Laboratorio y diagnóstico</option><option>Otro</option></select></div>
+        <div class="form-row">
+          <div class="form-group"><label for="preferred-date">Fecha preferida</label><input type="date" id="preferred-date" name="preferred-date"></div>
+          <div class="form-group"><label for="preferred-time">Hora preferida</label><select id="preferred-time" name="preferred-time"><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div>
+        </div>
+        <div class="form-group"><label for="reason">Motivo de consulta</label><textarea id="reason" name="reason" placeholder="Describe brevemente los síntomas o el motivo de tu visita..."></textarea></div>
+        <button type="submit" class="btn-primary" style="width:100%">Enviar Solicitud →</button>
+      </form>
       <p style="font-size:0.78rem;color:var(--mid-gray);text-align:center;margin-top:12px">Te confirmaremos tu cita por WhatsApp o correo en menos de 2 horas</p>
     </div>
   </div>
@@ -809,8 +812,11 @@
 
   function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
 
-  function submitForm() {
+  function submitForm(form) {
     alert('✅ ¡Solicitud enviada correctamente!\n\nTe confirmaremos tu cita en menos de 2 horas por WhatsApp o correo electrónico.\n\n¡Gracias por confiar en VetVida! 🐾');
+    if (form && typeof form.reset === 'function') {
+      form.reset();
+    }
   }
 
   document.getElementById('nav-home').classList.add('active');
