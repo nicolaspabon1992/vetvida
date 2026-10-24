@@ -1,0 +1,3 @@
+## 2026-10-24 - Standard HTML Label Association and Asynchronous Form Submit State
+**Learning:** In plain HTML applications without framework bindings, wrapping inputs in a `<form>` element and pairing labels with explicit `for` attributes and matching `id` attributes ensures full accessibility for screen readers and click target expanded areas. Additionally, disabling the submit button and showing an "Enviando..." feedback text during simulated async form processing prevents duplicate submissions and provides clear user feedback.
+**Action:** Always link form `<label>` elements to input `id`s using `for`, use semantic `<form onsubmit="event.preventDefault(); ...">`, and handle button loading states during async handling in plain HTML forms.
